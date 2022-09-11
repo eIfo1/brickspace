@@ -19,16 +19,13 @@ if (@$_SESSION['note']) {
 </script>
 <div class="row">
   <div class="col-6">
-    <h1>
-      Current User: <?php out($_SESSION['Username']); ?>
-    </h1>
     <div class="card">
       <h1 class="text-center">Comments</h1>
     </div>
     <div id="comments"></div>
     <div class="card">
       <form action="/dashboard/wall/" method="POST">
-        <input type="text" name="message" placeholder="Your wall message here...">
+        <input type="text" name="message" placeholder="Your wall message here..." required>
         <button type="submit" name="submit">Post</button>
       </form>
     </div>

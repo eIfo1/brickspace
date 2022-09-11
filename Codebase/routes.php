@@ -13,12 +13,12 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 get('/', 'views/pages/landing.php');
 // user controls
 get('/login', 'views/pages/login.php');
-post('/login', 'controller/login.php');
+post('/login', 'controller/guest/login.php');
 
 get('/sign-up', 'views/pages/register.php');
-post('/sign-up', 'controller/register.php');
+post('/sign-up', 'controller/guest/register.php');
 
-get('/logout', 'controller/logout.php');
+get('/logout', 'controller/auth/logout.php');
 // user pages
 get('/dashboard', 'views/pages/dashboard.php');
 // universal pages
