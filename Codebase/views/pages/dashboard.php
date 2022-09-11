@@ -1,6 +1,7 @@
 <?php
 $name = "Dashboard";
 require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
+RequireAuthentication();
 if (@$_SESSION['note']) {
   ShowNote($_SESSION['note']);
   unset($_SESSION['note']);

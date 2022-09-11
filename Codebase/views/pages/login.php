@@ -2,7 +2,6 @@
 $name = "Login";
 require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 if (@$_SESSION['error']) {
-  include("{$_SERVER['DOCUMENT_ROOT']}/functions/toast.php");
   ShowError($_SESSION['error']);
   unset($_SESSION['error']);
 }
