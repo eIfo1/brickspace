@@ -36,9 +36,13 @@ if (UserAuthenticated()) {
               </a>
               <?php
                 // user admin check
+                //if(UserAdmin()) {
               ?>
+              <a href="/admin">
+                <i class="fa fa-cog"></i>Admin
+              </a>
               <?php
-                // }
+                //}
               ?>
             </div>
             <div class="right">
