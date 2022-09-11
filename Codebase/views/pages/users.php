@@ -1,0 +1,67 @@
+<?php
+$name = "Users";
+require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/pagination.php");
+require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/online.php");
+
+
+use function CommonMark\Render\HTML;
+
+$page = SetPagination(@$page);
+
+$limit = 8;
+$offset = ($page - 1) * $limit;
+$statement = $conn->prepare("SELECT * FROM users ORDER BY user_id ASC LIMIT :limit OFFSET :offset");
+$statement->bindParam(':limit', $limit, PDO::PARAM_INT);
+$statement->bindParam(':offset', $offset, PDO::PARAM_INT);
+$statement->execute();
+$result = $statement->fetchAll();
+$count = 1;
+
+if(!$result) {
+  header('location: /dashboard');
+  exit();
+}
+?>
+
+<div class="row">
+  <div class="col-8 col-center">
+    <div class="row">
+      <?php
+      foreach ($result as $user) {
+        $count += 1;
+      ?>
+        <div class="col-6">
+          <div class="card">
+            <div class="ellipsis">
+            <?php
+            if (UserAdmin($user['user_admin'])) {
+              echo "<a class='admin_label' href='/user/profile/$user[user_name]'>$user[user_name]</a>";
+            } else {
+              echo "<a class='user_label' href='/user/profile/$user[user_name]'>$user[user_name]</a>";
+            }
+            if(!IfIsOnline($user['user_updated'])) {
+              echo '<div class="offline-badge" style="float: right">offline</div>';
+            } else {
+              echo '<div class="online-badge" style="float: right">online</div>';
+            }
+            ?>
+            </div>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
+      <div class="col-12">
+        <?php
+        echo HandlePagination($page, '/users/', $count, 8);
+        ?>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<?php
+require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
+?>

@@ -1,0 +1,47 @@
+@mixin navbar() {
+  overflow: hidden;
+
+  .left {
+    float: left;
+    text-align: left;
+
+    @media (max-width: 1024px) {
+      float: none;
+      text-align: center;
+    }
+  }
+
+  .right {
+    float: right;
+    text-align: right;
+
+    @media (max-width: 1024px) {
+      float: none;
+      text-align: center;
+    }
+  }
+
+  a {
+    color: var(--text);
+    display: inline-block;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: 600;
+    margin: 8px;
+    border-radius: 5px;
+    i {
+      margin-right: 5px;
+    }
+
+    @media(max-width: 1024px) {
+      display: block;
+      width: 100% !important;
+      float: none;
+      text-align: center;
+      margin: 0;
+      border-radius: 0;
+    }
+
+
+  }
+}
