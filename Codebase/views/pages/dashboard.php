@@ -2,15 +2,38 @@
 $name = "Dashboard";
 require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 if (@$_SESSION['note']) {
-  include("{$_SERVER['DOCUMENT_ROOT']}/functions/toast.php");
   ShowNote($_SESSION['note']);
   unset($_SESSION['note']);
 }
+
 ?>
 
-<h1>
-  Welcome back, <?php out($_SESSION['Username']); ?>
-</h1>
+<script>
+  $(document).ready(function() {
+    $("#comments").load("/api/comments");
+    setInterval(() => {
+      $("#comments").load("/api/comments");
+      console.log("Loading messages...");
+    }, 10000);
+  });
+</script>
+<div class="row">
+  <div class="col-6">
+    <h1>
+      Current User: <?php out($_SESSION['Username']); ?>
+    </h1>
+    <div class="card">
+      <h1 class="text-center">Comments</h1>
+    </div>
+    <div id="comments"></div>
+    <div class="card">
+      <form action="/dashboard/wall/" method="POST">
+        <input type="text" name="message" placeholder="Your wall message here...">
+        <button type="submit" name="submit">Post</button>
+      </form>
+    </div>
+  </div>
+</div>
 
 
 <?php

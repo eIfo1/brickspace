@@ -1,7 +1,7 @@
 <?php
 ob_start();
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
-include("$_SERVER[DOCUMENT_ROOT]/functions/auth.php");
+include("$_SERVER[DOCUMENT_ROOT]/functions/functions.php");
 if (UserAuthenticated()) {
   UpdateUser($conn);
 }
@@ -18,6 +18,7 @@ if (UserAuthenticated()) {
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
 </head>
 
 <body>
@@ -35,14 +36,14 @@ if (UserAuthenticated()) {
                 <i class="fa fa-users"></i>Users
               </a>
               <?php
-                // user admin check
-                //if(UserAdmin()) {
+              // user admin check
+              //if(UserAdmin()) {
               ?>
               <a href="/admin">
                 <i class="fa fa-cog"></i>Admin
               </a>
               <?php
-                //}
+              //}
               ?>
             </div>
             <div class="right">

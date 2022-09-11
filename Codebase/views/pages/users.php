@@ -1,8 +1,6 @@
 <?php
 $name = "Users";
 require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
-require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/pagination.php");
-require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/online.php");
 
 
 use function CommonMark\Render\HTML;
