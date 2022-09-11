@@ -18,6 +18,12 @@ if (empty($message)) {
   exit();
 }
 
+if(strlen($message) <= 3 || strlen($message) >= 250) {
+  $_SESSION['error'] = 'The wall message is either too long or too short!';
+  header('location: /dashboard/');
+  exit();
+}
+
 // insert 
 $statement = $conn->prepare("INSERT INTO wall (wall_message, wall_creator, wall_created) VALUES (:message, :creator, NOW())");
 $statement->execute(array(':message' => $message, ':creator' => $creator));

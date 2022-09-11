@@ -24,6 +24,19 @@ if (UserAuthenticated()) {
 <body>
   <div class="page-container">
     <div class="content-wrap">
+      <div class="alert red">
+        <div class="row">
+          <div class="col-1 no-padding">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+          <div class="col-10 no-padding">
+            This is a test alert! Nothing to see here.
+          </div>
+          <div class="col-1 no-padding">
+            <i class="fas fa-exclamation-triangle"></i>
+          </div>
+        </div>
+      </div>
       <nav>
         <div class="nav">
           <div class="container">

@@ -31,7 +31,7 @@ get('/api/avatar/user/$id', 'api/avatar.php');
 get('/api/avatar/user', 'api/avatar.php');
 get('/api/comments', 'api/load-comments.php');
 // post pages
-post('/dashboard/wall', 'controller/wall.php');
+post('/dashboard/wall', 'controller/auth/wall.php');
 
 
 

@@ -5,7 +5,10 @@ if (@$_SESSION['note']) {
   ShowNote($_SESSION['note']);
   unset($_SESSION['note']);
 }
-
+if (@$_SESSION['error']) {
+  ShowError($_SESSION['error']);
+  unset($_SESSION['error']);
+}
 ?>
 
 <script>
@@ -25,7 +28,10 @@ if (@$_SESSION['note']) {
     <div id="comments"></div>
     <div class="card">
       <form action="/dashboard/wall/" method="POST">
-        <input type="text" name="message" placeholder="Your wall message here..." required>
+        <div class="input-container">
+          <i class="fa fa-comment icon"></i>
+          <input class="input-field" type="text" placeholder="Your wall message here..." name="message" required>
+        </div>
         <button type="submit" name="submit">Post</button>
       </form>
     </div>

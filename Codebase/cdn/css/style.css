@@ -13,8 +13,8 @@
   --red-2: #d6212b;
   --green-2: rgba(129, 234, 0, 0.7333333333);
   --purple-2: #9a00f2;
-  --theme-color: #a200ff;
-  --theme-color-2: #8200cc;
+  --theme-color: #005BBB;
+  --theme-color-2: #004288;
   --small-screen-threshold: 1024px;
 }
 
@@ -27,7 +27,7 @@
 input {
   background: var(--darker);
   font-family: inherit;
-  border: solid 2px var(--dark);
+  border: 0;
   font-size: 105%;
   display: block;
   margin-bottom: 5px;
@@ -223,7 +223,7 @@ label {
   min-height: 100vh;
 }
 .page-container .content-wrap {
-  padding-bottom: 362px;
+  padding-bottom: 200px;
 }
 .page-container footer {
   position: absolute;
@@ -305,6 +305,20 @@ label {
 .row .col-12 {
     padding: 5px;
   }
+}
+.row .col-1.no-padding,
+.row .col-2.no-padding,
+.row .col-3.no-padding,
+.row .col-4.no-padding,
+.row .col-5.no-padding,
+.row .col-6.no-padding,
+.row .col-7.no-padding,
+.row .col-8.no-padding,
+.row .col-9.no-padding,
+.row .col-10.no-padding,
+.row .col-11.no-padding,
+.row .col-12.no-padding {
+  padding: 0;
 }
 .row .col-1 {
   flex-basis: 8.33333%;
@@ -504,10 +518,12 @@ body::-webkit-scrollbar-thumb:hover {
   text-align: center;
   padding: 10px;
   margin-bottom: 5;
-  background: var(--theme-color);
-  border-radius: 5px;
+  background: var(--red);
   color: var(--text);
   font-weight: 600;
+}
+.alert i {
+  text-align: center;
 }
 
 .user_label {

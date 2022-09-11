@@ -16,7 +16,7 @@ $red-2: darken($red, 5%);
 $green-2: darken($green, 2.5%);
 $purple-2: darken($purple, 2.5%);
 
-$theme-color: $purple;
+$theme-color: $blue;
 
 $small-screen-threshold: 1024px;
 @use "mixin/navbar.scss"as v;
@@ -55,7 +55,7 @@ $small-screen-threshold: 1024px;
 input {
   background: var(--darker);
   font-family: inherit;
-  border: solid 2px var(--dark);
+  border: 0;
   font-size: 105%;
   display: block;
   margin-bottom: 5px;
@@ -176,7 +176,7 @@ label {
 
   .content-wrap {
     // height of footer
-    padding-bottom: 362px;
+    padding-bottom: 200px;
   }
 
   footer {
@@ -258,6 +258,9 @@ label {
     // on medium screens remove padding
     @media (max-width: 1200px) {
       padding: 5px;
+    }
+    &.no-padding {
+      padding: 0;
     }
   }
 
@@ -492,10 +495,12 @@ body::-webkit-scrollbar-thumb {
   text-align: center;
   padding: 10px;
   margin-bottom: 5;
-  background: var(--theme-color);
-  border-radius: 5px;
+  background: var(--red);
   color: var(--text);
   font-weight: 600;
+  i {
+    text-align: center;
+  }
 }
 
 .user_label {
