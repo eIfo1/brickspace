@@ -46,7 +46,7 @@
           </div>
         </div>
         <div class="copyright">
-          &copy; 2022 BrickSpace. All Rights Reserved.
+          &copy; 2022 BrickSpace. All Rights Reserved
         </div>
         </div>
       </footer>
