@@ -26,6 +26,8 @@ get('/users', 'views/pages/users.php');
 get('/users/$page', 'views/pages/users.php');
 get('/user/profile/$username', 'views/pages/profile.php');
 get('/user/profile', 'views/pages/profile.php');
+
+get('/support', 'views/pages/support.php');
 // avatar pages
 get('/api/avatar/user/$id', 'api/avatar.php');
 get('/api/avatar/user', 'api/avatar.php');

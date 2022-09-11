@@ -4,8 +4,8 @@
         <div class="row">
           <div class="col-6">
             <div class="links">
-              <a href="#">
-                terms of service
+              <a href="/support">
+                support
               </a>
               <a href="#">
                 blog
