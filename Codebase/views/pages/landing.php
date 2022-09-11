@@ -8,7 +8,7 @@ if(UserAuthenticated()) {
 ?>
 
 <h1>
-  RobloxClone
+  BrickSpace
 </h1>
 
 <?php

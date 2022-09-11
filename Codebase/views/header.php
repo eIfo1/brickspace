@@ -41,7 +41,7 @@ if (UserAuthenticated()) {
         <div class="nav">
           <div class="container">
             <div class="left">
-              <span>RobloxClone</span>
+              <span>BrickSpace</span>
               <a href="/">
                 <i class="fa fa-home"></i>Home
               </a>

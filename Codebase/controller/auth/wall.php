@@ -1,8 +1,11 @@
 <?php
-$message = $_POST['message'];
 
 include($_SERVER['DOCUMENT_ROOT'] . "/functions/functions.php");
 include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+
+$message = $_POST['message'];
+$message = htmlspecialchars($message);
+$message = ProfanityFilter($message);
 
 if (!UserAuthenticated()) {
   $_SESSION['error'] = "You must be logged in to post on the wall!";
