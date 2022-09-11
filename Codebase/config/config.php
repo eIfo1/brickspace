@@ -5,7 +5,7 @@ $DEBUG;
 $DEBUG = true;
 
 try {
-  $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
+  $conn = new PDO("mysql:host=db-mysql-nyc1-07068-do-user-11026856-0.b.db.ondigitalocean.com;dbname=defaultdb", "doadmin", "AVNS_7c4psrlopnStklIHZAZ ");
   $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 } catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
