@@ -1,6 +1,5 @@
 <?php
 $name = "Users";
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 
 
 use function CommonMark\Render\HTML;
@@ -58,8 +57,3 @@ if(!$result) {
     </div>
   </div>
 </div>
-
-
-<?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
-?>

@@ -1,5 +1,4 @@
 <?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/online.php");
 
 if (!isset($username)) {
@@ -56,8 +55,3 @@ if(!$result) {
     </div>
   </div>
 </div>
-
-
-<?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
-?>

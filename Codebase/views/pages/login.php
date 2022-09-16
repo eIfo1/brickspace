@@ -1,6 +1,5 @@
 <?php
 $name = "Login";
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 if (@$_SESSION['error']) {
   ShowError($_SESSION['error']);
   unset($_SESSION['error']);
@@ -39,8 +38,3 @@ if (@$_SESSION['error']) {
     </div>
   </div>
 </div>
-
-
-<?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
-?>

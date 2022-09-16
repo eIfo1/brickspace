@@ -1,6 +1,5 @@
 <?php
 $name = "Dashboard";
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 RequireAuthentication();
 if (@$_SESSION['note']) {
   ShowNote($_SESSION['note']);
@@ -38,8 +37,3 @@ if (@$_SESSION['error']) {
     </div>
   </div>
 </div>
-
-
-<?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
-?>

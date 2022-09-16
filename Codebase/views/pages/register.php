@@ -1,6 +1,5 @@
 <?php
 $name = "Sign-Up";
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/header.php");
 if (@$_SESSION['error']) {
   include("{$_SERVER['DOCUMENT_ROOT']}/functions/toast.php");
   ShowError($_SESSION['error']);
@@ -50,8 +49,3 @@ if (@$_SESSION['error']) {
     </div>
   </div>
 </div>
-
-
-<?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/views/footer.php");
-?>
