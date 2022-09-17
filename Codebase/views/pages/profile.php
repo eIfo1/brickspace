@@ -1,8 +1,8 @@
 <?php
-require_once("{$_SERVER['DOCUMENT_ROOT']}/functions/online.php");
-
+use brickspace\middleware\Auth;
+use brickspace\middleware\OnlineChecker;
 if (!isset($username)) {
-  if (UserAuthenticated()) {
+  if (Auth::Auth()) {
     $username = $_SESSION['Username'];
     $name = $username;
   } else {
@@ -35,11 +35,7 @@ if(!$result) {
         <?php echo $result['user_name']; ?>
       </h2>
       <?php
-      if (!IfIsOnline($result['user_updated'])) {
-        echo '<div class="offline-badge profile" style="float: right">offline</div>';
-      } else {
-        echo '<div class="online-badge profile" style="float: right">online</div>';
-      }
+        OnlineChecker::onlineLabel($result['user_updated'], true);
       ?>
     </div>
     <br>

@@ -30,4 +30,9 @@ class Auth {
     }
     return;
   }
+
+  public static function UpdateUser($pdo) {
+    $statement = $pdo->prepare("UPDATE users SET user_updated = CURRENT_TIMESTAMP WHERE user_id = :user_id");
+    $statement->execute(array(':user_id' => $_SESSION['UserID']));
+  }
 }

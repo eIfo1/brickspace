@@ -3,6 +3,7 @@ $name = "Users";
 
 
 use function CommonMark\Render\HTML;
+use brickspace\middleware\OnlineChecker;
 
 $page = SetPagination(@$page);
 
@@ -44,11 +45,7 @@ if (!$result) {
               } else {
                 echo "<a class='user_label' href='/user/profile/$user[user_name]'>$user[user_name]</a>";
               }
-              if (!IfIsOnline($user['user_updated'])) {
-                echo '<div class="offline-badge" style="float: right">offline</div>';
-              } else {
-                echo '<div class="online-badge" style="float: right">online</div>';
-              }
+              OnlineChecker::onlineLabel($user['user_updated']);
               ?>
             </div>
           </div>

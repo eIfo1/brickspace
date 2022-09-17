@@ -4,7 +4,7 @@ include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 use brickspace\middleware\Auth;
 if (Auth::Auth()) {
-  UpdateUser($conn);
+  Auth::UpdateUser($conn);
 }
 ?>
 <!DOCTYPE html>
