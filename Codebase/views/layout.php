@@ -1,7 +1,8 @@
 <?php
 ob_start();
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
-include("$_SERVER[DOCUMENT_ROOT]/functions/functions.php");
+include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
+use brickspace\middleware\Auth;
 if (UserAuthenticated()) {
   UpdateUser($conn);
 }
@@ -24,19 +25,53 @@ if (UserAuthenticated()) {
 <body>
   <div class="page-container">
     <div class="content-wrap">
-      <div class="alert red">
-        <div class="row">
-          <div class="col-1 no-padding">
-            <i class="fas fa-exclamation-triangle"></i>
+      <?php
+      $sql = "SELECT * FROM site_settings WHERE id = 1";
+      $result = $conn->query($sql);
+      $alert = $result->fetch();
+      if (!$alert) {
+        return;
+      }
+      if ($alert['alert'] == 1) {
+        if ($alert['alert_link'] != "") {
+      ?>
+          <div class="alert red">
+            <div class="row">
+              <div class="col-1 no-padding">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="col-10 no-padding">
+                <?php
+                  echo $alert['alert_text'];
+                ?>
+                Click
+                <a href="<?php echo $alert['alert_link'] ?>" style="color: var(--text); text-decoration: underline;">here</a> for more info
+              </div>
+              <div class="col-1 no-padding">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+            </div>
           </div>
-          <div class="col-10 no-padding">
-            This is a test alert! Nothing to see here.
+        <?php
+        } else {
+        ?>
+          <div class="alert red">
+            <div class="row">
+              <div class="col-1 no-padding">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+              <div class="col-10 no-padding">
+                This is a test alert! Nothing to see here.
+              </div>
+              <div class="col-1 no-padding">
+                <i class="fas fa-exclamation-triangle"></i>
+              </div>
+            </div>
           </div>
-          <div class="col-1 no-padding">
-            <i class="fas fa-exclamation-triangle"></i>
-          </div>
-        </div>
-      </div>
+      <?php
+        }
+      }
+      ?>
       <nav>
         <div class="nav">
           <div class="container">

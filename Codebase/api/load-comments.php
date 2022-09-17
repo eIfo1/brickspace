@@ -1,6 +1,6 @@
 <?php
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
-include("$_SERVER[DOCUMENT_ROOT]/functions/functions.php");
+include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 // get number of wall posts
 $statement = $conn->prepare("SELECT COUNT(*) AS count FROM wall");
 $statement->execute();

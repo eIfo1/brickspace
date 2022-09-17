@@ -4,6 +4,7 @@ function ProfanityFilter($text)
   // you probably shouldn't look at this array.
   $filterWords = array(
     "nigger",
+    "niglet",
     "bldn",
     "brick luke deez nuts",
     "bigot",

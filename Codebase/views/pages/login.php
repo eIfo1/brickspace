@@ -1,5 +1,6 @@
 <?php
 $name = "Login";
+RequireGuest();
 if (@$_SESSION['error']) {
   ShowError($_SESSION['error']);
   unset($_SESSION['error']);

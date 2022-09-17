@@ -41,7 +41,8 @@ function page_route($route, $path_to_include)
   array_shift($route_parts);
   array_shift($request_url_parts);
   if ($route_parts[0] == '' && count($request_url_parts) == 0) {
-    include_once("$ROOT/$path_to_include");
+    $child_view = $path_to_include;
+    include_once("$ROOT/views/layout.php");
     exit();
   }
   if (count($route_parts) != count($request_url_parts)) {
@@ -58,6 +59,8 @@ function page_route($route, $path_to_include)
       return;
     }
   }
+
+  // variable used in layout.php
   $child_view = $path_to_include;
   include_once("$ROOT/views/layout.php");
   exit();

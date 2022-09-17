@@ -6,6 +6,12 @@ function UserAuthenticated() {
   }
   return false;
 }
+function RequireGuest() {
+  if(UserAuthenticated()) {
+    header('location: /dashboard');
+    exit();
+  }
+}
 
 function UserAdmin($admin) {
   if($admin != 0 && $admin != 1 && $admin != 2) {

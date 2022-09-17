@@ -7,6 +7,10 @@ namespace Composer\Autoload;
 class ComposerStaticInite9cd19fee4e4a9700eb138d8d9657cbb
 {
     public static $prefixLengthsPsr4 = array (
+        'b' => 
+        array (
+            'brickspace\\' => 11,
+        ),
         'W' => 
         array (
             'Whoops\\' => 7,
@@ -18,6 +22,10 @@ class ComposerStaticInite9cd19fee4e4a9700eb138d8d9657cbb
     );
 
     public static $prefixDirsPsr4 = array (
+        'brickspace\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/app',
+        ),
         'Whoops\\' => 
         array (
             0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',

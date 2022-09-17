@@ -13,7 +13,7 @@
     }
 
     body {
-      font-family: Arial, Helvetica, sans-serif;
+      font-family: Montserrat,Arial, Helvetica, sans-serif;
       color: #fff;
       background: rgb(12, 12, 12);
       font-size: 125%;

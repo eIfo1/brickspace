@@ -1,9 +1,6 @@
 <?php
 $name = "Landing";
-if(UserAuthenticated()) {
-  header('location: /dashboard');
-  exit();
-}
+RequireGuest();
 ?>
 
 <h1>

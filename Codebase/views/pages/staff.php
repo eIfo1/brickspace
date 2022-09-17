@@ -8,7 +8,7 @@ $page = SetPagination(@$page);
 
 $limit = 8;
 $offset = ($page - 1) * $limit;
-$statement = $conn->prepare("SELECT * FROM users ORDER BY user_id ASC LIMIT :limit OFFSET :offset");
+$statement = $conn->prepare("SELECT * FROM users WHERE user_admin = 2 OR user_admin = 3 OR user_admin = 4 OR user_admin = 5 ORDER BY user_id ASC LIMIT :limit OFFSET :offset");
 $statement->bindParam(':limit', $limit, PDO::PARAM_INT);
 $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
 $statement->execute();
@@ -25,8 +25,8 @@ if (!$result) {
   <div class="col-8 col-center">
     <div class="row">
       <div class="col-6">
-        <a href="/users/staff">
-          <button>STAFF</button>
+        <a href="/users">
+          <button>USERS</button>
         </a>
       </div>
     </div>

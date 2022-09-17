@@ -1,8 +1,7 @@
 <?php
-
-
-$DEBUG;
 $DEBUG = true;
+date_default_timezone_set('America/New_York');
+
 
 try {
   $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
