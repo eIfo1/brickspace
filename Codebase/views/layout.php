@@ -3,7 +3,7 @@ ob_start();
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 use brickspace\middleware\Auth;
-if (UserAuthenticated()) {
+if (Auth::Auth()) {
   UpdateUser($conn);
 }
 ?>
@@ -96,7 +96,7 @@ if (UserAuthenticated()) {
             </div>
             <div class="right">
               <?php
-              if (!UserAuthenticated()) {
+              if (!Auth::Auth()) {
               ?>
                 <a href="/login">
                   <i class="fa fa-sign-in"></i>Login
@@ -117,7 +117,7 @@ if (UserAuthenticated()) {
           </div>
         </div>
         <?php
-        if (UserAuthenticated()) {
+        if (Auth::Auth()) {
         ?>
           <div class="secondary-nav">
             <div class="container">
@@ -155,7 +155,7 @@ if (UserAuthenticated()) {
           <div class="links">
             <?php
 
-            if (!UserAuthenticated()) {
+            if (!Auth::Auth()) {
             ?>
               <a href="/login">
                 login

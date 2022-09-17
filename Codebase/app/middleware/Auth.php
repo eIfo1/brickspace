@@ -5,7 +5,7 @@ class Auth {
    * Checks if the user is authenticated
    */
   public static function Auth() {
-    if($_SESSION['UserID']) {
+    if(@$_SESSION['UserID']) {
       return true;
     }
     return false;

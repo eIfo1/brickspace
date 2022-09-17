@@ -1,6 +1,8 @@
 <?php
+use brickspace\middleware\Auth;
+Auth::Deny();
+
 $name = "Sign-Up";
-RequireGuest();
 if (@$_SESSION['error']) {
   include("{$_SERVER['DOCUMENT_ROOT']}/functions/toast.php");
   ShowError($_SESSION['error']);

@@ -1,6 +1,8 @@
 <?php
+use brickspace\middleware\Auth;
+Auth::Require();
+
 $name = "Dashboard";
-RequireAuthentication();
 if (@$_SESSION['note']) {
   ShowNote($_SESSION['note']);
   unset($_SESSION['note']);

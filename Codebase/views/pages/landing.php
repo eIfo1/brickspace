@@ -1,6 +1,7 @@
 <?php
+use brickspace\middleware\Auth;
+Auth::Deny();
 $name = "Landing";
-RequireGuest();
 ?>
 
 <h1>
