@@ -2,7 +2,9 @@
 ob_start();
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
+
 use brickspace\middleware\Auth;
+
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
 }
@@ -25,6 +27,14 @@ if (Auth::Auth()) {
 <body>
   <div class="page-container">
     <div class="content-wrap">
+      <noscript>
+        <h1 class="center">
+          Hey..
+        </h1>
+        <p class="center">
+          BrickSpace requires JavaScript on some pages to work properly. Without it, performance may be degraded.
+        </p>
+      </noscript>
       <?php
       $sql = "SELECT * FROM site_settings WHERE id = 1";
       $result = $conn->query($sql);
@@ -42,7 +52,7 @@ if (Auth::Auth()) {
               </div>
               <div class="col-10 no-padding">
                 <?php
-                  echo $alert['alert_text'];
+                echo $alert['alert_text'];
                 ?>
                 Click
                 <a href="<?php echo $alert['alert_link'] ?>" style="color: var(--text); text-decoration: underline;">here</a> for more info
