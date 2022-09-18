@@ -1,11 +1,15 @@
 <?php
 $DEBUG = true;
-date_default_timezone_set('America/New_York');
-
 
 try {
-  $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
-  $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  if($_SERVER['HTTP_HOST'] != 'localhost') {
+    $conn = new PDO("mysql:host=localhost;dbname=354561", "354561", "progamer123");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  } else {
+    $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
+    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    date_default_timezone_set('America/New_York');
+  }
 } catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }

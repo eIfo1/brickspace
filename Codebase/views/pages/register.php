@@ -1,11 +1,15 @@
 <?php
+
 use brickspace\middleware\Auth;
+
 Auth::Deny();
 
 $name = "Sign-Up";
+
+use brickspace\utils\Toast;
+
 if (@$_SESSION['error']) {
-  include("{$_SERVER['DOCUMENT_ROOT']}/functions/toast.php");
-  ShowError($_SESSION['error']);
+  new Toast($_SESSION['error'], 0);
   unset($_SESSION['error']);
 }
 ?>

@@ -1,7 +1,4 @@
 {
-  "require": {
-      "filp/whoops": "^2.14"
-  },
   "autoload": {
     "psr-4": {
       "brickspace\\": "./app"

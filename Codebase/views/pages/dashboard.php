@@ -1,15 +1,17 @@
 <?php
 use brickspace\middleware\Auth;
+use brickspace\utils\Toast;
+
 Auth::Require();
 
 $name = "Dashboard";
-if (@$_SESSION['note']) {
-  ShowNote($_SESSION['note']);
-  unset($_SESSION['note']);
-}
 if (@$_SESSION['error']) {
-  ShowError($_SESSION['error']);
+  new Toast($_SESSION['error'], 0);
   unset($_SESSION['error']);
+}
+if (@$_SESSION['note']) {
+  new Toast($_SESSION['note'], 1);
+  unset($_SESSION['note']);
 }
 ?>
 

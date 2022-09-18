@@ -16,7 +16,7 @@ $red-2: darken($red, 5%);
 $green-2: darken($green, 5%);
 $purple-2: darken($purple, 2.5%);
 
-$theme-color: $purple;
+$theme-color: $blue;
 
 $small-screen-threshold: 1024px;
 @use "mixin/navbar.scss"as v;
@@ -120,6 +120,16 @@ nav {
     font-size: 125%;
     display: inline-block;
     font-weight: 600;
+  }
+
+  button {
+    background: var(--theme-color-2);
+    display: inline-block;
+    text-decoration: none;
+    font-size: 125%;
+    font-weight: 600;
+    margin: 8px;
+    border-radius: 5px;
   }
 
   a {
@@ -477,6 +487,7 @@ body::-webkit-scrollbar-thumb {
     border: 0;
     border: 4px solid transparent;
     transition: 250ms all ease;
+
     &:focus {
       border-color: var(--theme-color);
       background: var(--darkest)
@@ -592,10 +603,11 @@ body::-webkit-scrollbar-thumb {
 }
 
 
-noscript {  
+noscript {
   h1 {
     margin: 5px;
   }
+
   p {
     margin: 15px;
   }

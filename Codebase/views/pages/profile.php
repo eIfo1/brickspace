@@ -1,6 +1,6 @@
 <?php
 use brickspace\middleware\Auth;
-use brickspace\middleware\OnlineChecker;
+use brickspace\helpers\OnlineChecker;
 if (!isset($username)) {
   if (Auth::Auth()) {
     $username = $_SESSION['Username'];

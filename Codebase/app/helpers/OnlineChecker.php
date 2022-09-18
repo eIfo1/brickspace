@@ -1,6 +1,6 @@
 <?php 
 
-namespace brickspace\middleware;
+namespace brickspace\helpers;
 
 class OnlineChecker {
   private static function check($timestamp) {

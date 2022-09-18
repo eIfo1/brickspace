@@ -3,7 +3,7 @@ $name = "Users";
 
 
 use function CommonMark\Render\HTML;
-use brickspace\middleware\OnlineChecker;
+use brickspace\helpers\OnlineChecker;
 
 $page = SetPagination(@$page);
 

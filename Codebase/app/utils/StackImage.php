@@ -1,4 +1,5 @@
 <?php
+namespace brickspace\utils;
 class StackImage
 {
   private $image;

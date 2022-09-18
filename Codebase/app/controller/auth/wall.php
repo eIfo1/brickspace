@@ -1,7 +1,7 @@
 <?php
 namespace brickspace;
 use brickspace\middleware\Auth;
-use brickspace\middleware\Purify;
+use brickspace\helpers\Purify;
 include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
 
 $message = $_POST['message'];

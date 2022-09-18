@@ -11,28 +11,12 @@ class ComposerStaticInite9cd19fee4e4a9700eb138d8d9657cbb
         array (
             'brickspace\\' => 11,
         ),
-        'W' => 
-        array (
-            'Whoops\\' => 7,
-        ),
-        'P' => 
-        array (
-            'Psr\\Log\\' => 8,
-        ),
     );
 
     public static $prefixDirsPsr4 = array (
         'brickspace\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
-        ),
-        'Whoops\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/filp/whoops/src/Whoops',
-        ),
-        'Psr\\Log\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/psr/log/src',
         ),
     );
 

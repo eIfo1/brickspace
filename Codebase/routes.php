@@ -2,6 +2,7 @@
 
 require_once 'vendor/autoload.php';
 
+use brickspace\controller\auth\LogoutController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
@@ -13,7 +14,9 @@ post('/login', 'app/controller/guest/login.php');
 page('/sign-up', 'views/pages/register.php');
 post('/sign-up', 'app/controller/guest/register.php');
 
-get('/logout', 'app/controller/auth/logout.php');
+post('/logout', function() {
+  LogoutController::Logout();
+});
 // user pages
 page('/dashboard', 'views/pages/dashboard.php');
 // universal pages
@@ -33,6 +36,8 @@ get('/api/avatar/user', 'api/avatar.php');
 get('/api/comments', 'api/load-comments.php');
 // post pages
 post('/dashboard/wall', 'app/controller/auth/wall.php');
+
+get('/tests/alert', 'views/tests/alert.php');
 
 
 
