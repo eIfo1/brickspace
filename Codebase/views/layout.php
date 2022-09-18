@@ -117,9 +117,13 @@ if (Auth::Auth()) {
               <?php
               } else {
               ?>
-                <a href="/logout">
-                  <i class="fa fa-sign-out"></i>Logout
-                </a>
+                <form action="/logout" method="post">
+                  <?php set_csrf() ?>
+                  <button type="submit">
+                  <i class="fa fa-sign-out"></i>  
+                  Logout
+                  </button>
+                </form>
               <?php
               }
               ?>
@@ -147,50 +151,6 @@ if (Auth::Auth()) {
       </div>
     </div>
     <footer>
-      <div class="row">
-        <div class="col-6">
-          <div class="links">
-            <a href="/support">
-              support
-            </a>
-            <a href="#">
-              blog
-            </a>
-            <a href="#">
-              staff
-            </a>
-          </div>
-        </div>
-        <div class="col-6">
-          <div class="links">
-            <?php
-
-            if (!Auth::Auth()) {
-            ?>
-              <a href="/login">
-                login
-              </a>
-              <a href="/register">
-                sign-up
-              </a>
-            <?php
-            } else {
-            ?>
-              <a href="/logout">
-                logout
-              </a>
-              <a href="/settings">
-                settings
-              </a>
-            <?php
-            }
-            ?>
-            <a href="#">
-              home
-            </a>
-          </div>
-        </div>
-      </div>
       <div class="copyright">
         &copy; 2022 BrickSpace. All Rights Reserved
       </div>
