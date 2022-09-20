@@ -616,3 +616,19 @@ noscript {
 .center {
   text-align: center;
 }
+
+.admin_links {
+  margin-bottom: 5px;
+  .section {
+    text-align: center;
+    display: block;
+    padding: 12px;
+    background: var(--darker);
+  }
+
+  .link {
+    display: block;
+    padding: 12px;
+    background: var(--dark);
+  }
+}

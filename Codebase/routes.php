@@ -17,6 +17,8 @@ post('/sign-up', 'app/controller/guest/register.php');
 post('/logout', function() {
   LogoutController::Logout();
 });
+
+page('/admin', 'views/pages/admin/dashboard.php');
 // user pages
 page('/dashboard', 'views/pages/dashboard.php');
 // universal pages
