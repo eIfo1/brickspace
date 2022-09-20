@@ -31,7 +31,25 @@ class Auth {
     return;
   }
 
+  public static function Admin() {
+    $admin = @$_SESSION['UserAdmin'];
+    if ($admin != 0 && $admin != 1 && $admin != 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public static function RequireAdmin() {
+    if(!Auth::Admin()) {
+      header('location: /dashboard');
+      exit();
+    }
+    return;
+  }
+
   public static function UpdateUser($pdo) {
+    Auth::Require();
     $statement = $pdo->prepare("UPDATE users SET user_updated = CURRENT_TIMESTAMP WHERE user_id = :user_id");
     $statement->execute(array(':user_id' => $_SESSION['UserID']));
   }

@@ -95,13 +95,13 @@ if (Auth::Auth()) {
               </a>
               <?php
               // user admin check
-              //if(UserAdmin()) {
+              if(Auth::Admin()) {
               ?>
               <a href="/admin">
                 <i class="fa fa-cog"></i>Admin
               </a>
               <?php
-              //}
+              }
               ?>
             </div>
             <div class="right">

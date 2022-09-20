@@ -27,8 +27,8 @@ if (!empty($result)) {
     $_SESSION['UserID'] = $result['user_id'];
     $_SESSION['Username'] = $result['user_name'];
     $_SESSION['UserEmail'] = $result['user_email'];
+    $_SESSION['UserAdmin'] = $result['user_admin'];
     $_SESSION['UserIP'] = $_SERVER['REMOTE_ADDR'];
-    $_SESSION['Theme'] = $result['user_theme'];
     $_SESSION['note'] = "Welcome back, " . $_SESSION['Username'] . "!";
     header("location: /dashboard/");
     exit();
