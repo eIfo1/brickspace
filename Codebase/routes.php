@@ -19,6 +19,7 @@ post('/logout', function() {
 });
 
 page('/admin', 'views/pages/admin/dashboard.php');
+page('/admin/alert', 'views/pages/admin/alert.php');
 // user pages
 page('/dashboard', 'views/pages/dashboard.php');
 // universal pages

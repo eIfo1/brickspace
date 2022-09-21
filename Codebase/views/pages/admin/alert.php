@@ -17,11 +17,8 @@ $name = "Admin";
     </div>
     <div class="col-9">
       <h1>
-        Admin Dashboard
+        Website Alert
       </h1>
-      <p>
-        The time is: <?php echo date('h:i:s'); ?> EST
-      </p>
     </div>
   </div>
 </div>
