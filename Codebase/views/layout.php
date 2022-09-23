@@ -4,6 +4,7 @@ include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\middleware\Auth;
+use brickspace\controller\admin\AlertController;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
@@ -36,14 +37,12 @@ if (Auth::Auth()) {
         </p>
       </noscript>
       <?php
-      $sql = "SELECT * FROM site_settings WHERE id = 1";
-      $result = $conn->query($sql);
-      $alert = $result->fetch();
+      $alert = AlertController::Get();
       if (!$alert) {
         return;
       }
-      if ($alert['alert'] == 1) {
-        if ($alert['alert_link'] != "") {
+      if ($alert['bool'] == 1) {
+        if ($alert['link'] != "") {
       ?>
           <div class="alert red">
             <div class="row">
@@ -52,10 +51,11 @@ if (Auth::Auth()) {
               </div>
               <div class="col-10 no-padding">
                 <?php
-                echo $alert['alert_text'];
+                echo $alert['text'];
                 ?>
-                Click
-                <a href="<?php echo $alert['alert_link'] ?>" style="color: var(--text); text-decoration: underline;">here</a> for more info
+                <a href="<?php echo $alert['link'] ?>" style="color: var(--text); text-decoration: underline;">
+                  Click here for more info
+                </a>
               </div>
               <div class="col-1 no-padding">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -71,7 +71,9 @@ if (Auth::Auth()) {
                 <i class="fas fa-exclamation-triangle"></i>
               </div>
               <div class="col-10 no-padding">
-                This is a test alert! Nothing to see here.
+                <?php
+                echo $alert['text'];
+                ?>
               </div>
               <div class="col-1 no-padding">
                 <i class="fas fa-exclamation-triangle"></i>
@@ -95,11 +97,11 @@ if (Auth::Auth()) {
               </a>
               <?php
               // user admin check
-              if(Auth::Admin()) {
+              if (Auth::Admin()) {
               ?>
-              <a href="/admin">
-                <i class="fa fa-cog"></i>Admin
-              </a>
+                <a href="/admin">
+                  <i class="fa fa-cog"></i>Admin
+                </a>
               <?php
               }
               ?>
@@ -120,8 +122,8 @@ if (Auth::Auth()) {
                 <form action="/logout" method="post">
                   <?php set_csrf() ?>
                   <button type="submit">
-                  <i class="fa fa-sign-out"></i>  
-                  Logout
+                    <i class="fa fa-sign-out"></i>
+                    Logout
                   </button>
                 </form>
               <?php

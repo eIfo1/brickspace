@@ -3,6 +3,7 @@
 require_once 'vendor/autoload.php';
 
 use brickspace\controller\auth\LogoutController;
+use brickspace\controller\admin\AlertController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
@@ -20,6 +21,9 @@ post('/logout', function() {
 
 page('/admin', 'views/pages/admin/dashboard.php');
 page('/admin/alert', 'views/pages/admin/alert.php');
+post('/admin/alert', function() {
+  AlertController::Post();
+});
 // user pages
 page('/dashboard', 'views/pages/dashboard.php');
 // universal pages
