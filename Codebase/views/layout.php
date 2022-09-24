@@ -142,6 +142,9 @@ if (Auth::Auth()) {
                 <a href="/user/profile">
                   <i class="fa fa-user"></i>Profile
                 </a>
+                <a href="/blog">
+                  <i class="fa fa-rss"></i>Blog
+                </a>
               </div>
             </div>
           </div>
