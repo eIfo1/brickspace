@@ -23,6 +23,7 @@ if (Auth::Auth()) {
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/gh/hung1001/font-awesome-pro@4cac1a6/css/all.css" rel="stylesheet" type="text/css" />
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
+  <link rel="icon" href="/cdn/img/favicon.png" type="image/x-icon">
 </head>
 
 <body>
