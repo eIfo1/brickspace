@@ -2,6 +2,7 @@
 
 namespace brickspace\controller\admin;
 use brickspace\helpers\Purify;
+use brickspace\middleware\Auth;
 
 
 
@@ -23,6 +24,7 @@ class AlertController {
 
   public static function Post() {
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+    Auth::RequireAdmin();
     if(!is_csrf_valid()) {
       header('location: /admin/alert');
       exit();
