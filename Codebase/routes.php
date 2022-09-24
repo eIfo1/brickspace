@@ -3,6 +3,8 @@
 require_once 'vendor/autoload.php';
 
 use brickspace\controller\auth\LogoutController;
+use brickspace\controller\guest\LoginController;
+use brickspace\controller\guest\RegisterController;
 use brickspace\controller\admin\AlertController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
@@ -10,10 +12,14 @@ require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 page('/', 'views/pages/landing.php');
 // user controls
 page('/login', 'views/pages/login.php');
-post('/login', 'app/controller/guest/login.php');
+post('/login', function() {
+  LoginController::Login();
+});
 
 page('/sign-up', 'views/pages/register.php');
-post('/sign-up', 'app/controller/guest/register.php');
+post('/sign-up', function() {
+  RegisterController::Register();
+});
 
 post('/logout', function() {
   LogoutController::Logout();
