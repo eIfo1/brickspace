@@ -40,8 +40,7 @@ class Auth {
   }
 
   public static function Admin() {
-    Auth::Require();
-    $admin = $_SESSION['UserAdmin'];
+    $admin = @$_SESSION['UserAdmin'];
     if ($admin != 0 && $admin != 1 && $admin != 2) {
       return true;
     } else {
