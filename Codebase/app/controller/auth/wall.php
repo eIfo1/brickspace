@@ -7,6 +7,11 @@ include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
 $message = $_POST['message'];
 $message = Purify::purify($message);
 
+if(!is_csrf_valid()) {
+  header('location: /dashboard/');
+  exit();
+}
+
 if (!Auth::Auth()) {  
   $_SESSION['error'] = "You must be logged in to post on the wall!";
   header("Location: /login");

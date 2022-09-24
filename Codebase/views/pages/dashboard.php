@@ -45,6 +45,9 @@ if (@$_SESSION['note']) {
           <i class="fa fa-pencil icon"></i>
           <input class="input-field" type="text" placeholder="How are you feeling..." name="status" required>
         </div>
+        <?php
+        set_csrf();
+        ?>
         <button type="submit" name="submit">Post</button>
       </form>
     </div>
@@ -60,6 +63,9 @@ if (@$_SESSION['note']) {
           <i class="fa fa-comment icon"></i>
           <input class="input-field" type="text" placeholder="Your wall message here..." name="message" required>
         </div>
+        <?php
+        set_csrf();
+        ?>
         <button type="submit" name="submit">Post</button>
       </form>
     </div>

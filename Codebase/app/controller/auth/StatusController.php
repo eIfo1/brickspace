@@ -11,6 +11,10 @@ class StatusController {
     $UserID = $_SESSION['UserID'];
     $Status = $_POST['status'];
     $Status = Purify::purify($Status);
+    if(!is_csrf_valid()) {
+      header("location: /dashboard");
+      exit();
+    }
     // error handling
     if (!preg_match("/^[ a-zA-Z0-9_',.|*&^%$#@!()?]*$/", $Status)) {
       $_SESSION["error"] = "Status can only contain letters, numbers, and punctuation.";
