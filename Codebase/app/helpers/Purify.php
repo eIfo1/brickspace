@@ -17,7 +17,6 @@ class Purify {
       "niglet",
       "bldn",
       "brick luke deez nuts",
-      "bigot",
       "faggot",
       "cunt",
       "dickwad",
@@ -70,6 +69,7 @@ class Purify {
       "bopimo",
       "worldtobuild",
       "polytoria",
+      "xxx"
     );
 
     $filterCount = sizeof($filterWords);
