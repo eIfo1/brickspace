@@ -1,6 +1,7 @@
 <?php
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
+use brickspace\helpers\Time;
 // get number of wall posts
 $statement = $conn->prepare("SELECT COUNT(*) AS count FROM wall");
 $statement->execute();
@@ -49,7 +50,7 @@ if ($count == 0) {
   </p>
   <p class="small">
     <?php
-    echo time_elapsed_string($post['wall_created']);
+    echo Time::Elapsed($post['wall_created']);
     ?>
   </p>
 </div>
