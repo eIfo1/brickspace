@@ -4,6 +4,7 @@ $name = "Users";
 
 use function CommonMark\Render\HTML;
 use brickspace\helpers\OnlineChecker;
+use brickspace\middleware\Auth;
 
 $page = SetPagination(@$page);
 
@@ -40,7 +41,7 @@ if (!$result) {
           <div class="card">
             <div class="ellipsis">
               <?php
-              if (UserAdmin($user['user_admin'])) {
+                if(Auth::IsAdmin($user['user_admin'])) {
                 echo "<a class='admin_label' href='/user/profile/$user[user_name]'>$user[user_name]</a>";
               } else {
                 echo "<a class='user_label' href='/user/profile/$user[user_name]'>$user[user_name]</a>";

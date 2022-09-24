@@ -31,8 +31,17 @@ class Auth {
     return;
   }
 
+  public static function IsAdmin($var) {
+    if ($var != 0 && $var != 1 && $var != 2) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   public static function Admin() {
-    $admin = @$_SESSION['UserAdmin'];
+    Auth::Require();
+    $admin = $_SESSION['UserAdmin'];
     if ($admin != 0 && $admin != 1 && $admin != 2) {
       return true;
     } else {
