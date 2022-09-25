@@ -5,6 +5,7 @@ use brickspace\middleware\Auth;
 use brickspace\utils\Toast;
 use brickspace\helpers\Time;
 use brickspace\controller\auth\WallController;
+use brickspace\controller\BlogController;
 
 Auth::Require();
 
@@ -21,6 +22,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");
 $statement->bindParam(':username', $_SESSION['Username'], PDO::PARAM_STR);
 $statement->execute();
 $result = $statement->fetch();
+$blog = BlogController::GetPosts();
 ?>
 
 <script>
@@ -94,34 +96,65 @@ $result = $statement->fetch();
         <button type="submit" name="submit">Post Status</button>
       </form>
       <br>
-      <button id="modal_button">Open Modal</button>
     </div>
+    <div class="card">
+      <h1>Blog</h1>
+      <p>Website updates and events will show up here.</p>
+    </div>
+    <?php
+    if (!$blog) {
+      echo "No blog posts...";
+    }
+
+    foreach ($blog as $post) {
+      $user = GetUserByID($conn, $post['blog_creator']);
+    ?>
+      <div class="card">
+        <div class="ellipsis">
+          <a href="/blog/post/<?php echo $post['blog_id']; ?>">
+            <h2 style="display: inline-block;"><i class="fa fa-file"></i> <?php echo $post['blog_title']; ?></h2>
+          </a>
+          <p class="small" style="margin: 5px 0; margin-top: -6px; display: inline-block;">
+            <?php echo Time::Elapsed($post['blog_created']); ?>
+            <?php
+            // if blog post was created in last 24 hours, show "new" badge
+            if (strtotime($post['blog_created']) > strtotime("-120 seconds")) {
+              echo "<span class='badge admin-text'>New</span>";
+            }
+            ?>
+          </p>
+        </div>
+        <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a> on <strong><?php echo date("l, F d, Y", strtotime($post['blog_created'])) ?></strong>
+      </div>
+    <?php
+    }
+    ?>
+
   </div>
   <div class="col-5">
     <div class="card">
-      <h1>Website Wall</h1>
+      <h1>Your Feed</h1>
       <p>A place where you can chat to all BrickSpace members!</p>
+      <br>
+      <button id="modal_button">Create Post</button>
     </div>
     <div id="comments"></div>
-    <div class="card">
-      <form action="/dashboard/wall/" method="POST">
-        <div class="input-container">
-          <i class="fa fa-comment icon"></i>
-          <input class="input-field" type="text" placeholder="Your wall message here..." name="message" required>
-        </div>
-        <?php
-        set_csrf();
-        ?>
-        <button type="submit" name="submit">Post Comment</button>
-      </form>
-    </div>
   </div>
 </div>
 <div id="modal" class="modal">
   <div class="content">
     <span class="close">&times;</span>
-    <h1>Modal Test</h1>
-    <p>Welcome to your doom....</p>
+    <form action="/dashboard/wall/" method="POST">
+      <h1>
+        Create Wall Post
+      </h1>
+      <input type="text" placeholder="Your wall message here..." name="message" required>
+      <br>
+      <?php
+      set_csrf();
+      ?>
+      <button type="submit" name="submit">Post Comment</button>
+    </form>
   </div>
 </div>
 

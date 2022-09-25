@@ -12,4 +12,12 @@ class BlogController {
     $blog = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $blog;
   }
+
+  public static function GetPost($id) {
+    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+    $statement = $conn->prepare("SELECT * FROM blog WHERE blog_id = :id");
+    $statement->execute(array(':id' => $id));
+    $blog = $statement->fetch(PDO::FETCH_ASSOC);
+    return $blog;
+  }
 }
