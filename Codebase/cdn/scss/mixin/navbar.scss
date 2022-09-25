@@ -1,4 +1,9 @@
 @mixin navbar() {
+
+  form {
+    display: inline-block;
+  }
+
   img {
     height: 50px;
     overflow: hidden;
@@ -32,6 +37,23 @@
     @media (max-width: 1024px) {
       float: none;
       text-align: center;
+    }
+  }
+
+  .info {
+    display: inline-block;
+    color: var(--text);
+    font-size: 125%;
+    text-decoration: none;
+    font-weight: 600;
+    margin: 8px;
+    padding: 8px 16px;
+    background: var(--theme-color-2);
+    border-radius: 5px; 
+    a {
+      padding :0;
+      margin:0;
+      font-size: 100%;
     }
   }
 

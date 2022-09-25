@@ -1,18 +1,18 @@
-$darkest: #121212;
+$darkest: rgb(16, 16, 18);
 $darker: lighten($darkest, 3.5%);
-$dark: lighten($darker, 2.5%);
+$dark: lighten($darker, 3.5%);
 
 $text: #fff;
 $text-2: rgb(155, 152, 152);
 $text-3: rgb(100, 98, 98);
 
-$blue: rgb(9,9,122);
+$blue: rgb(9, 9, 122);
 $red: #fd131f;
 $green: #45d41eba;
 $purple: #a200ff;
 
 $blue-2: darken($blue, 5%);
-$red-2: darken($red, 5%);
+$red-2: darken($red, 10%);
 $green-2: darken($green, 5%);
 $purple-2: darken($purple, 2.5%);
 
@@ -53,7 +53,8 @@ $small-screen-threshold: 1024px;
   text-rendering: geometricPrecision;
 }
 
-input {
+input,
+textarea {
   background: var(--darker);
   font-family: inherit;
   border: 0;
@@ -66,10 +67,19 @@ input {
   border-radius: 5px;
   font-weight: 500;
 
+  &:focus {
+    outline: none;
+  }
+
   &:disabled {
     color: var(--text-3);
     cursor: not-allowed;
   }
+}
+
+textarea {
+  resize: vertical;
+  outline: none;
 }
 
 button {
@@ -87,6 +97,14 @@ button {
 
   &:hover {
     background: var(--green-2);
+  }
+
+  &.red {
+    background: var(--red);
+
+    &:hover {
+      background: var(--red-2);
+    }
   }
 }
 
@@ -334,7 +352,7 @@ label {
 .card {
   background: var(--darkest);
   padding: 20px;
-  border-radius: 5px;
+  border: 1px solid var(--dark);
   margin-bottom: 5px;
 }
 
@@ -550,6 +568,16 @@ body::-webkit-scrollbar-thumb {
   }
 }
 
+.badge {
+  background: var(--theme-color);
+  padding: 2.5px 12px;
+  border-radius: 5px;
+
+  &.red {
+    background: var(--red);
+  }
+}
+
 .offline-badge {
   padding: 5px 15px;
   text-transform: uppercase;
@@ -590,6 +618,7 @@ body::-webkit-scrollbar-thumb {
   padding: 10px;
   background-color: var(--darkest);
   border-radius: 5px;
+  border: 1px solid var(--dark);
   box-shadow: 2px 2px 2px 1px rgba(0, 0, 0, 0.2);
   color: var(--text);
   font-weight: 600;
@@ -605,9 +634,7 @@ body::-webkit-scrollbar-thumb {
     height: 0;
     border-left: 10px solid transparent;
     border-right: 10px solid transparent;
-    border-top: 10px solid var(--darkest);
-
-
+    border-top: 10px solid var(--darkest)
   }
 }
 
@@ -630,8 +657,10 @@ p {
   text-align: center;
 }
 
+
 .admin_links {
   margin-bottom: 5px;
+  border: 1px solid var(--dark);
 
   .section {
     text-align: center;
@@ -683,11 +712,23 @@ select {
   animation: fadein .5s ease;
 
   .content {
-    background-color: var(--darkest);
+    background-color: var(--darker);
     margin: 15% auto;
-    padding: 20px;
     border: 1px solid var(--dark);
     width: 50%;
+
+    input {
+      background: var(--darkest);
+    }
+
+    .modal-container {
+      padding: 12px;
+    }
+
+    .buttons {
+      padding: 12px;
+      background: var(--darkest);
+    }
 
     .close {
       color: var(--text-2);
@@ -715,4 +756,10 @@ select {
   to {
     opacity: 1;
   }
+}
+
+.preview {
+  padding: 12px;
+  background: var(--darker);
+  margin: 12px 0;
 }
