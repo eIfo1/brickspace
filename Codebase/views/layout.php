@@ -93,7 +93,7 @@ $cubes = UserController::Currency();
         <div class="nav">
           <div class="container">
             <div class="left">
-              <img src="/cdn/img/favicon.png" alt="Logo">
+              <img src="/cdn/img/favicon_secondary.png" alt="Logo">
               <a href="/">
                 <i class="fa fa-home"></i>Home
               </a>
@@ -124,13 +124,35 @@ $cubes = UserController::Currency();
               <?php
               } else {
               ?>
-              <div class="info">
-                <a href="/currency">
-                <?php 
-                  echo $cubes;
-                ?>
-                </a>
-              </div>
+                <div class="info">
+                  <a href="/account/currency">
+                    <i class="fa fa-cube"></i>
+                    <?php
+                    echo $cubes;
+                    ?>
+                  </a>
+                  <a href="/account/friends/requests">
+                    <i class="fa fa-user-plus"></i>
+                    0
+                    <?php
+                    // echo FriendController::RequestAmount(); 
+                    ?>
+                  </a>
+                  <a href="/account/notifications">
+                    <i class="fa fa-bell"></i>
+                    0
+                    <?php
+                    // echo NotificationController::Amount(); 
+                    ?>
+                  </a>
+                  <a href="/account/messages">
+                    <i class="fa fa-envelope"></i>
+                    0
+                    <?php
+                    // echo MessageController::UnreadAmount(); 
+                    ?>
+                  </a>
+                </div>
                 <form action="/logout" method="post">
                   <?php set_csrf() ?>
                   <button type="submit">
