@@ -4,6 +4,7 @@ use brickspace\controller\auth\StatusController;
 use brickspace\middleware\Auth;
 use brickspace\utils\Toast;
 use brickspace\helpers\Time;
+use brickspace\controller\auth\WallController;
 
 Auth::Require();
 
@@ -65,7 +66,7 @@ $result = $statement->fetch();
           Wall Posts:
           <span class="small" style="float: right;">
             <?php
-            //echo WallController::PostAmount($_SESSION['UserID']); 
+            echo WallController::PostAmount($_SESSION['UserID']); 
             ?>
           </span>
         </label>

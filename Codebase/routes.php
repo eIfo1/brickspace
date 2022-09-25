@@ -7,6 +7,7 @@ use brickspace\controller\guest\LoginController;
 use brickspace\controller\guest\RegisterController;
 use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\StatusController;
+use brickspace\controller\auth\WallController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
@@ -51,7 +52,9 @@ get('/api/avatar/user/$id', 'api/avatar.php');
 get('/api/avatar/user', 'api/avatar.php');
 get('/api/comments', 'api/load-comments.php');
 // post pages
-post('/dashboard/wall', 'app/controller/auth/wall.php');
+post('/dashboard/wall', function() {
+  WallController::Post();
+});
 post('/dashboard/status', function() {
   StatusController::Update();
 });
