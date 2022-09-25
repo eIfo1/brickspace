@@ -64,6 +64,7 @@ input {
   padding: 5px;
   border-radius: 5px;
   font-weight: 600;
+
   &:disabled {
     color: var(--text-3);
     cursor: not-allowed;
@@ -631,12 +632,16 @@ noscript {
     display: block;
     padding: 12px;
     background: var(--darker);
+    color: var(--text-2);
+
   }
 
   .link {
     display: block;
     padding: 12px;
     background: var(--dark);
+    color: var(--text-2);
+
   }
 }
 
