@@ -24,6 +24,10 @@
     <i class="fas fa-exclamation-triangle"></i>
     Alert
   </a>
+  <a href="/admin/blog" class="link">
+    <i class="fas fa-rss"></i>
+    Create Blog Post
+  </a>
   <a href="/admin/maintenance" class="link">
     <i class="fas fa-clipboard"></i>
     Maintenance

@@ -8,6 +8,7 @@ use brickspace\controller\guest\RegisterController;
 use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\StatusController;
 use brickspace\controller\auth\WallController;
+use brickspace\controller\BlogController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
@@ -31,6 +32,10 @@ page('/admin', 'views/pages/admin/dashboard.php');
 page('/admin/alert', 'views/pages/admin/alert.php');
 post('/admin/alert', function() {
   AlertController::Post();
+});
+page('/admin/blog', 'views/pages/admin/blog.php');
+post('/admin/blog', function () {
+  BlogController::Post();
 });
 // user pages
 page('/dashboard', 'views/pages/dashboard.php');
