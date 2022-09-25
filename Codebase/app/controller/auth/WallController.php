@@ -2,6 +2,7 @@
 namespace brickspace\controller\auth;
 use brickspace\middleware\Auth;
 use brickspace\helpers\Purify;
+use pdo;
 class WallController {
   public static function Post() {
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
@@ -50,5 +51,13 @@ class WallController {
     $stmt->execute(array(':user_id' => $id));
     $result = $stmt->fetchAll();
     return count($result);
+  }
+  public static function GetPosts() {
+    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+    $statement = $conn->prepare("SELECT * FROM wall ORDER BY wall_created DESC LIMIT 6");
+    // Set offset to the number of posts already shown.
+    $statement->execute();
+    $wall = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $wall;
   }
 }
