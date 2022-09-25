@@ -47,6 +47,7 @@ page('/user/profile', 'views/pages/profile.php');
 get('/support', 'views/pages/support.php');
 
 page('/blog', 'views/pages/blog/dashboard.php');
+page('/blog/post/$id', 'views/pages/blog/post.php');
 // avatar pages
 get('/api/avatar/user/$id', 'api/avatar.php');
 get('/api/avatar/user', 'api/avatar.php');

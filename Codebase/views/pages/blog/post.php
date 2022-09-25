@@ -5,40 +5,37 @@ use brickspace\helpers\Time;
 
 $name = "Blog";
 
-$blog = BlogController::GetPosts();
+if (!is_numeric($id)) {
+  header('location: /blog');
+  exit();
+}
+
+$blog = BlogController::GetPost($id);
+
+if (!$blog) {
+  header('location: /blog');
+  exit();
+}
+
+$user = GetUserByID($conn, $blog['blog_creator']);
 
 ?>
 
 <div class="row">
   <div class="col-7 col-center">
     <div class="card">
-      <h1>
-        <i class="fa fa-rss"></i> Blog
-      </h1>
+      <h1><?php echo $blog['blog_title']; ?></h1>
+      <p class="small">
+        <?php echo Time::Elapsed($blog['blog_created']); ?>
+      </p>
     </div>
-    <?php
-    if (!$blog) {
-      echo "No blog posts...";
-    }
-
-    foreach ($blog as $post) {
-    ?>
-      <div class="card">
-        <a href="/blog/post/<?php echo $post['blog_id']; ?>">
-          <h2><i class="fa fa-file"></i> <?php echo $post['blog_title']; ?></h2>
-        </a>
-        <p class="small" style="margin: 5px 0;">
-          <?php echo Time::Elapsed($post['blog_created']); ?>
-          <?php
-          // if blog post was created in last 24 hours, show "new" badge
-          if (strtotime($post['blog_created']) > strtotime("-120 seconds")) {
-            echo "<span class='badge admin-text'>New</span>";
-          }
-          ?>
-        </p>
-      </div>
-    <?php
-    }
-    ?>
+    <div class="card">
+      <?php
+      echo $blog['blog_body'];
+      ?>
+    </div>
+    <div class="card">
+      <span>Created by <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a> on <strong><?php echo date("l, F d, Y", strtotime($blog['blog_created'])) ?></strong></span>
+    </div>
   </div>
 </div>
