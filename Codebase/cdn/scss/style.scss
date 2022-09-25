@@ -6,8 +6,8 @@ $text: #fff;
 $text-2: rgb(155, 152, 152);
 $text-3: rgb(100, 98, 98);
 
-$blue: #0e7bef;
-$red: #DF323B;
+$blue: rgb(9,9,122);
+$red: #fd131f;
 $green: #45d41eba;
 $purple: #a200ff;
 
@@ -531,12 +531,12 @@ body::-webkit-scrollbar-thumb {
 }
 
 .user_label {
-  color: var(--blue-2);
+  color: dodgerblue;
   font-weight: 600;
   font-size: 125%;
 
   &:hover {
-    color: var(--blue);
+    color: darken(dodgerblue, 5%);
   }
 }
 
