@@ -32,6 +32,11 @@ $result = $statement->fetch();
     }, 10000);
   });
 </script>
+<div class="card">
+  <h1 class="center">
+    Dashboard
+  </h1>
+</div>
 <div class="row">
   <div class="col-3">
     <div class="ellipsis">
@@ -66,7 +71,7 @@ $result = $statement->fetch();
           Wall Posts:
           <span class="small" style="float: right;">
             <?php
-            echo WallController::PostAmount($_SESSION['UserID']); 
+            echo WallController::PostAmount($_SESSION['UserID']);
             ?>
           </span>
         </label>
@@ -74,9 +79,6 @@ $result = $statement->fetch();
     </div>
   </div>
   <div class="col-4">
-    <div class="card">
-      <h1 class="center">Dashboard</h1>
-    </div>
     <div class="card">
       <form action="/dashboard/status/" method="POST">
         <h3>
@@ -89,13 +91,16 @@ $result = $statement->fetch();
         <?php
         set_csrf();
         ?>
-        <button type="submit" name="submit">Post</button>
+        <button type="submit" name="submit">Post Status</button>
       </form>
+      <br>
+      <button id="modal_button">Open Modal</button>
     </div>
   </div>
   <div class="col-5">
     <div class="card">
-      <h1 class="center">Website Wall</h1>
+      <h1>Website Wall</h1>
+      <p>A place where you can chat to all BrickSpace members!</p>
     </div>
     <div id="comments"></div>
     <div class="card">
@@ -107,8 +112,40 @@ $result = $statement->fetch();
         <?php
         set_csrf();
         ?>
-        <button type="submit" name="submit">Post</button>
+        <button type="submit" name="submit">Post Comment</button>
       </form>
     </div>
   </div>
 </div>
+<div id="modal" class="modal">
+  <div class="content">
+    <span class="close">&times;</span>
+    <h1>Modal Test</h1>
+    <p>Welcome to your doom....</p>
+  </div>
+</div>
+
+<script>
+  var modal = document.getElementById("modal");
+  var btn = document.getElementById("modal_button");
+  var span = document.getElementsByClassName("close")[0];
+
+  btn.onclick = function() {
+    modal.style.display = "block";
+    modal.style.opacity = "1";
+  }
+  span.onclick = function() {
+    modal.style.opacity = "0";
+    setTimeout(function() {
+      modal.style.display = "none";
+    }, 500);
+  }
+  window.onclick = function(event) {
+    if (event.target == modal) {
+      modal.style.opacity = "0";
+      setTimeout(function() {
+        modal.style.display = "none";
+      }, 500);
+    }
+  }
+</script>
