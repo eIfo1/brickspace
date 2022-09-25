@@ -24,7 +24,7 @@ if (!$result) {
 ?>
 
 <div class="row">
-  <div class="col-8 col-center">
+  <div class="col-6 col-center">
     <div class="row">
       <div class="col-6">
         <a href="/users/staff">

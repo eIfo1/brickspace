@@ -1,4 +1,18 @@
 @mixin navbar() {
+  img {
+    height: 50px;
+    overflow: hidden;
+    margin-top: -6px;
+    display: inline-block;
+    vertical-align: middle;
+
+    @media (max-width: 1024px) {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+  }
+
   overflow: hidden;
 
   .left {
@@ -29,6 +43,7 @@
     font-weight: 600;
     margin: 8px;
     border-radius: 5px;
+
     i {
       margin-right: 5px;
     }

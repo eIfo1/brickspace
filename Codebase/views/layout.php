@@ -89,7 +89,7 @@ if (Auth::Auth()) {
         <div class="nav">
           <div class="container">
             <div class="left">
-              <span>BrickSpace</span>
+              <img src="/cdn/img/favicon.png" alt="Logo">
               <a href="/">
                 <i class="fa fa-home"></i>Home
               </a>
