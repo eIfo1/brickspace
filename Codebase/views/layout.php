@@ -5,10 +5,14 @@ include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\middleware\Auth;
 use brickspace\controller\admin\AlertController;
+use brickspace\controller\auth\UserController;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
 }
+
+$cubes = UserController::Currency();
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -120,6 +124,13 @@ if (Auth::Auth()) {
               <?php
               } else {
               ?>
+              <div class="info">
+                <a href="/currency">
+                <?php 
+                  echo $cubes;
+                ?>
+                </a>
+              </div>
                 <form action="/logout" method="post">
                   <?php set_csrf() ?>
                   <button type="submit">
