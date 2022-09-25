@@ -1,6 +1,7 @@
 <?php
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
+
 use brickspace\helpers\Time;
 // get number of wall posts
 $statement = $conn->prepare("SELECT COUNT(*) AS count FROM wall");
@@ -37,23 +38,25 @@ if ($count == 0) {
   foreach ($wall as $post) {
     $user = GetUserByID($conn, $post['wall_creator']);
 ?>
-<div class="card">
-  <a href="/user/profile/<?php echo $user['user_name']; ?>">
-    <?php
-    echo $user['user_name'];
-    ?>
-  </a>
-  <p>
-    <?php
-    echo $post['wall_message'];
-    ?>
-  </p>
-  <p class="small">
-    <?php
-    echo Time::Elapsed($post['wall_created']);
-    ?>
-  </p>
-</div>
+    <div class="card">
+      <div class="ellipsis">
+        <a href="/user/profile/<?php echo $user['user_name']; ?>">
+          <?php
+          echo $user['user_name'];
+          ?>
+        </a> - 
+        <p style="display: inline-block">
+          <?php
+          echo Time::Elapsed($post['wall_created']);
+          ?>
+        </p>
+      </div>
+      <p>
+        <?php
+        echo $post['wall_message'];
+        ?>
+      </p>
+    </div>
 <?php
   }
 }
