@@ -2,13 +2,13 @@
 
 <?php
 $DEBUG = true;
+$whitelist = array('127.0.0.1', "::1");
 
-echo $_SERVER['HTTP_HOST'];
 try {
-  if($_SERVER['HTTP_HOST'] != 'localhost') {
+  if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
+    // not valid
     $conn = new PDO("mysql:doadmin:AVNS_F7v0091UCWwurZGDMPT@brickspace-db-do-user-11026856-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    exit();
   } else {
     $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
