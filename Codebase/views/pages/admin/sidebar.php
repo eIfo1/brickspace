@@ -48,3 +48,14 @@
     Ban User
   </a>
 </div>
+
+<div class="admin_links">
+  <a class="section">
+    <i class="fas fa-book"></i>
+    Admin Resources
+  </a>
+  <a href="/admin/faq" class="link">
+    <i class="fas fa-book-spells"></i>
+    FAQ
+  </a>
+</div>

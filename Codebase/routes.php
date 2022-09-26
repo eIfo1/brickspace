@@ -29,6 +29,7 @@ post('/logout', function() {
 });
 
 page('/admin', 'views/pages/admin/dashboard.php');
+page('/admin/faq', 'views/pages/admin/faq.php');
 page('/admin/alert', 'views/pages/admin/alert.php');
 post('/admin/alert', function() {
   AlertController::Post();
