@@ -1,6 +1,6 @@
 $darkest: rgb(16, 16, 18);
-$darker: lighten($darkest, 3.5%);
-$dark: lighten($darker, 3.5%);
+$darker: rgb(18, 18, 20);
+$dark: rgb(24, 24, 26);
 
 $text: #fff;
 $text-2: rgb(155, 152, 152);
@@ -222,6 +222,7 @@ label {
     padding: 25px;
     color: var(--text-3);
     background: var(--darkest);
+    border-top: 1px solid var(--dark);
 
     .copyright {
       text-align: center;
