@@ -1,11 +1,14 @@
+
+
 <?php
 $DEBUG = true;
 
+echo $_SERVER['HTTP_HOST'];
 try {
   if($_SERVER['HTTP_HOST'] != 'localhost') {
     $conn = new PDO("mysql:doadmin:AVNS_F7v0091UCWwurZGDMPT@brickspace-db-do-user-11026856-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "test";
+    exit();
   } else {
     $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
