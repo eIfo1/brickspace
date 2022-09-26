@@ -9,6 +9,7 @@ try {
     // not valid
     $conn = new PDO("mysql:doadmin:AVNS_F7v0091UCWwurZGDMPT@brickspace-db-do-user-11026856-0.b.db.ondigitalocean.com:25060/defaultdb?ssl-mode=REQUIRED");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    echo "test";
   } else {
     $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
