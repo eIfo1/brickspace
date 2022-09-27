@@ -6,16 +6,14 @@ use brickspace\helpers\Time;
 use PDO;
 
 class BlogController {
-  public static function GetPosts() {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+  public static function GetPosts($conn) {
     $statement = $conn->prepare("SELECT * FROM blog ORDER BY blog_id DESC LIMIT 6");
     $statement->execute();
     $blog = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $blog;
   }
 
-  public static function GetPost($id) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+  public static function GetPost($conn, $id) {
     $statement = $conn->prepare("SELECT * FROM blog WHERE blog_id = :id");
     $statement->execute(array(':id' => $id));
     $blog = $statement->fetch(PDO::FETCH_ASSOC);
@@ -57,9 +55,8 @@ class BlogController {
     exit();
   }
 
-  public static function DisplayPosts() {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
-    $blog = BlogController::GetPosts();
+  public static function DisplayPosts($conn) {
+    $blog = BlogController::GetPosts($conn);
 
     foreach ($blog as $post) {
       $user = GetUserByID($conn, $post['blog_creator']);

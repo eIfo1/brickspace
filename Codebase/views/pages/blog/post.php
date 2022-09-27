@@ -10,7 +10,7 @@ if (!is_numeric($id)) {
   exit();
 }
 
-$blog = BlogController::GetPost($id);
+$blog = BlogController::GetPost($conn, $id);
 
 if (!$blog) {
   header('location: /blog');

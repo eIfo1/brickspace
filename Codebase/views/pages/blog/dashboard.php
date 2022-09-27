@@ -17,7 +17,7 @@ $name = "Blog";
       </h1>
     </div>
     <?php
-      BlogController::DisplayPosts();
+      BlogController::DisplayPosts($conn);
     ?>
   </div>
 </div>

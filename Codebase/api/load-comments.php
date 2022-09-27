@@ -4,7 +4,7 @@ include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\helpers\Time;
 use brickspace\controller\auth\WallController;
-$wall = WallController::GetPosts();
+$wall = WallController::GetPosts($conn);
   foreach ($wall as $post) {
     $user = GetUserByID($conn, $post['wall_creator']);
 ?>

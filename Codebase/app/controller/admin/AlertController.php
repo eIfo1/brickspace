@@ -7,8 +7,7 @@ use brickspace\middleware\Auth;
 
 
 class AlertController {
-  public static function Get() {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+  public static function Get($conn) {
     $sql = "SELECT * FROM site_settings WHERE id = 1";
     $result = $conn->query($sql);
     $row = $result->fetch();

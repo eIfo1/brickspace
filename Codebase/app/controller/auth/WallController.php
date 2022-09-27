@@ -6,7 +6,6 @@ use pdo;
 class WallController {
   public static function Post() {
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
-    
     $message = $_POST['message'];
     $message = Purify::purify($message);
     
@@ -44,16 +43,14 @@ class WallController {
     exit();
   }
 
-  public static function PostAmount($id) {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+  public static function PostAmount($conn, $id) {
     $sql = "SELECT * FROM wall WHERE wall_creator = :user_id";
     $stmt = $conn->prepare($sql);
     $stmt->execute(array(':user_id' => $id));
     $result = $stmt->fetchAll();
     return count($result);
   }
-  public static function GetPosts() {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+  public static function GetPosts($conn) {
     $statement = $conn->prepare("SELECT * FROM wall ORDER BY wall_created DESC LIMIT 6");
     // Set offset to the number of posts already shown.
     $statement->execute();

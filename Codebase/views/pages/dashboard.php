@@ -22,7 +22,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");
 $statement->bindParam(':username', $_SESSION['Username'], PDO::PARAM_STR);
 $statement->execute();
 $result = $statement->fetch();
-$blog = BlogController::GetPosts();
+$blog = BlogController::GetPosts($conn);
 ?>
 
 <script>
@@ -73,7 +73,7 @@ $blog = BlogController::GetPosts();
           Wall Posts:
           <span class="small" style="float: right;">
             <?php
-            echo WallController::PostAmount($_SESSION['UserID']);
+            echo WallController::PostAmount($conn, $_SESSION['UserID']);
             ?>
           </span>
         </label>
@@ -103,7 +103,7 @@ $blog = BlogController::GetPosts();
     </div>
     
     <?php
-    BlogController::DisplayPosts();
+    BlogController::DisplayPosts($conn);
     ?>
   </div>
   <div class="col-5">

@@ -11,7 +11,7 @@ if (Auth::Auth()) {
   Auth::UpdateUser($conn);
 }
 
-$cubes = UserController::Currency();
+$cubes = UserController::Currency($conn);
 
 ?>
 <!DOCTYPE html>
@@ -42,7 +42,7 @@ $cubes = UserController::Currency();
         </p>
       </noscript>
       <?php
-      $alert = AlertController::Get();
+      $alert = AlertController::Get($conn);
       if (!$alert) {
         return;
       }
