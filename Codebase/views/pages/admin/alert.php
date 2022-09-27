@@ -7,7 +7,7 @@ use brickspace\utils\Toast;
 Auth::RequireAdmin();
 
 $name = "Admin";
-$alert = AlertController::Get();
+$alert = AlertController::Get($conn);
 
 if (@$_SESSION['error']) {
   new Toast($_SESSION['error'], 0);
