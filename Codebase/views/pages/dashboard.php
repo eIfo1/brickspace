@@ -80,7 +80,7 @@ $blog = BlogController::GetPosts($conn);
       </div>
     </div>
   </div>
-  <div class="col-4">
+  <div class="col-5">
     <div class="card">
       <form action="/dashboard/status/" method="POST">
         <h3>
@@ -106,7 +106,7 @@ $blog = BlogController::GetPosts($conn);
     BlogController::DisplayPosts($conn);
     ?>
   </div>
-  <div class="col-5">
+  <div class="col-4">
     <div class="card">
       <h1>Your Feed</h1>
       <p>A place where you can chat to all BrickSpace members!</p>

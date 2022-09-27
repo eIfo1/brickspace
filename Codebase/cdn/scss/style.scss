@@ -277,30 +277,6 @@ label {
     margin: auto;
   }
 
-  .col-1,
-  .col-2,
-  .col-3,
-  .col-4,
-  .col-5,
-  .col-6,
-  .col-7,
-  .col-8,
-  .col-9,
-  .col-10,
-  .col-11,
-  .col-12 {
-    padding: 5px;
-
-    // on medium screens remove padding
-    @media (max-width: 1200px) {
-      padding: 5px;
-    }
-
-    &.no-padding {
-      padding: 0;
-    }
-  }
-
   .col-1 {
     flex-basis: 8.33333%;
   }
@@ -355,6 +331,7 @@ label {
   padding: 20px;
   border: 1px solid var(--dark);
   margin-bottom: 5px;
+  margin: 5px;
 }
 
 .form {
