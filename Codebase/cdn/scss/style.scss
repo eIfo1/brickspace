@@ -156,6 +156,18 @@ nav {
     font-weight: 600;
     margin: 8px;
     border-radius: 5px;
+
+    @media (max-width: 1024px) {
+      width: 100%;
+      margin: 0px;
+      border-radius: 0;
+    }
+  }
+
+  form {
+    @media (max-width: 1024px) {
+      display: flex;
+    }
   }
 
   a {

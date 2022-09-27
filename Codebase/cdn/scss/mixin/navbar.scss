@@ -14,8 +14,8 @@
 
     @media (max-width: 1024px) {
       display: block;
-      width: 100%;
-      height: auto;
+      height: 90px;
+      margin: 5px auto;
     }
   }
 
@@ -50,11 +50,16 @@
     margin: 8px;
     padding: 8px 16px;
     background: var(--theme-color-2);
-    border-radius: 5px; 
+    border-radius: 5px;
+
     a {
-      padding :0;
-      margin:0 12px;
+      padding: 0;
+      margin: 0 12px;
       font-size: 100%;
+    }
+
+    @media (max-width: 1024px) {
+      display: flex;
     }
   }
 
