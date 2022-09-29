@@ -62,7 +62,7 @@ $blog = BlogController::GetPosts($conn);
         </h2>
         <br>
         <label>
-          Account Birth: <span class="small" style="float: right;"><?php echo date("l, F d, Y", strtotime($result['user_created'])) ?></span>
+          Account Birth: <span class="small" style="float: right;"><?php echo Time::Date($result['user_created']) ?></span>
         </label>
         <br>
         <label>

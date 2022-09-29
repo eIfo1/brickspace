@@ -562,6 +562,7 @@ body::-webkit-scrollbar-thumb {
   background: var(--theme-color);
   padding: 2.5px 12px;
   border-radius: 5px;
+  margin: 12px;
 
   &.red {
     background: var(--red);
@@ -573,6 +574,7 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   background: var(--darker);
   border-radius: 5px;
+  margin: 0 5px;
   font-weight: 700;
   color: var(--text);
 
@@ -586,6 +588,7 @@ body::-webkit-scrollbar-thumb {
   text-transform: uppercase;
   background: var(--theme-color);
   border-radius: 5px;
+  margin: 0 5px;
   font-weight: 700;
   color: var(--text);
 }
@@ -752,4 +755,38 @@ select {
   padding: 12px;
   background: var(--darker);
   margin: 12px 0;
+}
+
+.admin-buttons {
+  display: flex;
+  justify-content: space-around;
+  margin: 12px;
+}
+
+.tooltip {
+  display: block;
+  font-weight: 600;
+  font-size: 125%;
+
+  .text {
+    $width: 260px;
+    width: $width;
+    margin-top: 5px;
+    margin-left: calc($width / -2.15);
+    visibility: hidden;
+    background-color: black;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    font-weight: 600;
+  }
+
+  &:hover {
+    .text {
+      visibility: visible;
+    }
+  }
 }

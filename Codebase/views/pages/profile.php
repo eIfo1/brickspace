@@ -1,6 +1,9 @@
 <?php
+
 use brickspace\middleware\Auth;
 use brickspace\helpers\OnlineChecker;
+use brickspace\helpers\Time;
+
 if (!isset($username)) {
   if (Auth::Auth()) {
     $username = $_SESSION['Username'];
@@ -16,7 +19,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");
 $statement->bindParam(':username', $username, PDO::PARAM_STR);
 $statement->execute();
 $result = $statement->fetch();
-if(!$result) {
+if (!$result) {
   header('location: /user/profile');
   exit();
 }
@@ -35,19 +38,73 @@ if(!$result) {
         <?php echo $result['user_name']; ?>
       </h2>
       <?php
-        OnlineChecker::onlineLabel($result['user_updated'], true);
+      OnlineChecker::onlineLabel($result['user_updated'], true);
       ?>
     </div>
+    <?php
+    if (!empty($result['user_bio'])) {
+    ?>
+      <div class="card">
+        <h3>
+          About Me
+        </h3>
+        <p>
+          <?php
+          echo $result['user_bio'];
+          ?>
+        </p>
+      </div>
+    <?php
+    }
+    ?>
     <br>
     <div class="card">
-      <h1>
-      <?php
-      echo $result['user_bio'];
-      ?>
-      </h1>
+      <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
+      <br>
+      <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
     </div>
-    <br>
+    <?php
+    if (Auth::Admin()) {
+    ?>
+      <div class="card">
+        <h1 class="center">
+          Moderation Actions
+        </h1>
+        <div class="admin-buttons">
+          <div class="tooltip">
+            <a href="/moderation/ban/user/<?php echo $result['user_name'] ?>"><i class="fa fa-hammer"></i></a>
+            <div class="text">
+              Ban <?php echo $result['user_name'] ?>?
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-clipboard"></i></a>
+            <div class="text">
+              View <?php echo $result['user_name'] ?>'s Logs?
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-user-plus"></i></a>
+            <div class="text">
+              Alternate Account Detection
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-soap"></i></a>
+            <div class="text">
+              Scrub
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </div>
+  <div class="col-6">
     <div class="card">
+      <h1>Profile Wall</h1>
+      <p>Want to leave a comment for a user? Leave it here.</p>
     </div>
   </div>
 </div>

@@ -30,7 +30,9 @@ class Auth {
     }
     return;
   }
-
+  /**
+   * Used to check if ANOTHER user is admin
+   */
   public static function IsAdmin($var) {
     if ($var != 0 && $var != 1 && $var != 2) {
       return true;
@@ -39,6 +41,9 @@ class Auth {
     }
   }
 
+  /**
+   * Used to check if THE CURRENT user is admin
+   */
   public static function Admin() {
     $admin = @$_SESSION['UserAdmin'];
     if ($admin != 0 && $admin != 1 && $admin != 2) {
