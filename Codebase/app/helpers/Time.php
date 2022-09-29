@@ -32,4 +32,8 @@ class Time {
     if (!$full) $string = array_slice($string, 0, 1);
     return $string ? implode(', ', $string) . ' ago' : 'Just Now';
   }
+
+  public static function Date($stamp) {
+    return date("l, F d, Y", strtotime($stamp));
+  }
 }

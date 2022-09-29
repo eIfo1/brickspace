@@ -1,6 +1,9 @@
 <?php
+
 use brickspace\middleware\Auth;
 use brickspace\helpers\OnlineChecker;
+use brickspace\helpers\Time;
+
 if (!isset($username)) {
   if (Auth::Auth()) {
     $username = $_SESSION['Username'];
@@ -16,7 +19,7 @@ $statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");
 $statement->bindParam(':username', $username, PDO::PARAM_STR);
 $statement->execute();
 $result = $statement->fetch();
-if(!$result) {
+if (!$result) {
   header('location: /user/profile');
   exit();
 }
@@ -35,19 +38,30 @@ if(!$result) {
         <?php echo $result['user_name']; ?>
       </h2>
       <?php
-        OnlineChecker::onlineLabel($result['user_updated'], true);
+      OnlineChecker::onlineLabel($result['user_updated'], true);
       ?>
     </div>
+    <?php 
+      if(!empty($result['user_bio'])) {
+        ?>
+          <div class="card">
+            <h3>
+              About Me
+            </h3>
+            <p>
+              <?php
+              echo $result['user_bio'];
+              ?>
+            </p>
+          </div>
+        <?php 
+      }
+    ?>
     <br>
     <div class="card">
-      <h1>
-      <?php
-      echo $result['user_bio'];
-      ?>
-      </h1>
-    </div>
-    <br>
-    <div class="card">
+      <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
+      <br>
+      <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
     </div>
   </div>
 </div>
