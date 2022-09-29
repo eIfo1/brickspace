@@ -55,6 +55,46 @@ class BlogController {
     exit();
   }
 
+  public static function Edit() {
+    Auth::RequireAdmin();
+
+    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+    if (!is_csrf_valid()) {
+      header('location: /dashboard');
+      exit();
+    }
+    $title = $_POST['title'];
+    $body = $_POST['body'];
+    $id = $_POST['id'];
+
+    if (empty($title) || empty($body)) {
+      $_SESSION['error'] = 'Title or body is empty!';
+      header('location: /blog/edit/$id');
+      exit();
+    }
+    $statement = $conn->prepare("UPDATE blog SET blog_title = :title,  blog_body = :body WHERE blog_id = :id");
+    $statement->execute(array(':title' => $title, ':body' => $body, ':id' => $id)); 
+    $_SESSION['note'] = 'Blog post updated!';
+    header('location: /blog/');
+    exit();
+  }
+
+  public static function Delete() {
+    Auth::RequireAdmin();
+    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+    if (!is_csrf_valid()) {
+      header('location: /dashboard');
+      exit();
+    }
+
+    $id = $_POST['id'];
+
+    $statement = $conn->prepare("DELETE FROM blog WHERE blog_id = :id");
+    $statement->execute(array(':id' => $id));
+    $_SESSION['note'] = 'Blog post deleted!';
+    header('location: /blog');
+    exit();
+ }
   public static function DisplayPosts($conn) {
     $blog = BlogController::GetPosts($conn);
 
