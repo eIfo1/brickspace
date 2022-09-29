@@ -39,7 +39,8 @@ post('/admin/blog', function () {
   BlogController::Post();
 });
 // user pages
-page('/dashboard', 'views/pages/dashboard.php');
+page('/dashboard', 'views/pages/user/dashboard.php');
+page('/account/notifications', 'views/pages/user/notifications.php');
 // universal pages
 page('/users', 'views/pages/users.php');
 page('/users/staff', 'views/pages/staff.php');
@@ -54,6 +55,13 @@ get('/support', 'views/pages/support.php');
 
 page('/blog', 'views/pages/blog/dashboard.php');
 page('/blog/post/$id', 'views/pages/blog/post.php');
+page('/blog/edit/$id', 'views/pages/blog/edit.php');
+post('/blog/edit/$id', function() {
+  BlogController::Edit();
+});
+post('/blog/delete/$id', function () {
+  BlogController::Delete();
+});
 // avatar pages
 get('/api/avatar/user/$id', 'api/avatar.php');
 get('/api/avatar/user', 'api/avatar.php');
