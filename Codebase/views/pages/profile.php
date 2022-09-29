@@ -41,27 +41,70 @@ if (!$result) {
       OnlineChecker::onlineLabel($result['user_updated'], true);
       ?>
     </div>
-    <?php 
-      if(!empty($result['user_bio'])) {
-        ?>
-          <div class="card">
-            <h3>
-              About Me
-            </h3>
-            <p>
-              <?php
-              echo $result['user_bio'];
-              ?>
-            </p>
-          </div>
-        <?php 
-      }
+    <?php
+    if (!empty($result['user_bio'])) {
+    ?>
+      <div class="card">
+        <h3>
+          About Me
+        </h3>
+        <p>
+          <?php
+          echo $result['user_bio'];
+          ?>
+        </p>
+      </div>
+    <?php
+    }
     ?>
     <br>
     <div class="card">
       <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
       <br>
       <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
+    </div>
+    <?php
+    if (Auth::Admin()) {
+    ?>
+      <div class="card">
+        <h1 class="center">
+          Moderation Actions
+        </h1>
+        <div class="admin-buttons">
+          <div class="tooltip">
+            <a href="/moderation/ban/user/<?php echo $result['user_name'] ?>"><i class="fa fa-hammer"></i></a>
+            <div class="text">
+              Ban <?php echo $result['user_name'] ?>?
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-clipboard"></i></a>
+            <div class="text">
+              View <?php echo $result['user_name'] ?>'s Logs?
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-user-plus"></i></a>
+            <div class="text">
+              Alternate Account Detection
+            </div>
+          </div>
+          <div class="tooltip">
+            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-soap"></i></a>
+            <div class="text">
+              Scrub
+            </div>
+          </div>
+        </div>
+      </div>
+    <?php
+    }
+    ?>
+  </div>
+  <div class="col-6">
+    <div class="card">
+      <h1>Profile Wall</h1>
+      <p>Want to leave a comment for a user? Leave it here.</p>
     </div>
   </div>
 </div>
