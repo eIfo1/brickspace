@@ -5,11 +5,22 @@ include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\middleware\Auth;
 use brickspace\controller\admin\AlertController;
+use brickspace\controller\auth\BanController;
 use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\NotificationController;
 
+
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
+}
+
+if(BanController::Check($conn) == true) {
+  if($_SERVER['REQUEST_URI'] != "/banned") {
+    header('location: /banned');
+    exit();
+  } else {
+    BanController::Get($conn);
+  }
 }
 
 ?>
