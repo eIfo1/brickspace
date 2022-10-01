@@ -6,12 +6,11 @@ include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 use brickspace\middleware\Auth;
 use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\UserController;
+use brickspace\controller\auth\NotificationController;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
 }
-
-$cubes = UserController::Currency($conn);
 
 ?>
 <!DOCTYPE html>
@@ -128,7 +127,7 @@ $cubes = UserController::Currency($conn);
                   <a href="/account/currency">
                     <i class="fa fa-cube"></i>
                     <?php
-                    echo $cubes;
+                    echo UserController::Currency($conn);
                     ?>
                   </a>
                   <a href="/account/friends/requests">
@@ -140,9 +139,8 @@ $cubes = UserController::Currency($conn);
                   </a>
                   <a href="/account/notifications">
                     <i class="fa fa-bell"></i>
-                    0
                     <?php
-                    // echo NotificationController::Amount(); 
+                    echo NotificationController::Amount($conn); 
                     ?>
                   </a>
                   <a href="/account/messages">
