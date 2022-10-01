@@ -74,6 +74,8 @@ post('/dashboard/status', function() {
   StatusController::Update();
 });
 
+page('/banned', 'views/pages/user/banned.php');
+
 get('/tests/alert', 'views/tests/alert.php');
 
 
