@@ -3,6 +3,9 @@
 namespace brickspace\controller\auth;
 
 class BanController {
+  /**
+   * Checks if the user exists in the banned table
+   */
   public static function Check($conn) {
     // Get user ID from session
     @$id = $_SESSION['UserID'];
@@ -19,9 +22,14 @@ class BanController {
     return true;
   }
 
-  public static function Get($conn) {
+
+  /**
+   * Gets the ban case for the current user
+   */
+  public static function Get($conn, $id = null) {
     // Get user ID from session
-    @$id = $_SESSION['UserID'];
+    if($id == null) $id = $_SESSION['UserID'];
+    
 
     // get ban from db
     $query = $conn->prepare("SELECT * FROM bans WHERE receiver = ?");

@@ -18,8 +18,6 @@ if(BanController::Check($conn) == true) {
   if($_SERVER['REQUEST_URI'] != "/banned") {
     header('location: /banned');
     exit();
-  } else {
-    BanController::Get($conn);
   }
 }
 

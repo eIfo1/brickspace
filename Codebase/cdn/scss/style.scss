@@ -529,13 +529,12 @@ body::-webkit-scrollbar-thumb {
 .alert {
   text-align: center;
   padding: 10px;
-  margin-bottom: 5;
   background: var(--red);
   color: var(--text);
   font-weight: 600;
-
-  svg {
-    text-align: center;
+  &.secondary {
+    border-radius: 5px;
+    margin: 0 5px;
   }
 }
 

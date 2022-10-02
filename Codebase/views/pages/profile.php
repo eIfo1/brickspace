@@ -1,5 +1,6 @@
 <?php
 
+use brickspace\controller\auth\BanController;
 use brickspace\middleware\Auth;
 use brickspace\helpers\OnlineChecker;
 use brickspace\helpers\Time;
@@ -23,6 +24,8 @@ if (!$result) {
   header('location: /user/profile');
   exit();
 }
+$ban = BanController::Get($conn, $result['user_id']);
+
 ?>
 
 <div class="row">
@@ -102,6 +105,15 @@ if (!$result) {
     ?>
   </div>
   <div class="col-6">
+    <?php 
+      if($ban) {
+        ?>  
+        <div class="secondary alert">
+          This user is banned.
+        </div>
+        <?php 
+      }
+    ?>
     <div class="card">
       <h1>Profile Wall</h1>
       <p>Want to leave a comment for a user? Leave it here.</p>
