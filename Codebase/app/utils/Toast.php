@@ -26,6 +26,17 @@ class Toast
     }
   }
 
+  public static function Handle() {
+    if (@$_SESSION['error']) {
+      new Toast($_SESSION['error'], 0);
+      unset($_SESSION['error']);
+    }
+    if (@$_SESSION['note']) {
+      new Toast($_SESSION['note'], 1);
+      unset($_SESSION['note']);
+    }
+  }
+
   private function Note()
   {
     echo <<<HTML

@@ -98,6 +98,14 @@ class BlogController {
   public static function DisplayPosts($conn) {
     $blog = BlogController::GetPosts($conn);
 
+    if(!$blog) {
+      ?>
+      <div class="card">
+        <p>Nothing to see here.</p>
+      </div>
+      <?php 
+    }
+
     foreach ($blog as $post) {
       $user = GetUserByID($conn, $post['blog_creator']);
     ?>

@@ -2,12 +2,6 @@
 use brickspace\middleware\Auth;
 Auth::Deny();
 $name = "Login";
-
-use brickspace\utils\Toast;
-if (@$_SESSION['error']) {
-  new Toast($_SESSION['error'], 0);
-  unset($_SESSION['error']);
-}
 ?>
 
 <div class="row">

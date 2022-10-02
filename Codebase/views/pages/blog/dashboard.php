@@ -1,18 +1,10 @@
 <?php
 
 use brickspace\controller\BlogController;
-use brickspace\helpers\Time;
-use brickspace\utils\Toast;
-
-
 
 $page = SetPagination(@$page);
 
 $name = "Blog";
-if (@$_SESSION['note']) {
-  new Toast($_SESSION['note'], 1);
-  unset($_SESSION['note']);
-}
 
 ?>
 

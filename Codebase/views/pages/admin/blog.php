@@ -5,7 +5,6 @@ use brickspace\middleware\Auth;
 Auth::RequireAdmin();
 
 $name = "Admin";
-
 ?>
 
 <div class="card">

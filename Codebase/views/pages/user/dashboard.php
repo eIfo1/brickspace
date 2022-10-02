@@ -1,8 +1,6 @@
 <?php
 
-use brickspace\controller\auth\StatusController;
 use brickspace\middleware\Auth;
-use brickspace\utils\Toast;
 use brickspace\helpers\Time;
 use brickspace\controller\auth\WallController;
 use brickspace\controller\BlogController;
@@ -10,16 +8,8 @@ use brickspace\controller\BlogController;
 Auth::Require();
 
 $name = "Dashboard";
-if (@$_SESSION['error']) {
-  new Toast($_SESSION['error'], 0);
-  unset($_SESSION['error']);
-}
-if (@$_SESSION['note']) {
-  new Toast($_SESSION['note'], 1);
-  unset($_SESSION['note']);
-}
-$statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");
-$statement->bindParam(':username', $_SESSION['Username'], PDO::PARAM_STR);
+$statement = $conn->prepare("SELECT * FROM users WHERE user_id = :userid");
+$statement->bindParam(':userid', $_SESSION['UserID'], PDO::PARAM_INT);
 $statement->execute();
 $result = $statement->fetch();
 $blog = BlogController::GetPosts($conn);

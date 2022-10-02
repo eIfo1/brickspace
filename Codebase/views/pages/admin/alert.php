@@ -2,21 +2,11 @@
 
 use brickspace\middleware\Auth;
 use brickspace\controller\admin\AlertController;
-use brickspace\utils\Toast;
 
 Auth::RequireAdmin();
 
 $name = "Admin";
 $alert = AlertController::Get($conn);
-
-if (@$_SESSION['error']) {
-  new Toast($_SESSION['error'], 0);
-  unset($_SESSION['error']);
-}
-if (@$_SESSION['note']) {
-  new Toast($_SESSION['note'], 1);
-  unset($_SESSION['note']);
-}
 
 ?>
 

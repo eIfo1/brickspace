@@ -8,14 +8,14 @@ use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\BanController;
 use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\NotificationController;
-
+use brickspace\utils\Toast;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
 }
 
-if(BanController::Check($conn) == true) {
-  if($_SERVER['REQUEST_URI'] != "/banned") {
+if (BanController::Check($conn) == true) {
+  if ($_SERVER['REQUEST_URI'] != "/banned") {
     header('location: /banned');
     exit();
   }
@@ -149,7 +149,7 @@ if(BanController::Check($conn) == true) {
                   <a href="/account/notifications">
                     <i class="fa fa-bell"></i>
                     <?php
-                    echo NotificationController::Amount($conn); 
+                    echo NotificationController::Amount($conn);
                     ?>
                   </a>
                   <a href="/account/messages">
@@ -158,6 +158,11 @@ if(BanController::Check($conn) == true) {
                     <?php
                     // echo MessageController::UnreadAmount(); 
                     ?>
+                  </a>
+                </div>
+                <div class="info">
+                  <a href="/account/settings">
+                    <i class="fa fa-cog"></i>
                   </a>
                 </div>
                 <form action="/logout" method="post">
@@ -193,7 +198,12 @@ if(BanController::Check($conn) == true) {
         ?>
       </nav>
       <div class="container">
-        <?php include($child_view); ?>
+        <?php 
+        
+        include($child_view); 
+        
+        Toast::Handle();
+        ?>
       </div>
     </div>
     <footer>

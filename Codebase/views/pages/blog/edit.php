@@ -2,13 +2,13 @@
 
 use brickspace\controller\BlogController;
 use brickspace\middleware\Auth;
+use brickspace\utils\Toast;
 
 Auth::RequireAdmin();
 
 $name = "Edit Blog Post";
 
 $blog = BlogController::GetPost($conn, $id);
-
 ?>
 
 
