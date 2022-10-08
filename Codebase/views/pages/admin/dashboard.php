@@ -8,14 +8,16 @@ $name = "Admin";
 
 ?>
 
-<div class="card">
-  <div class="row">
-    <div class="col-3">
+<div class="grid-x grid-margin-x">
+  <div class="small-12 large-3">
+    <div class="card">
       <?php
       include('sidebar.php');
       ?>
     </div>
-    <div class="col-9">
+  </div>
+  <div class="small-12 large-9">
+    <div class="card">
       <h1>
         Admin Dashboard
       </h1>

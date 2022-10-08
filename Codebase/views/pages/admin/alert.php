@@ -10,14 +10,16 @@ $alert = AlertController::Get($conn);
 
 ?>
 
-<div class="card">
-  <div class="row">
-    <div class="col-3">
+<div class="grid-x grid-margin-x">
+  <div class="small-12 large-3">
+    <div class="card">
       <?php
       include('sidebar.php');
       ?>
     </div>
-    <div class="col-9">
+  </div>
+  <div class="small-12 large-9">
+    <div class="card">
       <h1>
         Website Alert
       </h1>
@@ -25,21 +27,15 @@ $alert = AlertController::Get($conn);
         <h3 for="alert_text">
           Alert Text
         </h3>
-        <div class="input-container">
-          <i class="fa fa-comment icon"></i>
-          <input class="input-field" type="text" placeholder="Alert message..." name="alert_text" required id="alert_text" value="<?php echo $alert['text']; ?>">
-        </div>
+        <input type="text" placeholder="Alert message..." name="alert_text" required id="alert_text" value="<?php echo $alert['text']; ?>">
         <h3 for="alert_text">
           Alert Link
         </h3>
-        <div class="input-container">
-          <i class="fas fa-external-link-alt icon"></i>
-          <input class="input-field" type="text" placeholder="Alert link..." name="alert_link" id="alert_link" value="<?php echo $alert['link']; ?>">
-        </div>
-        <h3 for=" alert_bool">
+        <input type="text" placeholder="Alert link..." name="alert_link" id="alert_link" value="<?php echo $alert['link']; ?>">
+        <h3 for="alert_bool">
           Alert Settings
         </h3>
-        <select class="form-control" name="alert_bool" id="select">
+        <select name="alert_bool" id="select">
           <option value="1" <?php if ($alert['bool'] == 1) {
                               echo "selected";
                             } ?>>Alert Enabled</option>
@@ -50,7 +46,7 @@ $alert = AlertController::Get($conn);
         <?php
         set_csrf();
         ?>
-        <button type="submit">
+        <button type="submit" class="button">
           Submit
         </button>
         <script>

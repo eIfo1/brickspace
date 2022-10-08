@@ -12,21 +12,18 @@ $blog = BlogController::GetPost($conn, $id);
 ?>
 
 
-  <div class="row">
-    <div class="col-6 col-center">
-      <div class="card">
+<div class="grid-margin-x grid-x">
+  <div class="cell small-12 large-2"></div>
+  <div class="cell auto">
+    <div class="card">
       <h1>
         Edit Blog Post
       </h1>
       <form action="/blog/edit/<?php echo $id; ?>" method="post">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="Title..." value="<?php echo $blog['blog_title'] ?>">
-        </div>
-        <div class="form-group">
-          <label for="content">Body</label>
-          <textarea class="form-control" id="content" name="body" rows="3" placeholder="Body..."><?php echo $blog['blog_body'] ?></textarea>
-        </div>
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title..." value="<?php echo $blog['blog_title'] ?>">
+        <label for="content">Body</label>
+        <textarea class="form-control" id="content" name="body" rows="3" placeholder="Body..."><?php echo $blog['blog_body'] ?></textarea>
         <input type="hidden" value="<?php echo $id ?>" name="id">
         <div id="preview" class="preview">
           <p>Start typing and it will show up here...</p>
@@ -34,7 +31,7 @@ $blog = BlogController::GetPost($conn, $id);
         <?php
         set_csrf();
         ?>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="button primary">Submit</button>
       </form>
       <script>
         // after every keypress, preview the content
@@ -42,6 +39,7 @@ $blog = BlogController::GetPost($conn, $id);
           $('#preview').html($('#content').val());
         });
       </script>
-      </div>
     </div>
   </div>
+  <div class="cell small-12 large-2"></div>
+</div>

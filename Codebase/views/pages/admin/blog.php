@@ -7,14 +7,16 @@ Auth::RequireAdmin();
 $name = "Admin";
 ?>
 
-<div class="card">
-  <div class="row">
-    <div class="col-3">
+<div class="grid-x grid-margin-x">
+  <div class="small-12 large-3">
+    <div class="card">
       <?php
       include('sidebar.php');
       ?>
     </div>
-    <div class="col-9">
+  </div>
+  <div class="small-12 large-9">
+    <div class="card">
       <h1>
         Create Blog Post
       </h1>
@@ -30,10 +32,10 @@ $name = "Admin";
         <div id="preview" class="preview">
           <p>Start typing and it will show up here...</p>
         </div>
-        <?php 
-          set_csrf();
+        <?php
+        set_csrf();
         ?>
-        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+        <button type="submit" name="submit" class="button">Submit</button>
       </form>
       <script>
         // after every keypress, preview the content
@@ -43,4 +45,3 @@ $name = "Admin";
       </script>
     </div>
   </div>
-</div>

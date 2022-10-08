@@ -18,25 +18,23 @@ if (!$result) {
 }
 ?>
 
-<div class="row">
-  <div class="col-6 col-center">
-    <div class="row">
-      <div class="col-6">
-        <a href="/users/staff">
-          <button>STAFF</button>
-        </a>
-      </div>
-    </div>
-    <br>
-    <div class="row">
-      <?php
-        $count = UsersController::Display($result);
-      ?>
-      <div class="col-12">
-        <?php
-        echo HandlePagination($page, '/users/', $count, 8);
-        ?>
-      </div>
-    </div>
+
+
+<div class="grid-x grid-margin-x">
+  <div class="cell large-3 small-12">
+    <a href="/users/staff">
+      <button class="button">STAFF</button>
+    </a>
   </div>
+  <div class="cell auto">
+    <div class="grid-x grid-margin-x">
+      <?php
+      $count = UsersController::Display($result);
+      ?>
+    </div>
+    <?php
+    echo HandlePagination($page, '/users/', $count, 8);
+    ?>
+  </div>
+  <div class="cell large-3 small-12"></div>
 </div>

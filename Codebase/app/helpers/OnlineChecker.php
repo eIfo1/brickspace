@@ -13,17 +13,17 @@ class OnlineChecker {
   public static function onlineLabel($timestamp, $profile = false) {
     if(OnlineChecker::check($timestamp)) {
       if($profile != false) {
-        echo '<div class="online-badge profile" style="float: right">online</div>';
+        echo '<span class="online label">online</span>';
         return;
       }
-      echo '<div class="online-badge" style="float: right">online</div>';
+      echo '<span class="online label" style="float: right">online</span>';
       return;
     } else {
       if ($profile != false) {
-        echo '<div class="offline-badge profile" style="float: right">offline</div>';
+        echo '<span class="offline label">offline</span>';
         return;
       }
-      echo '<div class="offline-badge" style="float: right">offline</div>';
+      echo '<span class="offline label" style="float: right">offline</span>';
       return;
     }
   }

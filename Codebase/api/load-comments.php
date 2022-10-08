@@ -15,7 +15,7 @@ $wall = WallController::GetPosts($conn);
           echo $user['user_name'];
           ?>
         </a> - 
-        <p style="display: inline-block">
+        <p style="display: inline-block; margin: 0;">
           <?php
           echo Time::Elapsed($post['wall_created']);
           ?>

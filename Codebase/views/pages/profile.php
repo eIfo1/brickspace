@@ -27,96 +27,101 @@ if (!$result) {
 $ban = BanController::Get($conn, $result['user_id']);
 
 ?>
-
-<div class="row">
-  <div class="col-4">
-    <div class="ellipsis">
-      <div class="speech-bubble">
-        <?php
-        echo $result['user_status'];
-        ?>
-      </div>
-      <br>
-      <h2 class="title">
-        <?php echo $result['user_name']; ?>
-      </h2>
-      <?php
-      OnlineChecker::onlineLabel($result['user_updated'], true);
-      ?>
-    </div>
-    <?php
-    if (!empty($result['user_bio'])) {
-    ?>
-      <div class="card">
-        <h3>
-          About Me
-        </h3>
-        <p>
+<div class="grid-x grid-margin-x">
+  <div class="cell shrink">
+    <div class="card">
+      <span>
+        <i class="fa fa-quote-left text-secondary"></i>
+        <p style="display: inline-block; margin: 0; font-weight: 600">
           <?php
-          echo $result['user_bio'];
+          echo $result['user_status'];
           ?>
         </p>
-      </div>
-    <?php
-    }
-    ?>
-    <br>
-    <div class="card">
-      <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
-      <br>
-      <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
-    </div>
-    <?php
-    if (Auth::Admin()) {
-    ?>
-      <div class="card">
-        <h1 class="center">
-          Moderation Actions
-        </h1>
-        <div class="admin-buttons">
-          <div class="tooltip">
-            <a href="/moderation/ban/user/<?php echo $result['user_name'] ?>"><i class="fa fa-hammer"></i></a>
-            <div class="text">
-              Ban <?php echo $result['user_name'] ?>?
-            </div>
-          </div>
-          <div class="tooltip">
-            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-clipboard"></i></a>
-            <div class="text">
-              View <?php echo $result['user_name'] ?>'s Logs?
-            </div>
-          </div>
-          <div class="tooltip">
-            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-user-plus"></i></a>
-            <div class="text">
-              Alternate Account Detection
-            </div>
-          </div>
-          <div class="tooltip">
-            <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-soap"></i></a>
-            <div class="text">
-              Scrub
-            </div>
-          </div>
-        </div>
-      </div>
-    <?php
-    }
-    ?>
-  </div>
-  <div class="col-6">
-    <?php 
-      if($ban) {
-        ?>  
-        <div class="secondary alert">
-          This user is banned.
-        </div>
-        <?php 
-      }
-    ?>
-    <div class="card">
-      <h1>Profile Wall</h1>
-      <p>Want to leave a comment for a user? Leave it here.</p>
+        <i class="fa fa-quote-right text-secondary"></i>
+      </span>
     </div>
   </div>
 </div>
+  <div class="grid-x grid-margin-x">
+    <div class="cell large-4 small-12">
+      <div class="card">
+        <span>
+          <?php echo $result['user_name']; ?> <?php
+                                              OnlineChecker::onlineLabel($result['user_updated'], true);
+                                              ?>
+        </span>
+      </div>
+      <?php
+      if (!empty($result['user_bio'])) {
+      ?>
+        <div class="card">
+          <h3>
+            About Me
+          </h3>
+          <p>
+            <?php
+            echo $result['user_bio'];
+            ?>
+          </p>
+        </div>
+      <?php
+      }
+      ?>
+      <div class="card">
+        <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
+        <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
+      </div>
+      <?php
+      if (!Auth::Admin()) {
+      ?>
+        <div class="card">
+          <h1 class="center">
+            Moderation Actions
+          </h1>
+          <div class="admin-buttons">
+            <div class="tooltip">
+              <a href="/moderation/ban/user/<?php echo $result['user_name'] ?>"><i class="fa fa-hammer"></i></a>
+              <div class="text">
+                Ban <?php echo $result['user_name'] ?>?
+              </div>
+            </div>
+            <div class="tooltip">
+              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-clipboard"></i></a>
+              <div class="text">
+                View <?php echo $result['user_name'] ?>'s Logs?
+              </div>
+            </div>
+            <div class="tooltip">
+              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-user-plus"></i></a>
+              <div class="text">
+                Alternate Account Detection
+              </div>
+            </div>
+            <div class="tooltip">
+              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-soap"></i></a>
+              <div class="text">
+                Scrub
+              </div>
+            </div>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
+    </div>
+    <div class="cell large-6 small-12">
+      <?php
+      if ($ban) {
+      ?>
+        <div class="secondary alert">
+          This user is banned.
+        </div>
+      <?php
+      }
+      ?>
+      <div class="card">
+        <h1>Profile Wall</h1>
+        <p>Want to leave a comment for a user? Leave it here.</p>
+      </div>
+    </div>
+  </div>

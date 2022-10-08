@@ -1,29 +1,34 @@
-<?php 
+<?php
 
 namespace brickspace\controller;
+
 use brickspace\middleware\Auth;
 use brickspace\helpers\Time;
 use PDO;
 
-class BlogController {
-  public static function GetPosts($conn) {
+class BlogController
+{
+  public static function GetPosts($conn)
+  {
     $statement = $conn->prepare("SELECT * FROM blog ORDER BY blog_id DESC LIMIT 6");
     $statement->execute();
     $blog = $statement->fetchAll(PDO::FETCH_ASSOC);
     return $blog;
   }
 
-  public static function GetPost($conn, $id) {
+  public static function GetPost($conn, $id)
+  {
     $statement = $conn->prepare("SELECT * FROM blog WHERE blog_id = :id");
     $statement->execute(array(':id' => $id));
     $blog = $statement->fetch(PDO::FETCH_ASSOC);
     return $blog;
   }
 
-  public static function Post() {
+  public static function Post()
+  {
     Auth::RequireAdmin();
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
-    if(!is_csrf_valid()) {
+    if (!is_csrf_valid()) {
       header('location: /dashboard');
       exit();
     }
@@ -55,7 +60,8 @@ class BlogController {
     exit();
   }
 
-  public static function Edit() {
+  public static function Edit()
+  {
     Auth::RequireAdmin();
 
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
@@ -73,13 +79,14 @@ class BlogController {
       exit();
     }
     $statement = $conn->prepare("UPDATE blog SET blog_title = :title,  blog_body = :body WHERE blog_id = :id");
-    $statement->execute(array(':title' => $title, ':body' => $body, ':id' => $id)); 
+    $statement->execute(array(':title' => $title, ':body' => $body, ':id' => $id));
     $_SESSION['note'] = 'Blog post updated!';
     header('location: /blog/');
     exit();
   }
 
-  public static function Delete() {
+  public static function Delete()
+  {
     Auth::RequireAdmin();
     include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
     if (!is_csrf_valid()) {
@@ -94,16 +101,17 @@ class BlogController {
     $_SESSION['note'] = 'Blog post deleted!';
     header('location: /blog');
     exit();
- }
-  public static function DisplayPosts($conn) {
+  }
+  public static function DisplayPosts($conn)
+  {
     $blog = BlogController::GetPosts($conn);
 
-    if(!$blog) {
-      ?>
+    if (!$blog) {
+?>
       <div class="card">
         <p>Nothing to see here.</p>
       </div>
-      <?php 
+    <?php
     }
 
     foreach ($blog as $post) {
@@ -112,21 +120,22 @@ class BlogController {
       <div class="card">
         <div class="ellipsis">
           <a href="/blog/post/<?php echo $post['blog_id']; ?>">
-            <h2 style="display: inline-block;"><i class="fa fa-file"></i> <?php echo $post['blog_title']; ?></h2>
-            <?php
-            if (strtotime($post['blog_created']) > strtotime("-24 hours")) {
-              echo "<span class='badge red'>New</span>";
-            }
-            ?>
+            <span style="display: inline-block;"><i class="fa fa-file"></i> <?php echo $post['blog_title']; ?></span><span> <?php
+                                                                                                                            if (strtotime($post['blog_created']) > strtotime("-24 hours")) {
+                                                                                                                              echo "<div class='label alert'>New</div>";
+                                                                                                                            }
+                                                                                                                            ?></span>
           </a>
           <br>
-          <p class="small" style="margin: 5px 0; margin-top: -6px; display: inline-block;">
+          <small>
             <?php echo Time::Elapsed($post['blog_created']); ?>
-          </p>
+          </small>
         </div>
-        <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a> on <strong><?php echo date("l, F d, Y", strtotime($post['blog_created'])) ?></strong>
+        <span>
+          <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a><strong> on <?php echo date("l, F d, Y", strtotime($post['blog_created'])) ?></strong>
+        </span>
       </div>
-    <?php
+<?php
     }
   }
 }

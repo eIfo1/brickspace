@@ -24,132 +24,77 @@ $blog = BlogController::GetPosts($conn);
     }, 10000);
   });
 </script>
-<div class="card">
-  <h1 class="center">
-    Dashboard
-  </h1>
-</div>
-<div class="row">
-  <div class="col-3">
-    <div class="ellipsis">
-      <div class="speech-bubble">
-        <?php
-        echo $result['user_status'];
-        ?>
-      </div>
-      <br>
-      <div class="card">
-        <img src="/cdn/img/no-file.png" alt="Avatar" style="  display: block;
-  margin-left: auto;
-  margin-right: auto;">
-        <h2 class="center">
-          <?php echo $result['user_name']; ?>
+
+<div class="grid-x grid-padding-x">
+  <div class="cell small-12 large-2"></div>
+  <div class="cell auto">
+    <div class="grid-x grid-padding-x">
+      <div class="cell auto">
+        <h2>
+          <i class="fas fa-tachometer-alt"></i>
+          Dashboard
         </h2>
-      </div>
-      <div class="card">
-        <h2 class="center">
-          User Info
-        </h2>
-        <br>
-        <label>
-          Account Birth: <span class="small" style="float: right;"><?php echo Time::Date($result['user_created']) ?></span>
-        </label>
-        <br>
-        <label>
-          Friends: <span class="small" style="float: right;">Placeholder</span>
-        </label>
-        <br>
-        <label>
-          Wall Posts:
-          <span class="small" style="float: right;">
-            <?php
-            echo WallController::PostAmount($conn, $_SESSION['UserID']);
-            ?>
-          </span>
-        </label>
-      </div>
-    </div>
-  </div>
-  <div class="col-5">
-    <div class="card">
-      <form action="/dashboard/status/" method="POST">
-        <h3>
-          Update Status
-        </h3>
-        <div class="input-container">
-          <i class="fa fa-pencil icon"></i>
-          <input class="input-field" type="text" placeholder="How are you feeling..." name="status" required>
+        <div class="card">
+          <h2>
+            <?php echo $result['user_name'] ?>
+          </h2>
         </div>
-        <?php
-        set_csrf();
-        ?>
-        <button type="submit" name="submit">Post Status</button>
-      </form>
-      <br>
-    </div>
-    <div class="card">
-      <h1>Blog</h1>
-      <p>Website updates and events will show up here.</p>
-    </div>
-    
-    <?php
-    BlogController::DisplayPosts($conn);
-    ?>
-  </div>
-  <div class="col-4">
-    <div class="card">
-      <h1>Your Feed</h1>
-      <p>A place where you can chat to all BrickSpace members!</p>
-      <br>
-      <button id="modal_button">Create Post</button>
-    </div>
-    <div id="comments"></div>
-  </div>
-</div>
-<div id="modal" class="modal">
-  <div class="content">
-    <form action="/dashboard/wall/" method="POST">
-      <div class="modal-container">
-        <h1>
-          Create Wall Post
-        </h1>
-        <input type="text" placeholder="Your wall message here..." name="message" required>
         <br>
+        <h2>
+          <i class="fas fa-rss"></i>
+          Blog
+        </h2>
         <?php
-        set_csrf();
+        BlogController::DisplayPosts($conn);
         ?>
       </div>
-      <div class="buttons">
-        <button class="red" id="close" type="button">Cancel</button>
-        <button type="submit" name="submit">Submit</button>
+      <div class="cell auto">
+        <button class="button right u" data-open="post-modal">
+          <i class="fa fa-plus"></i>
+          Create Post
+        </button>
+        <button class="button right u alert" data-open="status-modal">
+          <i class="far fa-comment-dots"></i>
+          Status
+        </button>
+        <br>
+        <h2>
+          <i class="fa fa-stream"></i>
+          Feed
+        </h2>
+        <div id="comments"></div>
       </div>
-    </form>
+    </div>
   </div>
+  <div class="cell small-12 large-2"></div>
 </div>
 
-<script>
-  var modal = document.getElementById("modal");
-  var btn = document.getElementById("modal_button");
-  var close = document.getElementById("close");
+<div class="reveal" id="post-modal" data-reveal="real" data-animation-in="fade-in" data-animation-out="fade-out">
+  <form action="/dashboard/wall/" method="POST">
+    <h1>
+      Create Wall Post
+    </h1>
+    <input type="text" placeholder="Your wall message here..." name="message" required>
+    <div class="divider"></div>
+    <?php
+    set_csrf();
+    ?>
+    <button class="button alert" id="close" type="button" data-close="post-modal">Cancel</button>
+    <button type="submit" name="submit" class="button success">Submit</button>
+  </form>
+</div>
 
-  function closeModal() {
-    modal.style.opacity = "0";
-    setTimeout(function() {
-      modal.style.display = "none";
-    }, 500);
-  }
-
-  close.onclick = function() {
-    closeModal();
-  }
-
-  btn.onclick = function() {
-    modal.style.display = "block";
-    modal.style.opacity = "1";
-  }
-  window.onclick = function(event) {
-    if (event.target == modal) {
-      closeModal();
-    }
-  }
-</script>
+<div class="reveal" id="status-modal" data-reveal="real" data-animation-in="fade-in" data-animation-out="fade-out">
+  <form action="/dashboard/status/" method="POST">
+    <h1>
+      <i class="far fa-comment-dots"></i> Update Status
+    </h1>
+    <input type="text" placeholder="How are you?" name="status" required>
+    <div class="divider"></div>
+    <?php
+    set_csrf();
+    ?>
+    <button class="button alert" id="close" type="button" data-close="status-modal">Cancel</button>
+    <button type="submit" name="submit" class="button success">Submit</button>
+  </form>
+</div>

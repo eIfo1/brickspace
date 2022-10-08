@@ -1,0 +1,47 @@
+$darkest: rgb(17, 15, 17);
+$darker: rgb(18, 18, 20);
+$dark: rgb(24, 24, 26);
+
+$text: #fff;
+$text-2: rgb(155, 152, 152);
+$text-3: rgb(100, 98, 98);
+
+$blue: #41a4da;
+$red: #fd131f;
+$green: rgb(40, 195, 48);
+$purple: #a200ff;
+
+$blue-2: darken($blue, 5%);
+$red-2: darken($red, 10%);
+$green-2: darken($green, 5%);
+$purple-2: darken($purple, 2.5%);
+
+$shadow: #131313;
+
+$theme-color: $purple;
+
+$small-screen-threshold: 1100px;
+
+:root {
+  --darkest: #{$darkest};
+  --darker: #{$darker};
+  --dark: #{$dark};
+  --text: #{$text};
+  --text-2: #{$text-2};
+  --text-3: #{$text-3};
+
+  --primary: #{$blue};
+  --red: #{$red};
+  --green: #{$green};
+  --purple: #{$purple};
+
+  --blue-2: #{$blue-2};
+  --red-secondary: #{$red-2};
+  --green-secondary: #{$green-2};
+  --purple-2: #{$purple-2};
+
+  --shadow: #{$shadow};
+
+  --theme-color: #{$theme-color};
+  --theme-color-secondary: #{darken($theme-color, 10%)};
+}

@@ -6,8 +6,9 @@ $name = "Banned";
 $ban = BanController::Get($conn);
 ?>
 
-<div class="row">
-  <div class="col-6 col-center">
+<div class="grid-x grid-margin-x">
+  <div class="cell large-3 small-12"></div>
+  <div class="cell auto">
     <div class="card">
       <h1>
         <?php
@@ -18,32 +19,36 @@ $ban = BanController::Get($conn);
         }
         ?>
       </h1>
-      <em>
+      <p>
         Our content monitors have determined that your behaviour here at BrickSpace has been in violation of our Terms of Service.
-      </em>
+      </p>
       <br>
-      <br>
-      <p><strong>Reason:</strong> <em><?php echo $ban['reason']; ?></em></p>
-      <br>
-      <p><strong>Moderator Note:</strong> <em><?php echo $ban['note']; ?></em></p>
+      <p><strong>Reason: </strong><?php echo $ban['reason']; ?></p>
+      <p><strong>Moderator Note: </strong><?php echo $ban['note']; ?></p>
       <?php
       if ($ban['until'] != null) {
       ?>
         <label for="time">
           <strong>Reactivation Time:</strong>
           <?php
-
+  
           echo $ban['until'];
-
+  
           ?>
         </label>
       <?php
       }
       ?>
-      <br>
       <p>
-        If you wish to appeal, please issue a request in our <em>Discord server</em> through the <em>#ban-appeals</em> channel.
+        If you wish to appeal, please issue a request in our <i>Discord server</i> through the <i>#ban-appeals</i> channel.
       </p>
+      <form action="/logout" method="post" style="display: inline-block">
+        <?php set_csrf() ?>
+        <button type="submit" class="logout-button">
+          LOG-OUT
+        </button>
+      </form>
     </div>
   </div>
+  <div class="cell large-3 small-12"></div>
 </div>
