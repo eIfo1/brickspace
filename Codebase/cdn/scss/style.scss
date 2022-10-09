@@ -139,6 +139,14 @@ h6 {
         padding: 10px 15px;
         border-bottom: 1px solid var(--dark);
 
+        .label {
+          line-height: 1.5;
+          background: var(--theme-color);
+          &:hover {
+            cursor: pointer;
+          }
+        }
+
         &:hover {
           background: var(--dark);
         }
@@ -389,7 +397,7 @@ button {
   &.u {
     font-weight: 500;
     text-transform: uppercase;
-    margin: 0 5px!important;
+    margin: 0 5px !important;
 
     i {
       margin-right: 5px;

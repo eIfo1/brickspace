@@ -76,7 +76,7 @@ if (BanController::Check($conn) == true) {
                   <i class="fa fa-bell"></i>
                   <?php echo NotificationController::Amount($conn); ?>
                 </a>
-                <a href="/account/messages">
+                <a href="/account/inbox">
                   <i class="fa fa-envelope"></i>
                   0
                 </a>
@@ -182,6 +182,12 @@ if (BanController::Check($conn) == true) {
                 <div class="sidebar-text">
                   ACCOUNT
                 </div>
+                <li>
+                  <a href="/account/inbox">
+                    <i class="fa fa-envelope"></i>Inbox
+                    <div class="label right">3</div>
+                  </a>
+                </li>
                 <li>
                   <a href="/">
                     <i class="fa fa-cog"></i>Settings

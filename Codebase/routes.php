@@ -43,7 +43,7 @@ page('/dashboard', 'views/pages/user/dashboard.php');
 page('/account/notifications', 'views/pages/placeholder/development.php');
 page('/account/currency', 'views/pages/placeholder/development.php');
 page('/account/friends/requests', 'views/pages/placeholder/development.php');
-page('/account/messages', 'views/pages/placeholder/development.php');
+page('/account/inbox', 'views/pages/placeholder/development.php');
 page('/account/settings', 'views/pages/placeholder/development.php');
 // universal pages
 page('/users', 'views/pages/users.php');
