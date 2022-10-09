@@ -8,7 +8,17 @@ Auth::RequireAdmin();
 
 $name = "Edit Blog Post";
 
+if (!is_numeric($id)) {
+  header('location: /blog');
+  exit();
+}
+
+
 $blog = BlogController::GetPost($conn, $id);
+if (!$blog) {
+  header('location: /blog');
+  exit();
+}
 ?>
 
 
