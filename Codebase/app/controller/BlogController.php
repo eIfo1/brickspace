@@ -8,6 +8,15 @@ use PDO;
 
 class BlogController
 {
+  /**
+   * Gets all the blog (limit 6 in descending order) posts and returns them.
+   * 
+   * @param object $conn The database connection
+   *  
+   * @return array $blog The blog posts
+   * @author gilfoyle
+   *  
+  */
   public static function GetPosts($conn)
   {
     $statement = $conn->prepare("SELECT * FROM blog ORDER BY blog_id DESC LIMIT 6");
@@ -16,6 +25,16 @@ class BlogController
     return $blog;
   }
 
+  /**
+   * Gets a singular blog post.
+   * 
+   * @param object $conn The database connection
+   * @param int $id The post's id
+   *  
+   * @return array $blog The blog post
+   * @author gilfoyle
+   *  
+   */
   public static function GetPost($conn, $id)
   {
     $statement = $conn->prepare("SELECT * FROM blog WHERE blog_id = :id");
@@ -23,7 +42,12 @@ class BlogController
     $blog = $statement->fetch(PDO::FETCH_ASSOC);
     return $blog;
   }
-
+  /**
+   * Posts a blog post. (post request)
+   *
+   * @return void
+   * @author gilfoyle
+   */
   public static function Post()
   {
     Auth::RequireAdmin();
@@ -60,6 +84,12 @@ class BlogController
     exit();
   }
 
+  /**
+   * Edits a blog post. (post request)
+   *
+   * @return void
+   * @author gilfoyle
+   */
   public static function Edit()
   {
     Auth::RequireAdmin();
@@ -85,6 +115,12 @@ class BlogController
     exit();
   }
 
+  /**
+   * Deletes  a blog post. (post request)
+   *
+   * @return void
+   * @author gilfoyle
+   */
   public static function Delete()
   {
     Auth::RequireAdmin();
@@ -102,6 +138,14 @@ class BlogController
     header('location: /blog');
     exit();
   }
+  /**
+   * Displays all blog posts.
+   *
+   * @param $conn The database connection
+   * 
+   * @return void
+   * @author gilfoyle
+   */
   public static function DisplayPosts($conn)
   {
     $blog = BlogController::GetPosts($conn);
