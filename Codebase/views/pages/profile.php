@@ -54,10 +54,10 @@ $ban = BanController::Get($conn, $result['user_id']);
       <?php
       if (!empty($result['user_bio'])) {
       ?>
+      <h4>
+        About Me
+      </h4>
         <div class="card">
-          <h3>
-            About Me
-          </h3>
           <p>
             <?php
             echo $result['user_bio'];
@@ -67,9 +67,18 @@ $ban = BanController::Get($conn, $result['user_id']);
       <?php
       }
       ?>
+      <h4>
+        Statistics
+      </h4>
       <div class="card">
-        <label><strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?></label>
-        <label><strong>User Created:</strong> <?php echo Time::Date($result['user_created']); ?></label>
+        <label>
+          <i class="fa fa-clock"></i>
+          <strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?>
+        </label>
+        <label>
+          <div class="fa fa-calendar"></div>
+          <strong>Registered:</strong> <?php echo Time::DateTime($result['user_created']); ?>
+        </label>
       </div>
       <?php
       if (!Auth::Admin()) {

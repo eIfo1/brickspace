@@ -1,8 +1,9 @@
 <?php
 
 use brickspace\controller\BlogController;
+use brickspace\helpers\Pagination;
 
-$page = SetPagination(@$page);
+$page = Pagination::Set(@$page);
 
 $name = "Blog";
 

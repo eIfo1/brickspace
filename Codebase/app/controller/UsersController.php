@@ -10,8 +10,20 @@ use TypeError;
 
 class UsersController
 {
+  /**
+   * Gets all users.
+   *
+   * @param [type] $conn
+   * @param int $page 
+   * @param boolean $staff Optional, if set to true it selects all admin users.
+   * @return void
+   */
   public static function Get($conn, $page, $staff = 0)
   {
+    if(!is_numeric($page)) {
+      header('location: /users');
+    }
+
     $limit = 8;
     $offset = ($page - 1) * $limit;
     switch ($staff) {
@@ -28,6 +40,12 @@ class UsersController
     $statement->bindParam(':offset', $offset, PDO::PARAM_INT);
     $statement->execute();
     $users = $statement->fetchAll();
+
+    if (!$users) {
+      header('location: /dashboard');
+      exit();
+    }
+
     return $users;
   }
 
@@ -60,5 +78,14 @@ class UsersController
     $statement = $conn->query("SELECT COUNT(*) from users");
     $statement->execute();
     return $statement->fetch()['COUNT(*)'];
+  }
+
+  public static function GetByID($conn, $id) {
+    // use pdo to get user by id
+    $sql = "SELECT * FROM users WHERE user_id = :user_id";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array(':user_id' => $id));
+    $result = $stmt->fetch();
+    return $result;
   }
 }

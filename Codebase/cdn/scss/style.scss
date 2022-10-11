@@ -16,7 +16,6 @@ body {
   font-family: Montserrat;
   color: var(--text);
   background: var(--dark);
-  overflow-x: hidden;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -142,6 +141,7 @@ h6 {
         .label {
           line-height: 1.5;
           background: var(--theme-color);
+
           &:hover {
             cursor: pointer;
           }
@@ -349,6 +349,7 @@ button {
     text-transform: uppercase;
     color: var(--green);
     border-radius: 10px;
+    font-weight: 700;
   }
 }
 
@@ -442,4 +443,49 @@ select {
 
 .text-secondary {
   color: var(--text-2)
+}
+
+
+table {
+  border-radius: 5px;
+  h1, h2, h3, h4, h5, h6, p {
+    margin: 0;
+  }
+
+  h4 {
+    a {
+      color: #fff;
+      &:hover {
+        color: inherit;
+      }
+    }
+  }
+
+  p, label {
+    color: var(--text-2);
+  }
+
+  thead {
+    background: var(--darker);
+    color: #fff;
+    border: 1px solid var(--darkest);
+  }
+
+  tbody {
+    border: 1px solid var(--darkest);
+    tr {
+      width: 100%;
+      transition: 100ms ease all;
+      &:hover {
+        background-color: var(--dark)!important;
+      }
+      &:nth-child(odd) {
+        background-color: var(--darkest);
+      }
+
+      &:nth-child(even) {
+        background-color: var(--darker);
+      }
+    }
+  }
 }

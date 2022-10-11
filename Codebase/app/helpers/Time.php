@@ -36,4 +36,8 @@ class Time {
   public static function Date($stamp) {
     return date("l, F d, Y", strtotime($stamp));
   }
+
+  public static function DateTime($stamp) {
+    return date("l, F d, Y", strtotime($stamp)) . ' at ' . date(" h:i:s A", strtotime($stamp)) . ' EST';
+  }
 }

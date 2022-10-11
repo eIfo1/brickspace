@@ -69,33 +69,13 @@ class AlertController
         </div>
         <div class="auto cell">
           <?php
-          if ($alert['bool'] == 1) {
-            if ($alert['link'] != "") {
+          echo $alert['text'];
           ?>
-              <?php
-              echo $alert['text'];
-              ?>
-              <span>Click <a style="color: #fff; text-decoration: underline;" href="<?php echo $alert['link']; ?>">here</a> to learn more.</span>
-            <?php
-            } else {
-            ?>
-              <div class="site-notification">
-                <div class="grid-x align-middle grid-margin-x">
-                  <div class="shrink cell">
-                    <i class="fa fa-exclamation-circle"></i>
-                  </div>
-                  <div class="auto cell">
-                    <?php
-                    echo $alert['text'];
-                    ?>
-                  </div>
-                  <div class="shrink cell right">
-                    <i class="fa fa-exclamation-circle"></i>
-                  </div>
-                </div>
-              </div>
           <?php
-            }
+          if ($alert['link'] != "") {
+          ?>
+            <span>Click <a style="color: #fff; text-decoration: underline;" href="<?php echo $alert['link']; ?>">here</a> to learn more.</span>
+          <?php
           }
           ?>
         </div>

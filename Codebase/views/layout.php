@@ -1,7 +1,6 @@
 <?php
 ob_start();
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
-include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\middleware\Auth;
 use brickspace\controller\admin\AlertController;
@@ -12,13 +11,7 @@ use brickspace\utils\Toast;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
-}
-
-if (BanController::Check($conn) == true) {
-  if ($_SERVER['REQUEST_URI'] != "/banned") {
-    header('location: /banned');
-    exit();
-  }
+  BanController::Redirect($conn);
 }
 
 ?>
@@ -39,6 +32,10 @@ if (BanController::Check($conn) == true) {
 
   <!-- css -->
   <link rel="stylesheet" href="/cdn/css/style.css">
+
+  <!-- js -->
+
+  <script src="/cdn/js/brickspace.js" defer></script>
 
 
   <!-- jquery -->

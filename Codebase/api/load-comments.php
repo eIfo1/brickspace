@@ -4,9 +4,11 @@ include("$_SERVER[DOCUMENT_ROOT]/app/functions/functions.php");
 
 use brickspace\helpers\Time;
 use brickspace\controller\auth\WallController;
+use brickspace\controller\UsersController;
+
 $wall = WallController::GetPosts($conn);
   foreach ($wall as $post) {
-    $user = GetUserByID($conn, $post['wall_creator']);
+    $user = UsersController::GetByID($conn, $post['wall_creator']);
 ?>
     <div class="card">
       <div class="ellipsis">

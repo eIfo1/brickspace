@@ -7,7 +7,7 @@ $whitelist = array('127.0.0.1', "::1");
 try {
   if (!in_array($_SERVER['REMOTE_ADDR'], $whitelist)) {
     // not valid
-    $conn = new PDO('mysql:host=brickspace-db-do-user-11026856-0.b.db.ondigitalocean.com:25060;port=3309;dbname=defaultdb', 'doadmin', 'AVNS_F7v0091UCWwurZGDMPT');
+    $conn = new PDO('mysql:host=localhost;dbname=1148276', '1148276', '7stw3VET.2br5bX');
     $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
   } else {
     $conn = new PDO("mysql:host=localhost;dbname=forum2", "root", "DatabasePass");
@@ -17,6 +17,7 @@ try {
 } catch (PDOException $e) {
   echo "Connection failed: " . $e->getMessage();
 }
+
 
 // remove error if debug is false
 if ($DEBUG == true) {

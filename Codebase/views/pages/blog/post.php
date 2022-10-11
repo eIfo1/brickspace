@@ -1,6 +1,7 @@
 <?php
 
 use brickspace\controller\BlogController;
+use brickspace\controller\UsersController;
 use brickspace\helpers\Time;
 use brickspace\middleware\Auth;
 
@@ -18,7 +19,7 @@ if (!$blog) {
   exit();
 }
 
-$user = GetUserByID($conn, $blog['blog_creator']);
+$user = UsersController::GetByID($conn, $blog['blog_creator']);
 
 ?>
 

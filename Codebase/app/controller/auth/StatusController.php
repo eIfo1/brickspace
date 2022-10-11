@@ -40,15 +40,4 @@ class StatusController {
     header("Location: /dashboard");
     exit();
   }
-
-  public static function Get() {
-    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
-    Auth::Require();
-    $UserID = $_SESSION['UserID'];
-    // get user_status from users table
-    $statement = $conn->prepare("SELECT user_status FROM users WHERE user_id = :user_id");
-    $statement->execute(array(':user_id' => $UserID));
-    $result = $statement->fetch();
-    return $result['user_status'];
-  }
 }

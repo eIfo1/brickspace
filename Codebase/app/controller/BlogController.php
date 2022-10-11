@@ -159,7 +159,7 @@ class BlogController
     }
 
     foreach ($blog as $post) {
-      $user = GetUserByID($conn, $post['blog_creator']);
+      $user = UsersController::GetByID($conn, $post['blog_creator']);
     ?>
       <div class="card">
         <div class="ellipsis">

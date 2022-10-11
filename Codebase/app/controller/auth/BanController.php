@@ -36,4 +36,13 @@ class BanController {
     $query->execute([$id]);
     return $query->fetch();
   }
+
+  public static function Redirect($conn) {
+    if (BanController::Check($conn) == true) {
+      if ($_SERVER['REQUEST_URI'] != "/banned") {
+        header('location: /banned');
+        exit();
+      }
+    }
+  }
 }

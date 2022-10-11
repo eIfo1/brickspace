@@ -27,9 +27,9 @@ $name = "Admin";
         </div>
         <div class="form-group">
           <label for="content">Body</label>
-          <textarea class="form-control" id="content" name="body" rows="3" placeholder="Body..."></textarea>
+          <textarea class="form-control" id="blog_content" name="body" rows="3" placeholder="Body..."></textarea>
         </div>
-        <div id="preview" class="preview">
+        <div id="blog_preview" class="preview">
           <p>Start typing and it will show up here...</p>
         </div>
         <?php
@@ -37,11 +37,5 @@ $name = "Admin";
         ?>
         <button type="submit" name="submit" class="button">Submit</button>
       </form>
-      <script>
-        // after every keypress, preview the content
-        $('#content').keyup(function() {
-          $('#preview').html($('#content').val());
-        });
-      </script>
     </div>
   </div>

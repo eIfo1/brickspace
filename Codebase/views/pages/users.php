@@ -1,21 +1,16 @@
 <?php
 $name = "Users";
 
-
-use function CommonMark\Render\HTML;
 use brickspace\helpers\OnlineChecker;
 use brickspace\middleware\Auth;
 use brickspace\controller\UsersController;
+use brickspace\helpers\Pagination;
 
-$page = SetPagination(@$page);
+$page = Pagination::Set(@$page);
 
 $result = UsersController::Get($conn, $page, false);
 $count = 1;
 
-if (!$result) {
-  header('location: /dashboard');
-  exit();
-}
 ?>
 
 
@@ -33,7 +28,7 @@ if (!$result) {
       ?>
     </div>
     <?php
-    echo HandlePagination($page, '/users/', $count, 8);
+    echo Pagination::Handle($page, '/users/', $count, 8);
     ?>
   </div>
   <div class="cell large-3 small-12"></div>

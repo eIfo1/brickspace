@@ -45,6 +45,10 @@ page('/account/currency', 'views/pages/placeholder/development.php');
 page('/account/friends/requests', 'views/pages/placeholder/development.php');
 page('/account/inbox', 'views/pages/placeholder/development.php');
 page('/account/settings', 'views/pages/placeholder/development.php');
+// forum 
+
+page('/forum', 'views/pages/forum/index.php');
+
 // universal pages
 page('/users', 'views/pages/users.php');
 page('/users/staff', 'views/pages/staff.php');
@@ -79,8 +83,6 @@ post('/dashboard/status', function() {
 });
 
 page('/banned', 'views/pages/user/banned.php');
-
-get('/tests/alert', 'views/tests/alert.php');
 
 
 

@@ -6,9 +6,10 @@ use function CommonMark\Render\HTML;
 
 use brickspace\controller\UsersController;
 use brickspace\helpers\OnlineChecker;
+use brickspace\helpers\Pagination;
 use brickspace\middleware\Auth;
 
-$page = SetPagination(@$page);
+$page = Pagination::Set(@$page);
 
 $result = UsersController::Get($conn, $page, true);
 $count = 1;
@@ -32,7 +33,7 @@ if (!$result) {
       ?>
     </div>
     <?php
-    echo HandlePagination($page, '/users/staff', $count, 8);
+    echo Pagination::Handle($page, '/users/staff', $count, 8);
     ?>
   </div>
   <div class="cell large-3 small-12"></div>
