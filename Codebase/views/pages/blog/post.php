@@ -39,13 +39,13 @@ $user = UsersController::GetByID($conn, $blog['blog_creator']);
     </div>
     <div class="card">
       <span>Created by <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a> on <strong><?php echo date("l, F d, Y", strtotime($blog['blog_created'])) ?></strong></span>
-      <br>
-      <h4>
-        Admin
-      </h4>
       <?php
       if (Auth::Admin()) {
-      ?>
+        ?>
+        <br>
+        <h4>
+          Admin
+        </h4>
         <form method="POST" action="/blog/delete/<?php echo $id ?>" style="display: inline-block">
           <?php set_csrf(); ?>
           <input type="hidden" name="id" value="<?php echo $id ?>">

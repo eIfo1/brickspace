@@ -169,22 +169,16 @@ bpy.ops.render.render( write_still=True )
 
 $python = "
 $avatarImport
-$hat
-$hat2
 $colors
 $face
-$shirt
 $saveBoiler
 $save
 ";
 
 $python_thumb = "
 $avatarImport
-$hat
-$hat2
 $colors
 $face
-$shirt
 $saveBoiler
 $save_thumb
 ";

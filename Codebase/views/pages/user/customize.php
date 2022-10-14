@@ -28,8 +28,8 @@ $a = UserController::Avatar($conn);
     $colors = [
       "B50600", "C63901", "A8A801", "18AF01", "00D3BE", "000DA0", "A00088",
       "FD0D00", "FF4C01", "FFFF01", "26FC06", "00FFE7", "0014FF", "FF00D9",
-      "FD5043", "FF7E47", "FFFF47", "5FFF47", "47FEF0", "4657FF", "FF48E1",
-      "FFB5B6", "FFC8B4", "FFFAB5", "C3FFB5", "B6FFF4", "B1C2FF", "FFB5F8",
+      "FD5043", "FF7E47", "E7B541", "5FFF47", "0070fa", "4657FF", "FF48E1",
+      "FFB5B6", "FFC8B4", "FFFAB5", "65E72B", "B6FFF4", "B1C2FF", "FFB5F8",
       "C4740C", "ECC494", "7C3C04", "905508", "815117", "944704", "FAD87F",
       "F4F6F7", "C4C6C6", "808282", "626363", "0C1216", "273746", "000000"
     ];

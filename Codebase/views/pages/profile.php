@@ -51,7 +51,7 @@ $ban = BanController::Get($conn, $result['user_id']);
                                               ?>
         </span>
         <br>
-        <img src="/cdn/img/avatar/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" style="padding: 12px;">
+        <img src="/cdn/img/avatar/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" style="padding: 12px;">
       </div>
       <?php
       if (!empty($result['user_bio'])) {

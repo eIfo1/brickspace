@@ -15,12 +15,39 @@ $blog = BlogController::GetPosts($conn);
 
 <script>
   $(document).ready(function() {
-    $("#comments").load("/api/comments");
+    loadComments();
+
     setInterval(() => {
-      $("#comments").load("/api/comments");
-      console.log("Loading messages...");
-    }, 40000000);
+      loadComments();
+    }, 2000);
   });
+
+
+  $(function() {
+    $("#wall").submit(function(e) {
+
+      //prevent Default functionality
+      e.preventDefault();
+
+      //get the action-url of the form
+      var actionurl = e.currentTarget.action;
+
+      //do your own request an handle the results
+      $.ajax({
+        url: actionurl,
+        type: 'post',
+        dataType: 'application/json',
+        data: $("#wall").serialize(),
+      });
+      loadComments();
+    });
+  });
+
+
+  function loadComments() {
+    $("#comments").load("/api/comments");
+    console.log("Loading messages...");
+  }
 </script>
 
 <div class="grid-x grid-padding-x">
@@ -34,7 +61,7 @@ $blog = BlogController::GetPosts($conn);
         </h2>
         <div class="card-container">
           <div class="card card-img">
-            <img src="/cdn/img/avatar/thumbnail/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" class="card-image-top">
+            <img src="/cdn/img/avatar/thumbnail/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" class="card-image-top">
             <h4 class="text-center">
               <?php echo $result['user_name'] ?>
             </h4>
@@ -46,16 +73,12 @@ $blog = BlogController::GetPosts($conn);
           Blog
         </h2>
         <div class="card no-padding">
-        <?php
-        BlogController::DisplayPosts($conn);
-        ?>
+          <?php
+          BlogController::DisplayPosts($conn);
+          ?>
         </div>
       </div>
       <div class="cell auto">
-        <button class="button right u" data-open="post-modal">
-          <i class="fa fa-plus"></i>
-          Create Post
-        </button>
         <button class="button right u alert" data-open="status-modal">
           <i class="far fa-comment-dots"></i>
           Status
@@ -66,27 +89,22 @@ $blog = BlogController::GetPosts($conn);
           Feed
         </h2>
         <div id="comments"></div>
+        <div class="card">
+          <form action="/dashboard/wall/" method="POST" id="wall">
+            <?php
+            set_csrf();
+            ?>
+            <div class="grid-x align-middle align-center">
+              <input type="text" placeholder="Your wall message here..." name="message" required class="input-group-field">
+              <button type="submit" name="submit" class="button success input-group-button" style="border-radius: 0px;">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
   <div class="cell small-12 large-2"></div>
 </div>
-
-<div class="reveal" id="post-modal" data-reveal="real" data-animation-in="fade-in" data-animation-out="fade-out">
-  <form action="/dashboard/wall/" method="POST">
-    <h1>
-      Create Wall Post
-    </h1>
-    <input type="text" placeholder="Your wall message here..." name="message" required>
-    <div class="divider"></div>
-    <?php
-    set_csrf();
-    ?>
-    <button class="button alert" id="close" type="button" data-close="post-modal">Cancel</button>
-    <button type="submit" name="submit" class="button success">Submit</button>
-  </form>
-</div>
-
 <div class="reveal" id="status-modal" data-reveal="real" data-animation-in="fade-in" data-animation-out="fade-out">
   <form action="/dashboard/status/" method="POST">
     <h1>
