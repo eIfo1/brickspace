@@ -13,7 +13,7 @@ body {
 }
 
 body {
-  font-family: Montserrat;
+  font-family: Quicksand;
   color: var(--text);
   background: var(--dark);
 
@@ -132,7 +132,7 @@ h6 {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    text-overflow:ellipsis;
+    text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
 
@@ -324,6 +324,10 @@ screen and (min-width: 1024px) {
   border-color: var(--darkest);
   margin: 5px;
   border-radius: 5px;
+
+  &.no-padding {
+    padding: 0px;
+  }
 
   label {
     color: inherit;
@@ -568,10 +572,17 @@ table {
     margin-left: auto;
   }
 
-  div {
+  .random-users-flex-thing {
     display: flex;
     align-items: center;
   }
+}
+
+.text-center-vh {
+  height: 100%;
+  display: grid;
+  place-items: center;
+  font-size: 32px;
 }
 
 img {
@@ -583,13 +594,14 @@ img {
   width: 50px;
   height: 50px;
   position: relative;
+
   img {
     height: 100%;
     width: 100%;
     border-radius: 50%;
     margin-right: 15px;
   }
-  
+
   .status-circle {
     width: 15px;
     height: 15px;
@@ -599,8 +611,28 @@ img {
     bottom: 0;
     right: 0;
     position: absolute;
+
     &.online {
       background-color: lime;
     }
   }
+}
+
+.card-img {
+  margin-top: 30px;
+  padding-top: 30px;
+  position: relative;
+  display: flex;
+  overflow: visible;
+}
+
+.card-image-top {
+  border: 2px solid var(--darkest);
+  background-color: var(--darker) !important;
+  position: absolute;
+  top: -30px;
+  left: 50%;
+  margin-left: -30px;
+  width: 60px !important;
+  height: 60px;
 }

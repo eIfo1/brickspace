@@ -32,20 +32,24 @@ $blog = BlogController::GetPosts($conn);
           <i class="fas fa-tachometer-alt"></i>
           Dashboard
         </h2>
-        <div class="card">
-          <h4 class="text-center">
-            <?php echo $result['user_name'] ?>
-          </h4>
-          <img src="/cdn/img/avatar/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" style="padding: 12px; width: 150px; margin-left: auto; margin-right: auto;">
+        <div class="card-container">
+          <div class="card card-img">
+            <img src="/cdn/img/avatar/thumbnail/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" class="card-image-top">
+            <h4 class="text-center">
+              <?php echo $result['user_name'] ?>
+            </h4>
+          </div>
         </div>
         <br>
         <h2>
           <i class="fas fa-rss"></i>
           Blog
         </h2>
+        <div class="card no-padding">
         <?php
         BlogController::DisplayPosts($conn);
         ?>
+        </div>
       </div>
       <div class="cell auto">
         <button class="button right u" data-open="post-modal">

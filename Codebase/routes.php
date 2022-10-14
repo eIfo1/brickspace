@@ -13,7 +13,7 @@ use brickspace\controller\BlogController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
-page('/', 'views/pages/landing.php');
+get('/', 'views/pages/landing.php');
 // user controls
 page('/login', 'views/pages/login.php');
 post('/login', function() {

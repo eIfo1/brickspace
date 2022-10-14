@@ -51,17 +51,17 @@ hat2.active_material = hat2Mat
 
 
 bpy.data.objects["Torso"].select = True
-bpy.data.objects["Torso"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["Torso"].active_material.diffuse_color = hex_to_rgb("65E72B")
 bpy.data.objects["Head"].select = True
-bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("E7B541")
 bpy.data.objects["LeftArm"].select = True
-bpy.data.objects["LeftArm"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["LeftArm"].active_material.diffuse_color = hex_to_rgb("E7B541")
 bpy.data.objects["RightArm"].select = True
-bpy.data.objects["RightArm"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["RightArm"].active_material.diffuse_color = hex_to_rgb("E7B541")
 bpy.data.objects["LeftLeg"].select = True
-bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("0014FF")
+bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("16ABE7")
 bpy.data.objects["RightLeg"].select = True
-bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("0014FF")
+bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("16ABE7")
 
 
 HeadImg = bpy.data.images.load(filepath="C:/xampp/htdocs/robloxclone/Codebase/cdn/img/face.png")
@@ -109,6 +109,6 @@ obj.location.x = 2.19646
 obj.location.y = -4.36904
 obj.location.z = 8.64529
 
-bpy.data.scenes["Scene"].render.filepath = "C:/xampp/htdocs/robloxclone/Codebase/cdn/img/avatar/thumbnail/c4ca4238a0b923820dcc509a6f75849b.png"
+bpy.data.scenes["Scene"].render.filepath = "C:/xampp/htdocs/robloxclone/Codebase/cdn/img/avatar/thumbnail/c81e728d9d4c2f636f067f89cc14862c.png"
 bpy.ops.render.render( write_still=True )
 
