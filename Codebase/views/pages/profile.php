@@ -43,13 +43,15 @@ $ban = BanController::Get($conn, $result['user_id']);
   </div>
 </div>
   <div class="grid-x grid-margin-x">
-    <div class="cell large-4 small-12">
+    <div class="cell large-3 small-12">
       <div class="card">
         <span>
           <?php echo $result['user_name']; ?> <?php
                                               OnlineChecker::onlineLabel($result['user_updated'], true);
                                               ?>
         </span>
+        <br>
+        <img src="/cdn/img/avatar/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" style="padding: 12px;">
       </div>
       <?php
       if (!empty($result['user_bio'])) {
@@ -73,50 +75,13 @@ $ban = BanController::Get($conn, $result['user_id']);
       <div class="card">
         <label>
           <i class="fa fa-clock"></i>
-          <strong>Last Online:</strong> <?php echo Time::Elapsed($result['user_updated']); ?>
+          <strong>Last Online:</strong> <small><?php echo Time::Elapsed($result['user_updated']); ?></small>
         </label>
         <label>
           <div class="fa fa-calendar"></div>
-          <strong>Registered:</strong> <?php echo Time::DateTime($result['user_created']); ?>
+          <strong>Registered:</strong> <small><?php echo Time::DateTime($result['user_created']); ?></small>
         </label>
       </div>
-      <?php
-      if (!Auth::Admin()) {
-      ?>
-        <div class="card">
-          <h1 class="center">
-            Moderation Actions
-          </h1>
-          <div class="admin-buttons">
-            <div class="tooltip">
-              <a href="/moderation/ban/user/<?php echo $result['user_name'] ?>"><i class="fa fa-hammer"></i></a>
-              <div class="text">
-                Ban <?php echo $result['user_name'] ?>?
-              </div>
-            </div>
-            <div class="tooltip">
-              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-clipboard"></i></a>
-              <div class="text">
-                View <?php echo $result['user_name'] ?>'s Logs?
-              </div>
-            </div>
-            <div class="tooltip">
-              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-user-plus"></i></a>
-              <div class="text">
-                Alternate Account Detection
-              </div>
-            </div>
-            <div class="tooltip">
-              <a href="/moderation/logs/user/<?php echo $result['user_name'] ?>"><i class="fa fa-soap"></i></a>
-              <div class="text">
-                Scrub
-              </div>
-            </div>
-          </div>
-        </div>
-      <?php
-      }
-      ?>
     </div>
     <div class="cell large-6 small-12">
       <?php

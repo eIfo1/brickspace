@@ -3,7 +3,7 @@
 namespace brickspace\helpers;
 
 class OnlineChecker {
-  private static function check($timestamp) {
+  public static function check($timestamp) {
     if (strtotime($timestamp) > strtotime("-120 seconds")) {
       return true;
     }
@@ -13,17 +13,17 @@ class OnlineChecker {
   public static function onlineLabel($timestamp, $profile = false) {
     if(OnlineChecker::check($timestamp)) {
       if($profile != false) {
-        echo '<span class="online label">online</span>';
+        echo '<span class="online label right">online</span>';
         return;
       }
-      echo '<span class="online label" style="float: right">online</span>';
+      echo '<span class="online label right">online</span>';
       return;
     } else {
       if ($profile != false) {
-        echo '<span class="offline label">offline</span>';
+        echo '<span class="offline label right">offline</span>';
         return;
       }
-      echo '<span class="offline label" style="float: right">offline</span>';
+      echo '<span class="offline label right">offline</span>';
       return;
     }
   }

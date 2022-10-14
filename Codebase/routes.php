@@ -7,6 +7,7 @@ use brickspace\controller\guest\LoginController;
 use brickspace\controller\guest\RegisterController;
 use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\StatusController;
+use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\WallController;
 use brickspace\controller\BlogController;
 
@@ -45,6 +46,10 @@ page('/account/currency', 'views/pages/placeholder/development.php');
 page('/account/friends/requests', 'views/pages/placeholder/development.php');
 page('/account/inbox', 'views/pages/placeholder/development.php');
 page('/account/settings', 'views/pages/placeholder/development.php');
+page('/account/customize', 'views/pages/user/customize.php');
+post('/account/customize', function() {
+  UserController::Edit_Avatar();
+});
 // forum 
 
 page('/forum', 'views/pages/forum/index.php');
@@ -70,10 +75,14 @@ post('/blog/edit/$id', function() {
 post('/blog/delete/$id', function () {
   BlogController::Delete();
 });
-// avatar pages
-get('/api/avatar/user/$id', 'api/avatar.php');
-get('/api/avatar/user', 'api/avatar.php');
+// api routes pages
+get('/api/account/avatar', 'api/avatar/avatar.php');
+post('/api/account/avatar/color', 'api/avatar/color.php');
+get('/api/account/avatar/color', 'api/avatar/color.php');
 get('/api/comments', 'api/load-comments.php');
+
+get('/api/renderer/$id', 'renderer/render.php');
+
 // post pages
 post('/dashboard/wall', function() {
   WallController::Post();

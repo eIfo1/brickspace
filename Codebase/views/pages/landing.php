@@ -10,6 +10,9 @@ $name = "Landing";
   <h1 class="text-center">
     BrickSpace
   </h1>
+  <p class="text-center">
+    <strong>For users, by users.</strong>
+  </p>
 </div>
 <div class="grid-x">
   <div class="small-12 large-4">

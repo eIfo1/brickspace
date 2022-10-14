@@ -7,12 +7,16 @@ use brickspace\controller\admin\AlertController;
 use brickspace\controller\auth\BanController;
 use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\NotificationController;
+use brickspace\controller\UsersController;
 use brickspace\utils\Toast;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
+  // if banned redirect
   BanController::Redirect($conn);
+  $u = UsersController::GetByID($conn, $_SESSION['UserID']);
 }
+
 
 ?>
 <!DOCTYPE html>
@@ -28,6 +32,8 @@ if (Auth::Auth()) {
   <!-- foundation -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css">
+
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat&amp;display=swap" rel="stylesheet">
 
 
   <!-- css -->
@@ -82,6 +88,9 @@ if (Auth::Auth()) {
                 <a href="/account/settings">
                   <i class="fa fa-cog"></i>
                 </a>
+                <a href="/account/customize">
+                  <i class="fa fa-user-edit"></i>
+                </a>
               </div>
               <form action="/logout" method="post" style="display: inline-block">
                 <?php set_csrf() ?>
@@ -114,9 +123,9 @@ if (Auth::Auth()) {
               <?php
               if (Auth::Auth()) {
               ?>
-                <div class="sidebar-text">
+                <div class="sidebar-text-profile">
                   <a href="/user/profile">
-                    <i class="fa fa-user"></i>
+                    <img src="/cdn/img/avatar/thumbnail/<?php echo $u['avatar_link']; ?>.png" alt="avatar" class="avatar_thumbnail">
                     <?php echo $_SESSION['Username'] ?>
                   </a>
                 </div>
@@ -140,8 +149,8 @@ if (Auth::Auth()) {
                 </a>
               </li>
               <li>
-                <a href="/market">
-                  <i class="fa fa-shopping-cart"></i>Market
+                <a href="/shop">
+                  <i class="fa fa-shopping-cart"></i>Shop
                 </a>
               </li>
               <li>
@@ -186,6 +195,11 @@ if (Auth::Auth()) {
                   </a>
                 </li>
                 <li>
+                  <a href="/account/customize">
+                    <i class="fa fa-user-edit"></i>Customize
+                  </a>
+                </li>
+                <li>
                   <a href="/">
                     <i class="fa fa-cog"></i>Settings
                   </a>
@@ -206,8 +220,12 @@ if (Auth::Auth()) {
         <?php
         Toast::Handle();
         AlertController::Display($conn);
-        include($child_view);
         ?>
+        <div class="content">
+          <?php
+          include($child_view);
+          ?>
+        </div>
       </div>
     </div>
   </div>

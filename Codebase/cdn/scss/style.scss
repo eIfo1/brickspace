@@ -122,6 +122,27 @@ h6 {
     border-bottom: 1px solid var(--dark);
   }
 
+  .sidebar-text-profile {
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-top: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
+    img {
+      width: 25px;
+      border: 1px solid var(--dark);
+      background: var(--dark);
+    }
+  }
+
   ul {
     list-style: none;
     margin: 0;
@@ -162,6 +183,20 @@ h6 {
     margin-top: $navbar-height;
   }
 }
+
+.frame {
+  position: relative;
+  width: auto;
+
+  .normal_thumbnail {
+    margin-top: auto;
+    margin-bottom: auto;
+    border-radius: 50px;
+    border: 2px solid var(--dark);
+    background-color: var(--dark);
+  }
+}
+
 
 .admin-links {
   ul {
@@ -448,20 +483,29 @@ select {
 
 table {
   border-radius: 5px;
-  h1, h2, h3, h4, h5, h6, p {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p {
     margin: 0;
   }
 
   h4 {
     a {
       color: #fff;
+
       &:hover {
         color: inherit;
       }
     }
   }
 
-  p, label {
+  p,
+  label {
     color: var(--text-2);
   }
 
@@ -473,12 +517,15 @@ table {
 
   tbody {
     border: 1px solid var(--darkest);
+
     tr {
       width: 100%;
       transition: 100ms ease all;
+
       &:hover {
-        background-color: var(--dark)!important;
+        background-color: var(--dark) !important;
       }
+
       &:nth-child(odd) {
         background-color: var(--darkest);
       }
@@ -486,6 +533,74 @@ table {
       &:nth-child(even) {
         background-color: var(--darker);
       }
+    }
+  }
+}
+
+.content {
+  animation: fade 1s;
+}
+
+@keyframes fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+.avatar_thumbnail {
+  width: 35px;
+  border-radius: 50px;
+  border: 1px solid var(--darkest);
+  float: left !important;
+  display: block;
+  margin-right: 10px;
+}
+
+.ellipsis {
+  display: block;
+  align-items: center;
+
+  .label {
+    margin-left: auto;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+  }
+}
+
+img {
+  background: var(--dark) !important;
+  border-radius: 12px;
+}
+
+.icon-container {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  img {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+    margin-right: 15px;
+  }
+  
+  .status-circle {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: grey;
+    border: 2px solid var(--darkest);
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    &.online {
+      background-color: lime;
     }
   }
 }

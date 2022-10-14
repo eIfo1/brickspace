@@ -4,14 +4,12 @@ use brickspace\middleware\Auth;
 use brickspace\helpers\Time;
 use brickspace\controller\auth\WallController;
 use brickspace\controller\BlogController;
+use brickspace\controller\UsersController;
 
 Auth::Require();
 
 $name = "Dashboard";
-$statement = $conn->prepare("SELECT * FROM users WHERE user_id = :userid");
-$statement->bindParam(':userid', $_SESSION['UserID'], PDO::PARAM_INT);
-$statement->execute();
-$result = $statement->fetch();
+$result = UsersController::GetByID($conn, $_SESSION['UserID']);
 $blog = BlogController::GetPosts($conn);
 ?>
 
@@ -21,7 +19,7 @@ $blog = BlogController::GetPosts($conn);
     setInterval(() => {
       $("#comments").load("/api/comments");
       console.log("Loading messages...");
-    }, 10000);
+    }, 40000000);
   });
 </script>
 
@@ -35,9 +33,10 @@ $blog = BlogController::GetPosts($conn);
           Dashboard
         </h2>
         <div class="card">
-          <h2>
+          <h4 class="text-center">
             <?php echo $result['user_name'] ?>
-          </h2>
+          </h4>
+          <img src="/cdn/img/avatar/<?php echo md5($result['user_id']) ?>.png" alt="Avatar" style="padding: 12px; width: 150px; margin-left: auto; margin-right: auto;">
         </div>
         <br>
         <h2>

@@ -21,14 +21,10 @@ $name = "Admin";
         Create Blog Post
       </h1>
       <form action="/admin/blog/" method="post">
-        <div class="form-group">
-          <label for="title">Title</label>
-          <input type="text" class="form-control" id="title" name="title" placeholder="Title...">
-        </div>
-        <div class="form-group">
-          <label for="content">Body</label>
-          <textarea class="form-control" id="blog_content" name="body" rows="3" placeholder="Body..."></textarea>
-        </div>
+        <label for="title">Title</label>
+        <input type="text" class="form-control" id="title" name="title" placeholder="Title...">
+        <label for="content">Body</label>
+        <textarea class="form-control" id="blog_content" name="body" rows="3" placeholder="Body..."></textarea>
         <div id="blog_preview" class="preview">
           <p>Start typing and it will show up here...</p>
         </div>
