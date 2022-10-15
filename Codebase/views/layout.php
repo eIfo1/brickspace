@@ -127,7 +127,7 @@ if (Auth::Auth()) {
               ?>
                 <div class="sidebar-text-profile">
                   <a href="/user/profile">
-                    <img src="/cdn/img/avatar/thumbnail/<?php echo $u['avatar_link']; ?>.png" alt="avatar" class="avatar_thumbnail">
+                    <img src="/cdn/img/avatar/thumbnail/<?php echo $u['avatar_link']; ?>.png?<?php echo rand(1, 500) ?>" alt="avatar" class="avatar_thumbnail">
                     <?php echo $_SESSION['Username'] ?>
                   </a>
                 </div>

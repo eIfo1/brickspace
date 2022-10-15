@@ -53,6 +53,7 @@ post('/account/customize', function() {
 // forum 
 
 page('/forum', 'views/pages/forum/index.php');
+page('/forum/category/$id', 'views/pages/forum/category.php');
 
 // universal pages
 page('/users', 'views/pages/users.php');
@@ -63,6 +64,8 @@ page('/users/staff/$page', 'views/pages/staff.php');
 
 page('/user/profile/$username', 'views/pages/profile.php');
 page('/user/profile', 'views/pages/profile.php');
+
+page('/shop', 'views/pages/shop/index.php');
 
 get('/support', 'views/pages/support.php');
 

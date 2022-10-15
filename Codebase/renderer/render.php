@@ -32,7 +32,7 @@ from bpy import context
 from mathutils import Euler
 import math
 
-bpy.ops.wm.open_mainfile(filepath="' . $serverRoot . '/renderer/res/avatar.blend")
+bpy.ops.wm.open_mainfile(filepath="' . $serverRoot . '/renderer/res/avatar2.blend")
 def hex_to_rgb(value):
     gamma = 2.05
     lv = len(value)
@@ -170,6 +170,10 @@ bpy.ops.render.render( write_still=True )
 $python = "
 $avatarImport
 $colors
+$hat
+$hat2
+$shirt
+$pants
 $face
 $saveBoiler
 $save
@@ -178,6 +182,10 @@ $save
 $python_thumb = "
 $avatarImport
 $colors
+$hat
+$hat2
+$shirt
+$pants
 $face
 $saveBoiler
 $save_thumb

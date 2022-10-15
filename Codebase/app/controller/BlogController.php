@@ -146,8 +146,7 @@ class BlogController
    * @return void
    * @author gilfoyle
    */
-  public static function DisplayPosts($conn)
-  {
+  public static function DisplayPosts_Dashboard($conn) {
     $blog = BlogController::GetPosts($conn);
 
     if (!$blog) {
@@ -177,7 +176,41 @@ class BlogController
         </div>
       </div>
       <br>
-      <div class="divider"></div>
+    <?php
+    }
+  }
+  
+  public static function DisplayPosts($conn)
+  {
+    $blog = BlogController::GetPosts($conn);
+
+    if (!$blog) {
+    ?>
+      <div class="card">
+        <p>Nothing to see here.</p>
+      </div>
+    <?php
+    }
+
+    foreach ($blog as $post) {
+      $user = UsersController::GetByID($conn, $post['blog_creator']);
+    ?>
+      <div class="card">
+        <div class="grid-x">
+          <div class="cell large-2 small-2">
+            <div class="text-center-vh">
+              <i class="fa fa-rss-square" style="color: orange;"></i>
+            </div>
+          </div>
+          <div class="cell large-10 small-10">
+            <a href="/blog/post/<?php echo $post['blog_id']; ?>">
+              <span style="display: inline-block;"><?php echo $post['blog_title']; ?></span>
+            </a>
+            <br>
+            <span>Created by <a href="/user/profile/<?php echo $user['user_name']; ?>"><?php echo $user['user_name']; ?></a></span>
+          </div>
+        </div>
+      </div>
 <?php
     }
   }

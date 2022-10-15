@@ -636,3 +636,48 @@ img {
   width: 60px !important;
   height: 60px;
 }
+
+.full-width {
+  width: 100%;
+}
+
+.vertical-menu {
+  list-style-type: none;
+  margin: 0;
+  margin-top: 12px;
+}
+
+.shop-button {
+  border-radius: 5px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+
+  button {
+    padding: 12px !important;
+    background: var(--dark) !important;
+    border-bottom: 2px solid var(--dark);
+    border-radius: 5px;
+    margin-bottom: 5px!important;
+    text-align: left;
+    font-weight: 600;
+
+    i {
+      margin-right: 5px;
+    }
+
+    &.active {
+      border-bottom: 2px solid var(--theme-color);
+    }
+
+    &:hover {
+      border-bottom: 2px solid var(--theme-color);
+    }
+  }
+}
+
+.market-card {
+  background: var(--dark);
+  margin: 2px;
+  padding: 12px;
+}

@@ -49,4 +49,19 @@ class ForumController
     $n = $statement->fetch(PDO::FETCH_ASSOC);
     return $n["COUNT(*)"];
   }
+
+  public static function GetPosts($conn, $id) {
+    $statement = $conn->prepare("SELECT * FROM posts WHERE post_cat = :id");
+    $statement->execute([':id' => $id]);
+    $cat = $statement->fetchAll(PDO::FETCH_ASSOC);
+    return $cat;
+  }
+
+  public static function GetCategory($conn, $id)
+  {
+    $statement = $conn->prepare("SELECT * FROM categories WHERE cat_id = :id");
+    $statement->execute([':id' => $id]);
+    $cat = $statement->fetch(PDO::FETCH_ASSOC);
+    return $cat;
+  }
 }

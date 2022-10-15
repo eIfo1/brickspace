@@ -3,7 +3,7 @@
 use brickspace\controller\auth\UserController;
 use brickspace\middleware\Auth;
 
-require("REST_api.php");
+require($_SERVER['DOCUMENT_ROOT'] . "/api/REST_api.php");
 if(Auth::Auth()) {
   if (isset($_POST["limb"]) && isset($_POST["hex"])) {
     try {

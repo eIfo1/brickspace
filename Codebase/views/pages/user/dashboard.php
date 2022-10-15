@@ -39,7 +39,7 @@ $blog = BlogController::GetPosts($conn);
         dataType: 'application/json',
         data: $("#wall").serialize(),
       });
-      loadComments();
+      loadComments()
     });
   });
 
@@ -74,7 +74,7 @@ $blog = BlogController::GetPosts($conn);
         </h2>
         <div class="card no-padding">
           <?php
-          BlogController::DisplayPosts($conn);
+          BlogController::DisplayPosts_Dashboard($conn);
           ?>
         </div>
       </div>

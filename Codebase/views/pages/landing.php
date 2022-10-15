@@ -23,6 +23,9 @@ $c = UsersController::Count($conn);
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="keywords" content="game, sandbox, 3d sandbox, 3d avatars, forums">
+  <meta name="description" content="A 3D sandbox community with 4+ users. Join a community of players that are foruming, shopping, customizing, and so much more.">
+  <meta name="author" content="gilfoyle">
 
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
 
@@ -55,8 +58,8 @@ $c = UsersController::Count($conn);
       border-radius: 5px !important;
     }
 
-    *{
-      font-family: quicksand!important;
+    * {
+      font-family: quicksand !important;
     }
 
     .site-margin {

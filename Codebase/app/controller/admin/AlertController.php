@@ -64,7 +64,7 @@ class AlertController
 ?>
     <div class="site-notification">
       <div class="grid-x align-middle grid-margin-x">
-        <div class="shrink cell">
+        <div class="shrink cell show-for-large">
           <i class="fa fa-exclamation-circle"></i>
         </div>
         <div class="auto cell">
@@ -79,7 +79,7 @@ class AlertController
           }
           ?>
         </div>
-        <div class="shrink cell right">
+        <div class="shrink cell right show-for-large">
           <i class="fa fa-exclamation-circle"></i>
         </div>
       </div>
