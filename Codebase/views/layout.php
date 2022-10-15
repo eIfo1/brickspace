@@ -15,6 +15,7 @@ if (Auth::Auth()) {
   // if banned redirect
   BanController::Redirect($conn);
   $u = UsersController::GetByID($conn, $_SESSION['UserID']);
+  UserController::Payout($conn);
 }
 
 
@@ -242,34 +243,34 @@ if (Auth::Auth()) {
               <div class="footer-title">NAVIGATE</div>
               <ul class="footer-links">
                 <li><a href="/">Home</a></li>
-                <li><a href="/market">Store</a></li>
+                <li><a href="/shop">Shop</a></li>
                 <li><a href="/forum">Forum</a></li>
-                <li><a href="/upgrade">Upgrade</a></li>
+                <li><a href="/account/customize">Customize</a></li>
               </ul>
             </div>
             <div class="large-2 large-offset-1 medium-3 medium-offset-0 small-4 small-offset-1 cell">
               <div class="footer-title">ABOUT</div>
               <ul class="footer-links">
-                <li><a href="/terms-of-service">Terms of Service</a></li>
+                <li><a href="/site/terms-of-service">Terms of Service</a></li>
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="/about">About Us</a></li>
+                <li><a href="/about-us">About Us</a></li>
                 <li><a href="/blog">Blog</a></li>
               </ul>
             </div>
             <div class="large-2 large-offset-1 medium-3 medium-offset-0 small-4 small-offset-1 cell">
               <div class="footer-title">SUPPORT</div>
               <ul class="footer-links">
-                <li><a href="/support">Support</a></li>
-                <li><a href="/market">Help Center</a></li>
-                <li><a href="/forum">Work With Us</a></li>
-                <li><a href="/upgrade">Upgrade</a></li>
+                <li><a href="/site/donate">Donate</a></li>
+                <li><a href="/site/support">Help Center</a></li>
+                <li><a href="/site/hiring-center">Work With Us</a></li>
+                <li><a href="/site/contact">Contact Us</a></li>
               </ul>
             </div>
             <div class="large-2 large-offset-1 medium-3 medium-offset-0 small-4 small-offset-1 cell">
               <div class="footer-title">COMMUNITY</div>
               <ul class="footer-links">
                 <li><a href="/upgrade">Forum</a></li>
-                <li><a href="/">Discord</a></li>
+                <li><a href="https://discord.gg/YNXCx6Ph94">Discord</a></li>
                 <li><a href="/market">Twitter</a></li>
                 <li><a href="/forum">Youtube</a></li>
               </ul>

@@ -4,6 +4,11 @@ use brickspace\controller\auth\BanController;
 
 $name = "Banned";
 $ban = BanController::Get($conn);
+
+if(!$ban) {
+  header('location: /dashboard');
+  die;
+}
 ?>
 
 <div class="grid-x grid-margin-x">

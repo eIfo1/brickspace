@@ -67,7 +67,7 @@ page('/user/profile', 'views/pages/profile.php');
 
 page('/shop', 'views/pages/shop/index.php');
 
-get('/support', 'views/pages/support.php');
+get('/site/donate', 'views/pages/support.php');
 
 page('/blog', 'views/pages/blog/dashboard.php');
 page('/blog/post/$id', 'views/pages/blog/post.php');
@@ -99,6 +99,6 @@ page('/banned', 'views/pages/user/banned.php');
 
 
 // 404
-any('/not-found', 'views/errors/404.php');
+page('/not-found', 'views/errors/404.php');
 
 

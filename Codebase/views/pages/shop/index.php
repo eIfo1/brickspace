@@ -7,7 +7,7 @@ $name = "Shop";
 ?>
 
 <div class="card">
-  <h4>Market</h4>
+  <h4>Shop</h4>
   <div class="grid-x grid-margin-x">
     <div class="cell large-2 small-12">
       <?php

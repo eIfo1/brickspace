@@ -15,6 +15,23 @@ class UserController {
     }
   }
 
+  public static function Payout($conn) {
+    if (Auth::Auth()) {
+      $payout = $conn->prepare("SELECT last_payout FROM users WHERE user_id=?");
+      $payout->execute([$_SESSION['UserID']]);
+      $payout = $payout->fetch();
+
+      if(time() - strtotime($payout['last_payout']) > 60*60*24) {
+        $c = $conn->prepare("UPDATE users SET cubes = cubes + 15 WHERE user_id=?");
+        $c->execute([$_SESSION['UserID']]);
+        $c = $c->fetch();
+
+        $c = $conn->prepare("UPDATE users SET last_payout = NOW() WHERE user_id=?");
+        $c->execute([$_SESSION['UserID']]);
+      }
+    }
+  }
+
   public static function Avatar($conn) {
     if (Auth::Auth()) {
       $a = $conn->prepare("SELECT * FROM avatar WHERE user_id=?");

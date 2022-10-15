@@ -94,7 +94,9 @@ $blog = BlogController::GetPosts($conn);
           <i class="fa fa-stream"></i>
           Feed
         </h2>
-        <div id="comments"></div>
+        <div class="card">
+          <div id="comments"></div>
+        </div>
         <div class="card">
           <form action="/dashboard/wall/" method="POST" id="wall">
             <?php

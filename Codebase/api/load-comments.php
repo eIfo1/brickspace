@@ -6,10 +6,18 @@ use brickspace\controller\auth\WallController;
 use brickspace\controller\UsersController;
 
 $wall = WallController::GetPosts($conn);
+
+if(!$wall) {
+  ?>
+  <div class="card">
+    <strong>No posts! Make one below!</strong>
+  </div>
+  <?php 
+}
+
 foreach ($wall as $post) {
   $user = UsersController::GetByID($conn, $post['wall_creator']);
 ?>
-  <div class="card">
     <div class="grid-x grid-margin-x">
       <div class="cell small-12 large-2">
         <div class="frame">
@@ -30,7 +38,7 @@ foreach ($wall as $post) {
             echo Time::Elapsed($post['wall_created']);
             ?>
           </p>
-          <p style="margin: 0;">
+          <p>
             <?php
             echo $post['wall_message'];
             ?>
@@ -38,7 +46,6 @@ foreach ($wall as $post) {
         </div>
       </div>
     </div>
-  </div>
 <?php
 }
 ?>
