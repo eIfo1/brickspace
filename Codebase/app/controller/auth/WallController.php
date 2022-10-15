@@ -43,9 +43,7 @@ class WallController {
     
     // insert 
     $statement = $conn->prepare("INSERT INTO wall (wall_message, wall_creator, wall_created) VALUES (:message, :creator, NOW())");
-    $statement->execute(array(':message' => $message, ':creator' => $creator));
-
-    $rest->success();
+    $statement->execute(array(':message' => $message, ':creator' => $creator));;
   }
 
   public static function PostAmount($conn, $id) {
