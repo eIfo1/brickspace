@@ -38,15 +38,21 @@ $blog = BlogController::GetPosts($conn);
         type: 'post',
         dataType: 'application/json',
         data: $("#wall").serialize(),
+        error: function(xhr, status, error) {
+          var err = xhr.responseText;
+          console.log(err);
+        },
+        success: function() {
+          loadComments()
+          console.log("Post!");
+        }
       });
-      loadComments()
     });
   });
 
 
   function loadComments() {
     $("#comments").load("/api/comments");
-    console.log("Loading messages...");
   }
 </script>
 

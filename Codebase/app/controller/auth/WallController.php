@@ -34,7 +34,7 @@ class WallController {
       die;
     }
 
-    if(Flood::CheckFlood($conn, "3 seconds") == true) {
+    if(Flood::CheckFlood($conn, 15) == true) {
       $rest->error("Slow down! You're going too fast!");
       die;
     }
