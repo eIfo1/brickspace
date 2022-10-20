@@ -19,35 +19,34 @@ class RegisterController
     $password = $_POST["password"];
     $passwordRepeat = $_POST["password_repeat"];
 
-    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
-      $_SESSION["error"] = "Please fill in all fields";
+    function redirect() {
       header("location: /sign-up");
       exit();
+    }
+
+    if (empty($username) || empty($email) || empty($password) || empty($passwordRepeat)) {
+      $_SESSION["error"] = "Please fill in all fields";
+      redirect();
     }
     if (!preg_match("/^[a-zA-Z0-9_]*$/", $username)) {
       $_SESSION["error"] = "Username can only contain letters, numbers, and underscores.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
     if (strlen($username) > 20 || strlen($username) < 3) {
       $_SESSION["error"] = "Username must be between 3 and 20 characters.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
       $_SESSION["error"] = "Invalid email.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
     if (strlen($password) < 8 || strlen($password) > 50) {
       $_SESSION["error"] = "Password must be between 8 and 50 characters.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
     if ($password != $passwordRepeat) {
       $_SESSION["error"] = "Passwords do not match.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
 
     unset($passwordRepeat);
@@ -58,8 +57,7 @@ class RegisterController
 
     if (!empty($result)) {
       $_SESSION["error"] = "Username already exists.";
-      header("location: /sign-up");
-      exit();
+      redirect();
     }
 
     $statement = $conn->prepare("INSERT INTO users (user_name, user_email, user_password, user_signup_ip, user_ip) VALUES (:username, :email, :password, :ip, :ip)");
@@ -73,7 +71,7 @@ class RegisterController
     $_SESSION['UserEmail'] = $email;
     $_SESSION['UserIP'] = $_SERVER['REMOTE_ADDR'];
     $_SESSION['note'] = "Welcome to BrickSpace, " . $_SESSION['Username'] . "!";
-    header("location: /dashboard/");
+    header("location: /dashboard");
     exit();
   }
 }

@@ -165,6 +165,19 @@ if (Auth::Auth()) {
               } else {
               ?>
                 <div class="sidebar-text">
+                  Actions
+                </div>
+                <li>
+                  <a href="/login">
+                    <i class="fas fa-sign-in-alt"></i>Login
+                  </a>
+                </li>
+                <li>
+                  <a href="/sign-up">
+                    <i class="fas fa-user-plus"></i>Sign-Up
+                  </a>
+                </li>
+                <div class="sidebar-text">
                   Links
                 </div>
                 <li>

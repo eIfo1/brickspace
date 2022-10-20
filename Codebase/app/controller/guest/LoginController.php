@@ -33,7 +33,7 @@ class LoginController {
         $_SESSION['UserAdmin'] = $result['user_admin'];
         $_SESSION['UserIP'] = $_SERVER['REMOTE_ADDR'];
         $_SESSION['note'] = "Welcome back, " . $result['user_name'];
-        header("location: /dashboard/");
+        header("location: /dashboard");
         exit();
       } else {
         $_SESSION['error'] = "Invalid username or password.";

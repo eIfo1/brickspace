@@ -1,11 +1,15 @@
 <?php
 
 use brickspace\controller\UsersController;
+use brickspace\middleware\Auth;
 
 $type = $_POST['type'];
 
 include("$_SERVER[DOCUMENT_ROOT]/config/config.php");
 if($type == "hidden") {
+  if(!Auth::Admin()) {
+    return;
+  }
   $sql = "SELECT * FROM item WHERE public = 0 ORDER BY ID DESC";
   $items = $conn->prepare($sql);
   $items->execute();
