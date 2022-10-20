@@ -9,6 +9,7 @@ use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\NotificationController;
 use brickspace\controller\UsersController;
 use brickspace\utils\Toast;
+use brickspace\helpers\NumberFormatter;
 
 if (Auth::Auth()) {
   Auth::UpdateUser($conn);
@@ -46,6 +47,29 @@ if (Auth::Auth()) {
 
   <script src="/cdn/js/brickspace.js" defer></script>
 
+  <style>
+    .top-bar input {
+      background: #444852;
+      border: 1px solid transparent;
+      width: 100%;
+      max-width: 100%;
+      margin: 0 auto;
+      display: block;
+      height: auto;
+      box-shadow: none;
+      border-radius: 4px;
+      padding: 5px 25px;
+      color: white;
+      font-size: 17px;
+    }
+
+    .menu-logo {
+      width: 200px !important;
+      margin-left: 0.4375rem !important;
+      margin-right: 0.9375rem !important;
+    }
+  </style>
+
 
   <!-- jquery -->
   <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
@@ -57,13 +81,13 @@ if (Auth::Auth()) {
     <div class="top-bar">
       <div class="top-bar-left">
         <div class="grid-x align-middle grid-margin-x">
-          <div class="shrink cell">
+          <div class="shrink cell menu-logo">
             <a href="/" class="brand-text">
               BrickSpace
             </a>
           </div>
-          <div class="auto cell">
-
+          <div class="auto cell no-margin">
+            <input type="text" placeholder="Search">
           </div>
           <div class="shrink cell right">
             <?php
@@ -72,7 +96,7 @@ if (Auth::Auth()) {
               <div class="info">
                 <a href="/account/currency">
                   <i class="fa fa-cubes"></i>
-                  <?php echo UserController::Currency($conn); ?>
+                  <?php echo NumberFormatter::Format(UserController::Currency($conn)); ?>
                 </a>
                 <a href="/account/friends/requests">
                   <i class="fa fa-user-plus"></i>
@@ -80,7 +104,7 @@ if (Auth::Auth()) {
                 </a>
                 <a href="/account/notifications">
                   <i class="fa fa-bell"></i>
-                  <?php echo NotificationController::Amount($conn); ?>
+                  <?php NotificationController::Amount($conn); ?>
                 </a>
                 <a href="/account/inbox">
                   <i class="fa fa-envelope"></i>
@@ -132,20 +156,25 @@ if (Auth::Auth()) {
                     <?php echo $_SESSION['Username'] ?>
                   </a>
                 </div>
+                <li>
+                  <a href="/dashboard">
+                    <i class="fa fa-home"></i>Dashboard
+                  </a>
+                </li>
               <?php
               } else {
               ?>
                 <div class="sidebar-text">
                   Links
                 </div>
+                <li>
+                  <a href="/">
+                    <i class="fa fa-home"></i>Home
+                  </a>
+                </li>
               <?php
               }
               ?>
-              <li>
-                <a href="/">
-                  <i class="fa fa-home"></i>Home
-                </a>
-              </li>
               <li>
                 <a href="/forum">
                   <i class="fa fa-cloud"></i>Forum
@@ -162,8 +191,8 @@ if (Auth::Auth()) {
                 </a>
               </li>
               <li>
-                <a href="/blog">
-                  <i class="fa fa-rss"></i>Blog
+                <a href="/updates">
+                  <i class="fa fa-rss"></i>Updates
                 </a>
               </li>
               <?php
@@ -177,6 +206,7 @@ if (Auth::Auth()) {
                 <?php
                 if (Auth::Admin()) {
                 ?>
+                  <div class="divider"></div>
                   <div class="sidebar-text">
                     ADMIN
                   </div>
@@ -188,6 +218,7 @@ if (Auth::Auth()) {
                 <?php
                 }
                 ?>
+                <div class="divider"></div>
                 <div class="sidebar-text">
                   ACCOUNT
                 </div>
@@ -288,6 +319,22 @@ if (Auth::Auth()) {
     $(document).ready(function() {
       $(document).foundation();
     })
+  </script>
+  <script type="text/javascript">
+    $(function() {
+      // this will get the full URL at the address bar
+      var url = window.location.href;
+
+      // passes on every "a" tag
+      $(".side-bar a").each(function() {
+        // checks if its the same on the address bar
+        if (url == (this.href)) {
+          $(this).closest("a").addClass("active");
+          //for making parent of submenu active
+          $(this).closest("a").parent().parent().addClass("active");
+        }
+      });
+    });
   </script>
 
 </body>

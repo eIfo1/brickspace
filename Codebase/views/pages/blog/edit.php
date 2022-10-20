@@ -6,17 +6,17 @@ use brickspace\utils\Toast;
 
 Auth::RequireAdmin();
 
-$name = "Edit Blog Post";
+$name = "Edit Update";
 
 if (!is_numeric($id)) {
-  header('location: /blog');
+  header('location: /updates');
   exit();
 }
 
 
 $blog = BlogController::GetPost($conn, $id);
 if (!$blog) {
-  header('location: /blog');
+  header('location: /updates');
   exit();
 }
 ?>
@@ -29,7 +29,7 @@ if (!$blog) {
       <h1>
         Edit Blog Post
       </h1>
-      <form action="/blog/edit/<?php echo $id; ?>" method="post">
+      <form action="/updates/edit/<?php echo $id; ?>" method="post">
         <label for="title">Title</label>
         <input type="text" class="form-control" id="title" name="title" placeholder="Title..." value="<?php echo $blog['blog_title'] ?>">
         <label for=" content">Body</label>

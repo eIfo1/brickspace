@@ -4,16 +4,16 @@
 use brickspace\controller\UsersController;
 
 $serverRoot = $_SERVER['DOCUMENT_ROOT'];
-require($serverRoot .'/config/config.php');
+require($serverRoot . '/config/config.php');
 header('Content-Type: application/json');
 
 $statement = $conn->prepare("SELECT * FROM avatar where user_id = :id");
 $statement->execute(array(':id' => $id));
 $avatar = $statement->fetch();
 
-if(!$avatar) {
+if (!$avatar) {
   $user = UsersController::GetByID($conn, $id);
-  if(!$user) {
+  if (!$user) {
     die(json_encode(["status" => "error", "error" => "User doesn't exist."]));
   }
   $statement = $conn->prepare("SELECT * FROM avatar WHERE user_id = :id");
@@ -77,61 +77,101 @@ bpy.data.objects["RightLeg"].select = True
 bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("' . $avatar['right_leg_color'] . '")
 ';
 
-$face = '
+if ($avatar['face'] != null) {
+  $face = '
+HeadImg = bpy.data.images.load(filepath="' . $serverRoot . '/res/textures/faces/' . $avatar['face'] . '.png")
+HeadTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+HeadTex.image = HeadImg
+Headslot = bpy.data.objects["Head"].active_material.texture_slots.add()
+Headslot.texture = HeadTex';
+} else {
+  $face = '
 HeadImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/face.png")
 HeadTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 HeadTex.image = HeadImg
 Headslot = bpy.data.objects["Head"].active_material.texture_slots.add()
 Headslot.texture = HeadTex
-';
+  ';
+}
 
-$shirt = '
-LeftArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/template.png")
+$shirt = '';
+
+if ($avatar['shirt'] != null) {
+  $shirt = '
+LeftArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/' . $avatar['shirt'] . '.png")
 LeftArmTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 LeftArmTex.image = LeftArmImg
 LeftArmslot = bpy.data.objects["LeftArm"].active_material.texture_slots.add()
 LeftArmslot.texture = LeftArmTex
-RightArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/template.png")
+RightArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/' . $avatar['shirt'] . '.png")
 RightArmTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 RightArmTex.image = RightArmImg
 RightArmslot = bpy.data.objects["RightArm"].active_material.texture_slots.add()
 RightArmslot.texture = RightArmTex
-TorsoImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/template.png")
+TorsoImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/' . $avatar['shirt'] . '.png")
 TorsoTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 TorsoTex.image = TorsoImg
 Torsolot = bpy.data.objects["Torso"].active_material.texture_slots.add()
 Torsolot.texture = TorsoTex
 ';
+}
+$pants = '';
 
-$pants = '
-LeftLegImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/template.png")
+if ($avatar['pants'] != null) {
+  $pants = '
+LeftLegImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/' . $avatar['pants'] . '.png")
 LeftLegTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 LeftLegTex.image = LeftLegImg
 LeftLegslot = bpy.data.objects["LeftLeg"].active_material.texture_slots.add()
 LeftLegslot.texture = LeftLegTex
-RightLegImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/template.png")
+RightLegImg = bpy.data.images.load(filepath="' . $serverRoot . '/cdn/img/' . $avatar['pants'] . '.png")
 RightLegTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
 RightLegTex.image = RightLegImg
 RightLegslot = bpy.data.objects["RightLeg"].active_material.texture_slots.add()
 RightLegslot.texture = RightLegTex
 ';
+}
 
+$hat = '';
 
-$hat = '
-hatpath = "' . $serverRoot . '/renderer/res/models/hats/263.obj"
-import_hat = bpy.ops.import_scene.obj(filepath=hatpath)
-hat = bpy.context.selected_objects[0]
-bpy.context.selected_objects[0].data.name = "hat"
-hatImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/hats/263.png")
-hatTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
-hatTex.image = hatImg
-hatMat = bpy.data.materials.new("MaterialName")
-hatMat.diffuse_shader = "LAMBERT"
-hatSlot = hatMat.texture_slots.add()
-hatSlot.texture = hatTex
-hat.active_material = hatMat
-';
+if ($avatar['hat'] != null) {
+  $hat = '
+  hatpath = "' . $serverRoot . '/renderer/res/models/hats/' . $avatar['hat'] . '.obj"
+  import_hat = bpy.ops.import_scene.obj(filepath=hatpath)
+  hat = bpy.context.selected_objects[0]
+  bpy.context.selected_objects[0].data.name = "hat"
+  hatImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/hats/' . $avatar['hat'] . '.png")
+  hatTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+  hatTex.image = hatImg
+  hatMat = bpy.data.materials.new("MaterialName")
+  hatMat.diffuse_shader = "LAMBERT"
+  hatSlot = hatMat.texture_slots.add()
+  hatSlot.texture = hatTex
+  hat.active_material = hatMat
+  ';
+}
 
+$hat2 = '';
+
+if ($avatar['hat2'] != null) {
+  $hat = '
+hatpath = "' . $serverRoot . '/renderer/res/models/hats/' . $avatar['hat'] . '.obj"
+import_hat2 = bpy.ops.import_scene.obj(filepath=hat2path)
+hat2 = bpy.context.selected_objects[0]
+bpy.context.selected_objects[0].data.name = "hat2"
+hatImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/hats/' . $avatar['hat'] . '.png")
+hat2Tex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+hat2Tex.image = hat2Img
+hat2Mat = bpy.data.materials.new("MaterialName")
+hat2Mat.diffuse_shader = "LAMBERT"
+hat2Slot = hat2Mat.texture_slots.add()
+hat2Slot.texture = hat2Tex
+hat2.active_material = hat2Mat
+  ';
+}
+
+$hat2 = '';
+/*
 $hat2 = '
 hat2path = "' . $serverRoot . '/renderer/res/models/hats/6.obj"
 import_hat2 = bpy.ops.import_scene.obj(filepath=hat2path)
@@ -146,9 +186,10 @@ hat2Slot = hat2Mat.texture_slots.add()
 hat2Slot.texture = hat2Tex
 hat2.active_material = hat2Mat
 ';
+*/
 
 $save = '
-bpy.data.scenes["Scene"].render.filepath = "' . $serverRoot . '/cdn/img/avatar/'. md5($id)  . '.png"
+bpy.data.scenes["Scene"].render.filepath = "' . $serverRoot . '/cdn/img/avatar/' . md5($id)  . '.png"
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.view3d.camera_to_view_selected()
 bpy.ops.render.render( write_still=True )
@@ -163,7 +204,7 @@ obj.location.x = 2.19646
 obj.location.y = -4.36904
 obj.location.z = 8.64529
 
-bpy.data.scenes["Scene"].render.filepath = "'. $serverRoot . '/cdn/img/avatar/thumbnail/' . md5($id)  . '.png"
+bpy.data.scenes["Scene"].render.filepath = "' . $serverRoot . '/cdn/img/avatar/thumbnail/' . md5($id)  . '.png"
 bpy.ops.render.render( write_still=True )
 ';
 
@@ -200,8 +241,7 @@ file_put_contents($pyFileName_thumb, $python_thumb);
 
 // Weird issue where blender wont start on local servers if you dont have this line about the path in there
 putenv('PATH=' . $_SERVER['PATH']);
-                   //   run in back       script       server path                 link           file | other shit idk what does
+//   run in back       script       server path                 link           file | other shit idk what does
 $output = exec("blender --background -t 5 --python " . $_SERVER['DOCUMENT_ROOT'] . '/renderer/python/' .  "1.py -noaudio -nojoystick");
 $output = exec("blender --background -t 5 --python " . $_SERVER['DOCUMENT_ROOT'] . '/renderer/python/' .  "1_thumb.py -noaudio -nojoystick");
 die(json_encode(["status" => "ok"]));
-?>

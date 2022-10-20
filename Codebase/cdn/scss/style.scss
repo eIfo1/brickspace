@@ -5,20 +5,10 @@ $navbar-height: 57.38px;
 * {
   box-sizing: border-box;
   font-family: Montserrat !important;
-}
-
-html,
-body {
-  height: 100%;
-}
-
-body {
-  font-family: Quicksand;
-  color: var(--text);
-  background: var(--dark);
 
   &::-webkit-scrollbar {
     width: 12px;
+    height: 12px;
   }
 
   &::-webkit-scrollbar-track {
@@ -34,6 +24,36 @@ body {
     /* creates padding around scroll thumb */
   }
 }
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Quicksand;
+  color: var(--text);
+  background: var(--dark);
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: var(--darker);
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--dark);
+    /* color of the scroll thumb */
+    border-radius: 20px;
+    /* roundness of the scroll thumb */
+    border: 3px solid var(--darkest);
+    /* creates padding around scroll thumb */
+  }
+}
+
 
 h1,
 h2,
@@ -114,12 +134,11 @@ h6 {
   }
 
   .sidebar-text {
-    text-align: center;
     text-transform: uppercase;
     font-weight: 600;
     margin-top: 10px;
     padding-bottom: 5px;
-    border-bottom: 1px solid var(--dark);
+    padding-left: 15px;
   }
 
   .sidebar-text-profile {
@@ -157,7 +176,10 @@ h6 {
         color: var(--text);
         display: block;
         padding: 10px 15px;
-        border-bottom: 1px solid var(--dark);
+        transition: 100ms border linear;
+        border: 0px solid var(--theme-color);
+        margin: 2.5px 5px;
+        border-radius: 5px;
 
         .label {
           line-height: 1.5;
@@ -168,8 +190,10 @@ h6 {
           }
         }
 
-        &:hover {
+        &:hover,
+        &.active {
           background: var(--dark);
+          border-left: 5px solid var(--theme-color);
         }
 
         i {
@@ -189,11 +213,13 @@ h6 {
   width: auto;
 
   .normal_thumbnail {
-    margin-top: auto;
-    margin-bottom: auto;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
     border-radius: 50px;
     border: 2px solid var(--dark);
     background-color: var(--dark);
+    width: 75%;
   }
 }
 
@@ -247,6 +273,26 @@ h6 {
     text-align: center;
     color: #cecece;
     font-size: 13px;
+  }
+
+  li {
+    list-style: none;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+
+    a {
+      color: grey;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul {
+    margin: 0;
   }
 }
 
@@ -645,39 +691,62 @@ img {
   list-style-type: none;
   margin: 0;
   margin-top: 12px;
+
 }
 
-.shop-button {
-  border-radius: 5px;
-  width: 100%;
-  margin: 0;
-  padding: 0;
-
+#shop {
   button {
-    padding: 12px !important;
-    background: var(--dark) !important;
-    border-bottom: 2px solid var(--dark);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .price {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .shop-button {
     border-radius: 5px;
-    margin-bottom: 5px!important;
-    text-align: left;
-    font-weight: 600;
-
-    i {
-      margin-right: 5px;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+  
+    button {
+      padding: 12px !important;
+      background: var(--dark) !important;
+      border-bottom: 2px solid var(--dark);
+      border-radius: 5px;
+      margin-bottom: 5px !important;
+      text-align: left;
+      font-weight: 600;
+  
+      i {
+        margin-right: 5px;
+      }
+  
+      &.active {
+        border-bottom: 2px solid var(--theme-color);
+      }
+  
+      &:hover {
+        border-bottom: 2px solid var(--theme-color);
+      }
     }
-
-    &.active {
-      border-bottom: 2px solid var(--theme-color);
-    }
-
-    &:hover {
-      border-bottom: 2px solid var(--theme-color);
-    }
+  }
+  .market-card {
+    background: var(--dark);
+    margin: 2px;
+    padding: 12px;
   }
 }
 
-.market-card {
-  background: var(--dark);
-  margin: 2px;
-  padding: 12px;
+
+
+.input-group-button {
+  border-radius: 0 5px 5px 0;
+}
+
+.input-group-field {
+  border-radius: 5px 0 0 5px;
 }

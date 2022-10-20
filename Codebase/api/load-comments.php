@@ -18,11 +18,11 @@ if(!$wall) {
 foreach ($wall as $post) {
   $user = UsersController::GetByID($conn, $post['wall_creator']);
 ?>
-    <div class="grid-x grid-margin-x">
+    <div class="grid-x">
       <div class="cell small-12 large-2">
         <div class="frame">
           <a href="/user/profile/<?php echo $user['user_name'];?>">
-            <img src="/cdn/img/avatar/thumbnail/<?php echo md5($user['user_id']);  ?>.png" alt="elfo's avatar" class="normal_thumbnail" style="text-align: center;">
+            <img src="/cdn/img/avatar/thumbnail/<?php echo $user['avatar_link']  ?>.png" alt="elfo's avatar" class="normal_thumbnail">
           </a>
         </div>
       </div>

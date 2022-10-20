@@ -5,17 +5,17 @@ use brickspace\controller\UsersController;
 use brickspace\helpers\Time;
 use brickspace\middleware\Auth;
 
-$name = "Blog";
+$name = "Updates";
 
 if (!is_numeric($id)) {
-  header('location: /blog');
+  header('location: /updates');
   exit();
 }
 
 $blog = BlogController::GetPost($conn, $id);
 
 if (!$blog) {
-  header('location: /blog');
+  header('location: /updates');
   exit();
 }
 
@@ -46,11 +46,11 @@ $user = UsersController::GetByID($conn, $blog['blog_creator']);
         <h4>
           Admin
         </h4>
-        <form method="POST" action="/blog/delete/<?php echo $id ?>" style="display: inline-block">
+        <form method="POST" action="/updates/delete/<?php echo $id ?>" style="display: inline-block">
           <?php set_csrf(); ?>
           <input type="hidden" name="id" value="<?php echo $id ?>">
           <button class="button primary">DELETE</button>
-          <a href="/blog/edit/<?php echo $id ?>">
+          <a href="/updates/edit/<?php echo $id ?>">
             <button class="button alert" type="button">EDIT</button>
           </a>
         </form>

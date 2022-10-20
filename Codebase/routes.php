@@ -10,6 +10,7 @@ use brickspace\controller\auth\StatusController;
 use brickspace\controller\auth\UserController;
 use brickspace\controller\auth\WallController;
 use brickspace\controller\BlogController;
+use brickspace\controller\MarketController;
 
 require_once("{$_SERVER['DOCUMENT_ROOT']}/router.php");
 
@@ -66,13 +67,18 @@ page('/user/profile/$username', 'views/pages/profile.php');
 page('/user/profile', 'views/pages/profile.php');
 
 page('/shop', 'views/pages/shop/index.php');
+page('/shop/item/$id', 'views/pages/shop/item.php');
+page('/shop/create', 'views/pages/shop/create.php');
+post('/shop/create', function () {
+  MarketController::CreateItem();
+});
 
 get('/site/donate', 'views/pages/support.php');
 
-page('/blog', 'views/pages/blog/dashboard.php');
-page('/blog/post/$id', 'views/pages/blog/post.php');
-page('/blog/edit/$id', 'views/pages/blog/edit.php');
-post('/blog/edit/$id', function() {
+page('/updates', 'views/pages/blog/dashboard.php');
+page('/updates/post/$id', 'views/pages/blog/post.php');
+page('/updates/edit/$id', 'views/pages/blog/edit.php');
+post('/updates/edit/$id', function() {
   BlogController::Edit();
 });
 post('/blog/delete/$id', function () {
@@ -85,6 +91,9 @@ get('/api/account/avatar/color', 'api/avatar/color.php');
 get('/api/comments', 'api/load-comments.php');
 
 get('/api/renderer/$id', 'renderer/render.php');
+get('/api/renderer/shop/$id', 'renderer/shop_render.php');
+
+post('/api/shop/load-items', 'api/shop/load-items.php');
 
 // post pages
 post('/dashboard/wall', function() {

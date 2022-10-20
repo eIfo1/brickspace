@@ -61,6 +61,10 @@ class AlertController
     if (!$alert) {
       return;
     }
+    if($alert['bool'] == 0) {
+      echo '<br><br>';
+      return;
+    }
 ?>
     <div class="site-notification">
       <div class="grid-x align-middle grid-margin-x">

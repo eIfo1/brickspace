@@ -4,16 +4,13 @@ use brickspace\controller\auth\BanController;
 use brickspace\middleware\Auth;
 use brickspace\helpers\OnlineChecker;
 use brickspace\helpers\Time;
-
-if (!isset($username)) {
-  if (Auth::Auth()) {
-    $username = $_SESSION['Username'];
-    $name = $username;
-  } else {
-    header('location: /');
-    exit();
-  }
+if (!isset($username) && !Auth::Auth()) {
+  header('location: /');
+  die;
 } else {
+  if($_SERVER['REQUEST_URI'] == '/user/profile') {
+    $username = $_SESSION['Username'];
+  }
   $name = $username;
 }
 $statement = $conn->prepare("SELECT * FROM users WHERE user_name = :username");

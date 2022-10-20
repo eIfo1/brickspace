@@ -11,7 +11,7 @@ $name = "Create Item";
 <div class="grid-x">
   <div class="cell large-3 small-12"></div>
   <div class="cell auto">
-    <h4>Create Item</h4>
+    <h4>Create Shirt/Pants</h4>
     <div class="card">
       <form action="" enctype="multipart/form-data" method="POST">
         <input type="text" name="name" placeholder="Item Name...">

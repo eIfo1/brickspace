@@ -5,7 +5,7 @@ use brickspace\helpers\Pagination;
 
 $page = Pagination::Set(@$page);
 
-$name = "Blog";
+$name = "Updates";
 
 ?>
 
@@ -14,7 +14,7 @@ $name = "Blog";
   <div class="cell auto">
     <div class="card">
       <h1>
-        <i class="fa fa-rss"></i> Blog
+        <i class="fa fa-rss"></i> Updates
       </h1>
     </div>
     <?php

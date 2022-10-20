@@ -18,7 +18,7 @@ $a = UserController::Avatar($conn);
     </h4>
     <div class="card">
       <div id="avatar">
-        <!--<img src="/cdn/img/avatar/<?php echo $u['avatar_link'] ?>.png" alt="Avatar" style="padding: 12px;">-->
+
       </div>
       <a href="#" id="regen" onclick="renderAvatar()" style="font-size: 40px!important; text-align: right; color: #fff; display: inline-block;">
         <i class="fas fa-redo"></i>
@@ -104,62 +104,62 @@ $a = UserController::Avatar($conn);
         echo "<!-- " . $count % 7 . " -->";
         echo ($count % 7 == 0) ? ((($count == count($colors) - 1) ? "</div>" : ($count == 0)) ? ("<div class='color-holder'>") : ("</div><br><div class='color-holder'>")) : ""; ?>
         <div class="color-btn" color="<?php echo $color ?>" style="float:left;padding: 10px; margin-bottom: 3px;margin-right: 3px;border-radius: 5px;background-color:#<?php echo $color ?>;"></div>
-        
+
       <?php
         $count++;
       } ?>
-      </div>
-    </form>
   </div>
+  </form>
+</div>
 
-  <script src="/cdn/js/api.js"></script>
-  <script>
-    $(function() {
+<script src="/cdn/js/api.js"></script>
+<script>
+  $(function() {
+    loading();
+    loadAvatar();
+
+    activeLimb = "head";
+
+    $("[part]").click(function() {
+      activeLimb = $(this).attr("part");
+      console.log(activeLimb);
+    })
+
+    $("body").on("click", "[color]", function() {
+      console.log($(this).attr("color"));
       loading();
+      changeColor(activeLimb, $(this).attr("color"));
+      renderAvatar();
       loadAvatar();
-
-      activeLimb = "head";
-
-      $("[part]").click(function() {
-        activeLimb = $(this).attr("part");
-        console.log(activeLimb);
-      })
-
-      $("body").on("click", "[color]", function() {
-        console.log($(this).attr("color"));
-        loading();
-        changeColor(activeLimb, $(this).attr("color"));
-        renderAvatar();
-        loadAvatar();
-      });
-
     });
 
-    function loading() {
-      $("#avatar").html("<img src='/cdn/img/loading.gif' / style='width: 125px; display: block; margin-left: auto; margin-right: auto; padding: 12px;'>");
-    }
+  });
 
-    function loadAvatar() {
-      response("/api/account/avatar").success((data) => {
-        console.log(data);
-        $("#avatar").html("<img src='/cdn/img/avatar/" + data.avatar + ".png?" + Math.floor(Math.random() * 10000) + "' style='width:100%;' />");
-      }).get();
-    }
+  function loading() {
+    $("#avatar").html("<img src='/cdn/img/loading.gif' / style='width: 125px; display: block; margin-left: auto; margin-right: auto; padding: 12px;'><label style='text-align:center; color: #fff;'>Loading...</label>");
+  }
 
-    function renderAvatar() {
-      loading();
-      console.log(response("/api/renderer/<?php echo $_SESSION['UserID'] ?>").get());
-      loadAvatar();
-    }
+  function loadAvatar() {
+    response("/api/account/avatar").success((data) => {
+      console.log(data);
+      $("#avatar").html("<img src='/cdn/img/avatar/" + data.avatar + ".png?" + Math.floor(Math.random() * 10000) + "' style='width:100%;' />");
+    }).get();
+  }
 
-    function changeColor(limb, hex) {
-      console.log(limb);
-      $("[part=" + limb + "]").css("background-color", "#" + hex);
-      response("/api/account/avatar/color").success(function(data) {}).fail(function(error) {
-        console.error(error);
-      }).post({
-        limb: activeLimb,
-        hex: hex
-      });
-    }
-  </script>
+  function renderAvatar() {
+    loading();
+    console.log(response("/api/renderer/<?php echo $_SESSION['UserID'] ?>").get());
+    loadAvatar();
+  }
+
+  function changeColor(limb, hex) {
+    console.log(limb);
+    $("[part=" + limb + "]").css("background-color", "#" + hex);
+    response("/api/account/avatar/color").success(function(data) {}).fail(function(error) {
+      console.error(error);
+    }).post({
+      limb: activeLimb,
+      hex: hex
+    });
+  }
+</script>

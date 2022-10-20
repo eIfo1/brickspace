@@ -6,6 +6,9 @@ use brickspace\middleware\Auth;
 use brickspace\helpers\Time;
 use PDO;
 
+/**
+ * NOW FORMALLY CALLED 'updates'
+ */
 class BlogController
 {
   /**
@@ -111,7 +114,7 @@ class BlogController
     $statement = $conn->prepare("UPDATE blog SET blog_title = :title,  blog_body = :body WHERE blog_id = :id");
     $statement->execute(array(':title' => $title, ':body' => $body, ':id' => $id));
     $_SESSION['note'] = 'Blog post updated!';
-    header('location: /blog/');
+    header('location: /updates/');
     exit();
   }
 
@@ -135,7 +138,7 @@ class BlogController
     $statement = $conn->prepare("DELETE FROM blog WHERE blog_id = :id");
     $statement->execute(array(':id' => $id));
     $_SESSION['note'] = 'Blog post deleted!';
-    header('location: /blog');
+    header('location: /updates');
     exit();
   }
   /**
@@ -168,7 +171,7 @@ class BlogController
           </div>
         </div>
         <div class="cell large-10 small-10">
-          <a href="/blog/post/<?php echo $post['blog_id']; ?>">
+          <a href="/updates/post/<?php echo $post['blog_id']; ?>">
             <span style="display: inline-block;"><?php echo $post['blog_title']; ?></span>
           </a>
           <br>
@@ -203,7 +206,7 @@ class BlogController
             </div>
           </div>
           <div class="cell large-10 small-10">
-            <a href="/blog/post/<?php echo $post['blog_id']; ?>">
+            <a href="/updates/post/<?php echo $post['blog_id']; ?>">
               <span style="display: inline-block;"><?php echo $post['blog_title']; ?></span>
             </a>
             <br>

@@ -76,13 +76,14 @@ $blog = BlogController::GetPosts($conn);
         <br>
         <h2>
           <i class="fas fa-rss"></i>
-          Blog
+          Updates
         </h2>
         <div class="card no-padding">
           <?php
           BlogController::DisplayPosts_Dashboard($conn);
           ?>
         </div>
+        
       </div>
       <div class="cell auto">
         <button class="button right u alert" data-open="status-modal">
@@ -104,7 +105,7 @@ $blog = BlogController::GetPosts($conn);
             ?>
             <div class="grid-x align-middle align-center">
               <input type="text" placeholder="Your wall message here..." name="message" required class="input-group-field">
-              <button type="submit" name="submit" class="button success input-group-button" style="border-radius: 0px;">Submit</button>
+              <button type="submit" name="submit" class="button success input-group-button">Submit</button>
             </div>
           </form>
         </div>
