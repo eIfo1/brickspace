@@ -81,14 +81,21 @@ if (Auth::Auth()) {
     <div class="top-bar">
       <div class="top-bar-left">
         <div class="grid-x align-middle grid-margin-x">
-          <div class="shrink cell menu-logo">
+          <div class="shrink cell menu-logo show-for-large">
             <a href="/" class="brand-text">
               BrickSpace
             </a>
           </div>
-          <div class="auto cell no-margin">
-            <input type="text" placeholder="Search">
+          <div class="cell hide-for-large medium-12">
+            <a href="/" class="brand-text">
+              BrickSpace
+            </a>
+            <div class="divider"></div>
           </div>
+          <div class="auto cell no-margin">
+            <input type="text" placeholder="Search" id="search">
+          </div>
+          <div class="hide-for-large divider"></div>
           <div class="shrink cell right">
             <?php
             if (Auth::Auth()) {

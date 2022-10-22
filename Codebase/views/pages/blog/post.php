@@ -26,6 +26,13 @@ $user = UsersController::GetByID($conn, $blog['blog_creator']);
 <div class="grid-x grid-margin-x">
   <div class="cell large-2 small-12"></div>
   <div class="cell auto">
+    <ul class="breadcrumbs">
+      <li><a href="/updates">Updates</a></li>
+      <li>Post</li>
+      <li><a href="/updates/post/<?php echo $blog['blog_id'];?>">
+      <?php echo $blog['blog_title']; ?>
+      </a></li>
+    </ul>
     <div class="card">
       <h1><?php echo $blog['blog_title']; ?></h1>
       <p class="small">

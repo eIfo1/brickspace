@@ -1,11 +1,10 @@
-<div class="admin-links">
+<div>
   <ul>
     <li>
       <a href="#">
         <i class="fas fa-toolbox"></i>Admin Toolbox
       </a>
     </li>
-    <br>
     <li>
       <a href="#">
         <i class="fas fa-broom"></i>
@@ -18,7 +17,6 @@
         Dashboard
       </a>
     </li>
-    <br>
     <li>
       <a href="#">
         <i class="fas fa-broom"></i>
@@ -43,7 +41,6 @@
         Disable/Enable Features
       </a>
     </li>
-    <br>
     <li>
       <a href="#">
         <i class="fas fa-gavel"></i>
@@ -56,7 +53,6 @@
         Ban User
       </a>
     </li>
-    <br>
     <li>
       <a href="#">
         <i class="fas fa-book"></i>

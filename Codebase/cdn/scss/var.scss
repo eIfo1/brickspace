@@ -22,6 +22,8 @@ $red-2: darken($red, 10%);
 $green-2: darken($green, 5%);
 $purple-2: darken($purple, 2.5%);
 
+$link: rgb(82, 171, 248);
+
 $shadow: #131313;
 
 $theme-color: $blue;
@@ -35,6 +37,8 @@ $small-screen-threshold: 1100px;
   --text: #{$text};
   --text-2: #{$text-2};
   --text-3: #{$text-3};
+
+  --link: #{$link};
 
   --primary: #{$blue};
   --red: #{$red};

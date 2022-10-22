@@ -19,10 +19,10 @@ $alert = AlertController::Get($conn);
     </div>
   </div>
   <div class="small-12 large-9">
-    <div class="card">
-      <h1>
-        Website Alert
-      </h1>
+    <div class="top">
+      <i class="fa fa-exclamation-triangle"></i> Website Alert
+    </div>
+    <div class="card card-has-top">
       <form action method="post">
         <h3 for="alert_text">
           Alert Text
@@ -56,9 +56,7 @@ $alert = AlertController::Get($conn);
             $('#alert_link').prop("value", "<?php echo $alert['link']; ?>");
             $('#alert_link').prop("disabled", false);
           } else {
-            $('#alert_text').prop("value", "Alert Disabled...");
             $('#alert_text').prop("disabled", true);
-            $('#alert_link').prop("value", "Alert Disabled...");
             $('#alert_link').prop("disabled", true);
           }
           $('#select').change(function() {
@@ -68,9 +66,7 @@ $alert = AlertController::Get($conn);
               $('#alert_link').prop("value", "<?php echo $alert['link']; ?>");
               $('#alert_link').prop("disabled", false);
             } else {
-              $('#alert_text').prop("value", "Alert Disabled...");
               $('#alert_text').prop("disabled", true);
-              $('#alert_link').prop("value", "Alert Disabled...");
               $('#alert_link').prop("disabled", true);
             }
           });

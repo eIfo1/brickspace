@@ -41,6 +41,7 @@ $blog = BlogController::GetPosts($conn);
         error: function(xhr, status, error) {
           var err = xhr.responseText;
           console.log(err);
+          loadComments()
         },
         success: function() {
           loadComments()
@@ -83,7 +84,7 @@ $blog = BlogController::GetPosts($conn);
           BlogController::DisplayPosts_Dashboard($conn);
           ?>
         </div>
-        
+
       </div>
       <div class="cell auto">
         <button class="button right u alert" data-open="status-modal">
@@ -98,7 +99,7 @@ $blog = BlogController::GetPosts($conn);
         <div class="card">
           <div id="comments"></div>
         </div>
-        <div class="card">
+        <div class="card" id="wall">
           <form action="/dashboard/wall/" method="POST" id="wall">
             <?php
             set_csrf();
