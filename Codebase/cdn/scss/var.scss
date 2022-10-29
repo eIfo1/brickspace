@@ -4,9 +4,9 @@ $darker: rgb(18, 18, 20);
 $dark: rgb(24, 24, 26);
 */
 
-$darkest: #1d1a1d;
-$darker: #1d1d20;
-$dark: #212124;
+$darkest: rgb(17, 15, 17);
+$darker: rgb(18, 18, 20);
+$dark: rgb(24, 24, 26);
 
 $text: #fff;
 $text-2: rgb(155, 152, 152);
@@ -54,4 +54,8 @@ $small-screen-threshold: 1100px;
 
   --theme-color: #{$theme-color};
   --theme-color-secondary: #{darken($theme-color, 10%)};
+
+  --font-weight-bold: 800;
+  --font-weight: 600;
+  --font-weight-light: 400;
 }

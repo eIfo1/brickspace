@@ -40,26 +40,18 @@ class Toast
   private function Note()
   {
     echo <<<HTML
-  <div class="callout" data-closable>
-    <h5>NOTE!</h5>
-    $this->text
-    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+    <div class="alert">
+      $this->text
+    </div>
   HTML;
   }
 
   private function Error()
   {
     echo <<<HTML
-  <div class="callout" data-closable>
-    <h5>ERROR!</h5>
-    $this->text
-    <button class="close-button" aria-label="Dismiss alert" type="button" data-close>
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
+    <div class="alert error">
+      $this->text
+    </div>
   HTML;
   }
 }

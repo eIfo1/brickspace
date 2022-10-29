@@ -64,12 +64,14 @@ class Purify {
       "brick deez luke nutz",
       "mentally retarded",
       "mommy milker",
+      "cock",
       // Roblox clones
       "brickplanet",
       "bopimo",
       "worldtobuild",
       "polytoria",
-      "xxx"
+      "xxx",
+      "bp"
     );
 
     $filterCount = sizeof($filterWords);

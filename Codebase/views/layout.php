@@ -32,24 +32,21 @@ if (Auth::Auth()) {
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
-
-  <!-- foundation -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css">
-
+  <!-- font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat" rel="stylesheet">
-
-
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- foundation -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.7.5/dist/css/foundation.min.css" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.min.css">
   <!-- css -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/cdn/css/style.css">
-  <link rel="stylesheet" href="/cdn/css/christmas.css">
-
+  <!-- tooltipster -->
+  <link rel="stylesheet" href="/cdn/css/tooltipster.bundle.min.css">
   <!-- js -->
-
+  <script src="/cdn/js/tooltipster.bundle.min.js" defer></script>
   <script src="/cdn/js/brickspace.js" defer></script>
 
   <style>
@@ -378,9 +375,11 @@ if (Auth::Auth()) {
               <?php
               } else {
               ?>
-                <div class="sidebar-text">
-                  Actions
-                </div>
+                <fieldset>
+                  <legend>
+                    ACTIONS
+                  </legend>
+                </fieldset>
                 <li>
                   <a href="/login">
                     <i class="fas fa-sign-in-alt"></i>Login
@@ -391,9 +390,11 @@ if (Auth::Auth()) {
                     <i class="fas fa-user-plus"></i>Sign-Up
                   </a>
                 </li>
-                <div class="sidebar-text">
-                  Links
-                </div>
+                <fieldset>
+                  <legend>
+                    LINKS
+                  </legend>
+                </fieldset>
                 <li>
                   <a href="/">
                     <i class="fa fa-home"></i>Home
@@ -433,10 +434,11 @@ if (Auth::Auth()) {
                 <?php
                 if (Auth::Admin()) {
                 ?>
-                  <div class="divider"></div>
-                  <div class="sidebar-text">
-                    ADMIN
-                  </div>
+                  <fieldset>
+                    <legend>
+                      ADMIN
+                    </legend>
+                  </fieldset>
                   <li>
                     <a href="/admin">
                       <i class="fa fa-cog"></i>Admin
@@ -445,10 +447,11 @@ if (Auth::Auth()) {
                 <?php
                 }
                 ?>
-                <div class="divider"></div>
-                <div class="sidebar-text">
-                  ACCOUNT
-                </div>
+                <fieldset>
+                  <legend>
+                    ACCOUNT
+                  </legend>
+                </fieldset>
                 <li>
                   <a href="/account/inbox">
                     <i class="fa fa-envelope"></i>Inbox
@@ -484,9 +487,16 @@ if (Auth::Auth()) {
       </div>
       <div class="auto cell no-margin">
         <?php
-        Toast::Handle();
         AlertController::Display($conn);
         ?>
+        <div class="grid-x grid-margin-x">
+          <div class="cell large-2 small-12"></div>
+          <div class="cell auto">
+            <?php Toast::Handle(); ?>
+          </div>
+          <div class="cell large-2 small-12"></div>
+        </div>
+        <br>
         <div class="content">
           <?php
           include($child_view);

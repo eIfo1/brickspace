@@ -29,7 +29,7 @@ ul {
 
 * {
   box-sizing: border-box;
-  font-family: Montserrat !important;
+  font-family: quicksand !important;
 
   &::-webkit-scrollbar {
     width: 12px;
@@ -57,7 +57,6 @@ body {
 }
 
 body {
-  font-family: Quicksand;
   color: var(--text);
   background: var(--dark);
 
@@ -78,6 +77,23 @@ body {
     border: 3px solid var(--darkest);
     /* creates padding around scroll thumb */
   }
+}
+
+.messagepop {
+  background-color: #FFFFFF;
+  border: 1px solid #999999;
+  cursor: default;
+  margin-top: 15px;
+  position: absolute;
+  text-align: left;
+  z-index: 50;
+  width: 50%;
+  margin-left: 2.5%;
+  padding-bottom: 5px;
+}
+
+.hidden {
+  display: none;
 }
 
 
@@ -137,7 +153,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 }
 
 // Site layout
@@ -179,7 +195,7 @@ h6 {
     a {
       color: #fff;
       margin: 0 10px;
-      font-weight: 600;
+      font-weight: var(--font-weight);
       ;
 
       i {
@@ -232,18 +248,21 @@ screen and (min-width: 1024px) {
     /* creates padding around scroll thumb */
   }
 
-  .sidebar-text {
+  fieldset {
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: var(--font-weight-light);
     margin-top: 10px;
     padding-bottom: 5px;
     padding-left: 15px;
+    border: none;
+    border-top: 2px solid #b5b5b5;
+    border-radius: 0;
   }
 
   .sidebar-text-profile {
     text-align: center;
     text-transform: uppercase;
-    font-weight: 600;
+    font-weight: var(--font-weight);
     margin-top: 10px;
     padding-bottom: 5px;
     border-bottom: 1px solid var(--dark);
@@ -269,16 +288,14 @@ screen and (min-width: 1024px) {
       font-size: inherit;
 
       a {
-        font-size: 20px;
+        font-size: 17px;
         line-height: 1.5;
-        font-weight: 600;
+        font-weight: var(--font-weight);
         color: var(--text);
         display: block;
-        padding: 10px 15px;
+        padding: 8px 13px;
         transition: 100ms border linear;
         border: 0px solid var(--theme-color);
-        margin: 2.5px 5px;
-        border-radius: 5px;
 
         .label {
           line-height: 1.5;
@@ -314,7 +331,7 @@ screen and (min-width: 1024px) {
     letter-spacing: 1px;
     text-transform: uppercase;
     margin-bottom: 4px;
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
   }
 
   .footer-text {
@@ -326,7 +343,7 @@ screen and (min-width: 1024px) {
 
   li {
     list-style: none;
-    font-weight: 500;
+    font-weight: var(--font-weight-light);
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -393,7 +410,7 @@ screen and (min-width: 1024px) {
       a {
         font-size: 20px;
         line-height: 1.5;
-        font-weight: 600;
+        font-weight: var(--font-weight);
         color: var(--text);
         display: block;
         padding: 10px 15px;
@@ -437,11 +454,12 @@ span {
   text-transform: uppercase;
   color: #CACACA;
   margin: 0;
+  font-weight: var(--font-weight-light);
 }
 
 .lower-label {
   font-size: 125%;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
 }
 
 // Components
@@ -464,13 +482,25 @@ span {
   }
 }
 
+.alert {
+  background: var(--green);
+  font-weight: var(--font-weight-bold);
+  font-size: large;
+  padding: 5px 12px;
+  border-radius: 5px;
+  margin: 5px;
+  &.error {
+    background: var(--red);
+  }
+}
+
 .site-notification {
   background: var(--theme-color);
   border-radius: 5px;
   padding: 8px 0;
   text-align: center;
   font-size: 18px;
-  font-weight: 600;
+  font-weight: var(--font-weight-bold);
   line-height: 1.5;
   margin: 25px auto;
 }
@@ -492,7 +522,7 @@ span {
     text-transform: uppercase;
     color: var(--green);
     border-radius: 10px;
-    font-weight: 700;
+    font-weight: var(--font-weight-bold);
   }
 }
 
@@ -547,12 +577,12 @@ button {
 .button {
   background: var(--theme-color);
   border-radius: 5px;
-  font-weight: 600;
+  font-weight: var(--font-weight);
   padding: 12px 14px;
   vertical-align: middle;
 
   &.u {
-    font-weight: 500;
+    font-weight: var(--font-weight);
     text-transform: uppercase;
     margin: 0 5px !important;
 
@@ -796,7 +826,7 @@ img {
       border-radius: 5px;
       margin-bottom: 5px !important;
       text-align: left;
-      font-weight: 600;
+      font-weight: var(--font-weight);
 
       i {
         margin-right: 5px;
@@ -836,7 +866,7 @@ img {
   border-radius: 5px 5px 0 0;
   padding: 12px;
   font-size: 125%;
-  font-weight: 600;
+  font-weight: var(--font-weight);
 }
 
 .card {
@@ -888,7 +918,7 @@ fieldset {
     }
 
     text-align: center;
-    font-weight: 600;
+    font-weight: var(--font-weight-bold);
     margin: 0;
   }
 }

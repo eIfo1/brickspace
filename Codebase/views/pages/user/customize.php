@@ -42,7 +42,8 @@ $a = UserController::Avatar($conn);
         <legend>
           Body Colors
         </legend>
-          <div id="limbs" style="overflow:auto;min-height:300px;">
+        <div id="limbs" style="overflow:auto;min-height:300px;">
+          <div class="body" id="limbs" style="overflow: auto; min-height: 300px; height: 342px;">
             <style>
               .head {
                 padding: 25px;
@@ -77,25 +78,26 @@ $a = UserController::Avatar($conn);
             </style>
             <div class="color" style="width: 300px;margin-top:10px;text-align:center;position: relative;">
               <div style=" position: absolute; left: 47.5%; top: 10px;">
-                <button class="body-part button" data-open="color-modal" id="head_color" part="head" true-name="Head" style="background-color: #<?php echo $a['head_color'] ?>;padding: 25px;margin-top: -1px;"></button>
+                <button class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" id="head_color" part="head" true-name="Head" style="background-color: #edf2f9;padding: 25px;margin-top: -1px;"></button>
               </div>
               <div style=" position: absolute; left: 40.1%; top: 62px;">
-                <button class="body-part button" data-open="color-modal" id="torso_color" part="torso" true-name="Torso" style="background-color: #<?php echo $a['torso_color'] ?>;padding: 50px;"></button>
+                <button class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" id="torso_color" part="torso" true-name="Torso" style="background-color: #000000;padding: 50px;"></button>
               </div>
               <div style=" position: absolute; left: 23.1%; top: 62px;">
-                <button id="left_arm_color" class="body-part button" data-open="color-modal" part="left_arm" true-name="Left Arm" style="background-color: #<?php echo $a['left_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
+                <button id="left_arm_color" class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" part="left_arm" true-name="Left Arm" style="background-color: #edf2f9;padding: 50px;padding-right: 0px;"></button>
               </div>
               <div style=" position: absolute; left: 73.7%; top: 62px;">
-                <button class="body-part button" data-open="color-modal" id="right_arm_color" part="right_arm" true-name="Right Arm" style="background-color: #<?php echo $a['right_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
+                <button class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" id="right_arm_color" part="right_arm" true-name="Right Arm" style="background-color: #edf2f9;padding: 50px;padding-right: 0px;"></button>
               </div>
               <div style="position: absolute;left: 40.2%;top: 165px;">
-                <button class="body-part button" data-open="color-modal" id="left_leg_color" part="left_leg" true-name="Left Leg" class="colorPallete" style="background-color: #<?php echo $a['left_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
+                <button class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" id="left_leg_color" part="left_leg" true-name="Left Leg" style="background-color: #edf2f9;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
               </div>
               <div style="position: absolute;left: 57.0%;top: 165px;margin-left: -2px;">
-                <button class="body-part button" data-open="color-modal" id="right_leg_color" part="right_leg" true-name="Right Leg" style="background-color: #<?php echo $a['right_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
+                <button class="body-part button tooltip tooltipstered" data-tooltip-content="#colors" id="right_leg_color" part="right_leg" true-name="Right Leg" style="background-color: #edf2f9;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
               </div>
             </div>
           </div>
+        </div>
       </fieldset>
     </div>
   </div>
@@ -117,9 +119,53 @@ $a = UserController::Avatar($conn);
   </form>
 </div>
 
+<div class="messagepop pop card b hidden" style="z-index: 999999999;">
+  <div class="top centered">
+    <span id="editing-name"></span>
+    <button class="close button" style="float:right;margin:0px;float:right;border:none;padding:0;background:none;" onclick="close()"><img id="close" src="/emojis/exit-200.png" height="25"></button>
+  </div>
+  <div class="body centered">
+    <button class="color-btn" style="background-color: #F9EBEA" color="#F9EBEA"></button>
+    <button class="color-btn" style="background-color: #F4ECF7" color="#F4ECF7"></button>
+    <button class="color-btn" style="background-color: #EBF5FB" color="#EBF5FB"></button>
+    <button class="color-btn" style="background-color: #E8F6F3" color="#E8F6F3"></button>
+    <button class="color-btn" style="background-color: #EAFAF1" color="#EAFAF1"></button>
+    <button class="color-btn" style="background-color: #FEF5E7" color="#FEF5E7"></button>
+    <button class="color-btn" style="background-color: #FBEEE6" color="#FBEEE6"></button>
+    <button class="color-btn" style="background-color: #FDFEFE" color="#FDFEFE"></button>
+    <button class="color-btn" style="background-color: #EAECEE" color="#EAECEE"></button>
+    <br><br>
+    <button class="color-btn" style="background-color: #CD6155" color="#CD6155"></button>
+    <button class="color-btn" style="background-color: #A569BD" color="#A569BD"></button>
+    <button class="color-btn" style="background-color: #85C1E9" color="#85C1E9"></button>
+    <button class="color-btn" style="background-color: #73C6B6" color="#73C6B6"></button>
+    <button class="color-btn" style="background-color: #82E0AA" color="#82E0AA"></button>
+    <button class="color-btn" style="background-color: #F8C471" color="#F8C471"></button>
+    <button class="color-btn" style="background-color: #E59866" color="#E59866"></button>
+    <button class="color-btn" style="background-color: #F4F6F7" color="#F4F6F7"></button>
+    <button class="color-btn" style="background-color: #808B96" color="#808B96"></button>
+    <br><br>
+    <button class="color-btn" style="background-color: #A93226" color="#A93226"></button>
+    <button class="color-btn" style="background-color: #7D3C98" color="#7D3C98"></button>
+    <button class="color-btn" style="background-color: #2E86C1" color="#2E86C1"></button>
+    <button class="color-btn" style="background-color: #138D75" color="#138D75"></button>
+    <button class="color-btn" style="background-color: #28B463" color="#28B463"></button>
+    <button class="color-btn" style="background-color: #D68910" color="#D68910"></button>
+    <button class="color-btn" style="background-color: #BA4A00" color="#BA4A00"></button>
+    <button class="color-btn" style="background-color: #D0D3D4" color="#D0D3D4"></button>
+    <button class="color-btn" style="background-color: #273746" color="#273746"></button>
+    <br><br>
+  </div>
+</div>
+
 <script src="/cdn/js/api.js"></script>
 <script>
+  $('.tooltip').tooltipster({
+    contentCloning: true,
+    trigger: 'click'
+  });
   $(function() {
+
     loading();
     loadAvatar();
 
