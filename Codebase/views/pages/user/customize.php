@@ -38,60 +38,65 @@ $a = UserController::Avatar($conn);
       Limb Colors
     </h4>
     <div class="card">
-      <div id="limbs" style="overflow:auto;min-height:300px;">
-        <style>
-          .head {
-            padding: 25px;
-            border: none;
+      <fieldset>
+        <legend>
+          Body Colors
+        </legend>
+          <div id="limbs" style="overflow:auto;min-height:300px;">
+            <style>
+              .head {
+                padding: 25px;
+                border: none;
 
-          }
+              }
 
-          .torso {
-            width: 100%;
-            height: 100%;
-            margin-top: 2.5px;
-            border: none;
-            margin-left: -20px;
-          }
+              .torso {
+                width: 100%;
+                height: 100%;
+                margin-top: 2.5px;
+                border: none;
+                margin-left: -20px;
+              }
 
-          .left-arm {
-            width: 100%;
-            height: 100%;
-            margin-top: 2.5px;
-            border: none;
+              .left-arm {
+                width: 100%;
+                height: 100%;
+                margin-top: 2.5px;
+                border: none;
 
-          }
+              }
 
-          .color button {
-            border-radius: 10px;
-            border: 1px solid lightgrey;
-          }
+              .color button {
+                border-radius: 10px;
+                border: 1px solid lightgrey;
+              }
 
-          .color button:focus {
-            outline: none;
-          }
-        </style>
-        <div class="color" style="width: 300px;margin-top:10px;text-align:center;position: relative;">
-          <div style=" position: absolute; left: 47.5%; top: 10px;">
-            <button class="body-part button" data-open="color-modal" id="head_color" part="head" true-name="Head" style="background-color: #<?php echo $a['head_color'] ?>;padding: 25px;margin-top: -1px;"></button>
+              .color button:focus {
+                outline: none;
+              }
+            </style>
+            <div class="color" style="width: 300px;margin-top:10px;text-align:center;position: relative;">
+              <div style=" position: absolute; left: 47.5%; top: 10px;">
+                <button class="body-part button" data-open="color-modal" id="head_color" part="head" true-name="Head" style="background-color: #<?php echo $a['head_color'] ?>;padding: 25px;margin-top: -1px;"></button>
+              </div>
+              <div style=" position: absolute; left: 40.1%; top: 62px;">
+                <button class="body-part button" data-open="color-modal" id="torso_color" part="torso" true-name="Torso" style="background-color: #<?php echo $a['torso_color'] ?>;padding: 50px;"></button>
+              </div>
+              <div style=" position: absolute; left: 23.1%; top: 62px;">
+                <button id="left_arm_color" class="body-part button" data-open="color-modal" part="left_arm" true-name="Left Arm" style="background-color: #<?php echo $a['left_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
+              </div>
+              <div style=" position: absolute; left: 73.7%; top: 62px;">
+                <button class="body-part button" data-open="color-modal" id="right_arm_color" part="right_arm" true-name="Right Arm" style="background-color: #<?php echo $a['right_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
+              </div>
+              <div style="position: absolute;left: 40.2%;top: 165px;">
+                <button class="body-part button" data-open="color-modal" id="left_leg_color" part="left_leg" true-name="Left Leg" class="colorPallete" style="background-color: #<?php echo $a['left_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
+              </div>
+              <div style="position: absolute;left: 57.0%;top: 165px;margin-left: -2px;">
+                <button class="body-part button" data-open="color-modal" id="right_leg_color" part="right_leg" true-name="Right Leg" style="background-color: #<?php echo $a['right_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
+              </div>
+            </div>
           </div>
-          <div style=" position: absolute; left: 40.1%; top: 62px;">
-            <button class="body-part button" data-open="color-modal" id="torso_color" part="torso" true-name="Torso" style="background-color: #<?php echo $a['torso_color'] ?>;padding: 50px;"></button>
-          </div>
-          <div style=" position: absolute; left: 23.1%; top: 62px;">
-            <button id="left_arm_color" class="body-part button" data-open="color-modal" part="left_arm" true-name="Left Arm" style="background-color: #<?php echo $a['left_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
-          </div>
-          <div style=" position: absolute; left: 73.7%; top: 62px;">
-            <button class="body-part button" data-open="color-modal" id="right_arm_color" part="right_arm" true-name="Right Arm" style="background-color: #<?php echo $a['right_arm_color'] ?>;padding: 50px;padding-right: 0px;"></button>
-          </div>
-          <div style="position: absolute;left: 40.2%;top: 165px;">
-            <button class="body-part button" data-open="color-modal" id="left_leg_color" part="left_leg" true-name="Left Leg" class="colorPallete" style="background-color: #<?php echo $a['left_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
-          </div>
-          <div style="position: absolute;left: 57.0%;top: 165px;margin-left: -2px;">
-            <button class="body-part button" data-open="color-modal" id="right_leg_color" part="right_leg" true-name="Right Leg" style="background-color: #<?php echo $a['right_leg_color'] ?>;padding: 50px;padding-right: 0px;padding-left: 47px;"></button>
-          </div>
-        </div>
-      </div>
+      </fieldset>
     </div>
   </div>
 

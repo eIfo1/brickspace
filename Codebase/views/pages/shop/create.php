@@ -2,9 +2,9 @@
 
 use brickspace\middleware\Auth;
 
-Auth::Require();
+Auth::RequireAdmin();
 
-$name = "Create Item";
+$name = "Create Item (Admin)";
 
 ?>
 

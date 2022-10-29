@@ -44,7 +44,9 @@ post('/admin/blog', function () {
 page('/dashboard', 'views/pages/user/dashboard.php');
 page('/account/notifications', 'views/pages/placeholder/development.php');
 page('/account/currency', 'views/pages/placeholder/development.php');
+
 page('/account/friends/requests', 'views/pages/placeholder/development.php');
+
 page('/account/inbox', 'views/pages/placeholder/development.php');
 page('/account/settings', 'views/pages/placeholder/development.php');
 page('/account/customize', 'views/pages/user/customize.php');
@@ -72,8 +74,13 @@ page('/shop/create', 'views/pages/shop/create.php');
 post('/shop/create', function () {
   MarketController::CreateItem();
 });
+page('/shop/user/create', 'views/pages/shop/create_user.php');
+post('/shop/user/create', function () {
+  MarketController::CreateItem();
+});
 
 get('/site/donate', 'views/pages/support.php');
+get('/maintenance', 'views/pages/maintenance.php');
 
 page('/updates', 'views/pages/blog/dashboard.php');
 page('/updates/post/$id', 'views/pages/blog/post.php');
@@ -104,7 +111,6 @@ post('/dashboard/status', function() {
 });
 
 page('/banned', 'views/pages/user/banned.php');
-
 
 
 // 404

@@ -55,12 +55,28 @@ $ban = BanController::Get($conn, $result['user_id']);
     </div>
     <div class="card">
       <span>
-        <?php echo $result['user_name']; ?> <?php
-                                            OnlineChecker::onlineLabel($result['user_updated'], true);
-                                            ?>
+        <?php echo $result['user_name']; ?>
       </span>
       <br>
       <img src="/cdn/img/avatar/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" style="padding: 12px;">
+      <?php
+      if ($result['user_id'] != @$_SESSION['UserID'] && Auth::Auth()) {
+      ?>
+        <div class="divider"></div>
+        <div class="grid-x">
+          <div class="cell auto text-center">
+            <button class="button"><i class="fa fa-user-plus"></i></button>
+            <button class="button">
+              <i class="fa fa-envelope"></i>
+            </button>
+            <button class="button">
+              <i class="fas fa-exchange-alt"></i>
+            </button>
+          </div>
+        </div>
+      <?php
+      }
+      ?>
     </div>
     <?php
     if (!empty($result['user_bio'])) {
@@ -83,8 +99,25 @@ $ban = BanController::Get($conn, $result['user_id']);
     </h4>
     <div class="card">
       <label>
-        <i class="fa fa-clock"></i>
-        <strong>Last Online:</strong> <small><?php echo Time::Elapsed($result['user_updated']); ?></small>
+
+        <?php
+        if (OnlineChecker::check($result['user_updated']) == false) {
+        ?>
+          <i class="fa fa-clock"></i>
+          <strong>Last Online:</strong>
+          <small><?php echo Time::Elapsed($result['user_updated']); ?></small>
+        <?php
+        } else {
+        ?>
+          <i class="fa fa-clock"></i>
+          <strong>Last Online:</strong>
+          <strong style="color: var(--green);">
+            Currently Online
+          </strong>
+        <?php
+        }
+        ?>
+
       </label>
       <label>
         <div class="fa fa-calendar"></div>

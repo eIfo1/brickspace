@@ -8,7 +8,7 @@ $name = "Sign-Up";
 ?>
 
 <div class="grid-x grid-margin-x">
-  <div class="cell large-3 small-12"></div>
+  <div class="cell large-4 small-12"></div>
   <div class="cell auto">
     <div class="card">
       <form action method="post">
@@ -35,5 +35,5 @@ $name = "Sign-Up";
       </form>
     </div>
   </div>
-  <div class="cell large-3 small-12"></div>
+  <div class="cell large-4 small-12"></div>
 </div>

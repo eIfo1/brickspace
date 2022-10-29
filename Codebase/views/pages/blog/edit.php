@@ -27,7 +27,7 @@ if (!$blog) {
   <div class="cell auto">
     <div class="card">
       <h1>
-        Edit Blog Post
+        Edit Update
       </h1>
       <form action="/updates/edit/<?php echo $id; ?>" method="post">
         <label for="title">Title</label>

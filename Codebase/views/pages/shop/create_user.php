@@ -38,10 +38,6 @@ $name = "Create Item";
           <option value="1" selected>Yes</option>
           <option value="0">No</option>
         </select>
-        <label for="obj">
-          Model
-        </label>
-        <input type="file" name="obj" id="obj">
         <label for="texture">
           Texture
         </label>

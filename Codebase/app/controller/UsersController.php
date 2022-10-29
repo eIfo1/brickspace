@@ -28,10 +28,11 @@ class UsersController
     $offset = ($page - 1) * $limit;
     switch ($staff) {
       case 1:
-        $statement = $conn->prepare("SELECT * FROM users WHERE user_admin = 2 OR user_admin = 3 OR user_admin = 4 OR user_admin = 5 ORDER BY user_id ASC LIMIT :limit OFFSET :offset");
+        $statement = $conn->prepare("SELECT u.*, IF(user_updated >= NOW() - 120, 1, 0) as isOnline FROM users u WHERE u.user_admin = 2 OR u.user_admin = 3 OR u.user_admin = 4 OR u.user_admin = 5 ORDER BY isOnline DESC, u.user_id ASC LIMIT :limit OFFSET :offset");
         break;
       case 0:
-        $statement = $conn->prepare("SELECT * FROM users ORDER BY user_id ASC LIMIT :limit OFFSET :offset");
+        // I have no idea how or why this works but it does and that's ok
+        $statement = $conn->prepare("SELECT u.*, IF(user_updated >= NOW() - 120, 1, 0) as isOnline FROM users u ORDER BY isOnline DESC, u.user_id ASC LIMIT :limit OFFSET :offset");
         break;
       default:
         throw new TypeError("UsersController@Get(conn, page, staff): staff is not boolean!");
@@ -55,7 +56,7 @@ class UsersController
     foreach ($result as $user) {
       $count += 1;
 ?>
-      <div class="cell small-12 large-6">
+      <div class="cell small-12 large-3">
         <div class="card">
           <div class="ellipsis">
             <div class="random-users-flex-thing">
@@ -78,7 +79,9 @@ class UsersController
               }
               ?>
             </div>
-
+            <p class="users-label">
+              <?php echo $user['user_bio']; ?>
+            </p>
           </div>
         </div>
       </div>

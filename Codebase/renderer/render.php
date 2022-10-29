@@ -154,7 +154,7 @@ if ($avatar['hat'] != null) {
 $hat2 = '';
 
 if ($avatar['hat2'] != null) {
-  $hat = '
+  $hat2 = '
 hatpath = "' . $serverRoot . '/renderer/res/models/hats/' . $avatar['hat'] . '.obj"
 import_hat2 = bpy.ops.import_scene.obj(filepath=hat2path)
 hat2 = bpy.context.selected_objects[0]
@@ -170,23 +170,7 @@ hat2.active_material = hat2Mat
   ';
 }
 
-$hat2 = '';
-/*
-$hat2 = '
-hat2path = "' . $serverRoot . '/renderer/res/models/hats/6.obj"
-import_hat2 = bpy.ops.import_scene.obj(filepath=hat2path)
-hat2 = bpy.context.selected_objects[0]
-bpy.context.selected_objects[0].data.name = "hat2"
-hat2Img = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/hats/6.png")
-hat2Tex = bpy.data.textures.new("ColorTex", type = "IMAGE")
-hat2Tex.image = hat2Img
-hat2Mat = bpy.data.materials.new("MaterialName")
-hat2Mat.diffuse_shader = "LAMBERT"
-hat2Slot = hat2Mat.texture_slots.add()
-hat2Slot.texture = hat2Tex
-hat2.active_material = hat2Mat
-';
-*/
+
 
 $save = '
 bpy.data.scenes["Scene"].render.filepath = "' . $serverRoot . '/cdn/img/avatar/' . md5($id)  . '.png"

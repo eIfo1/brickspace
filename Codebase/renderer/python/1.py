@@ -25,15 +25,15 @@ def hex_to_rgb(value):
 bpy.data.objects["Torso"].select = True
 bpy.data.objects["Torso"].active_material.diffuse_color = hex_to_rgb("65E72B")
 bpy.data.objects["Head"].select = True
-bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("E7B541")
+bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("4657FF")
 bpy.data.objects["LeftArm"].select = True
 bpy.data.objects["LeftArm"].active_material.diffuse_color = hex_to_rgb("E7B541")
 bpy.data.objects["RightArm"].select = True
 bpy.data.objects["RightArm"].active_material.diffuse_color = hex_to_rgb("E7B541")
 bpy.data.objects["LeftLeg"].select = True
-bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("0070fa")
+bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("16ABE7")
 bpy.data.objects["RightLeg"].select = True
-bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("0070fa")
+bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("16ABE7")
 
 
 
@@ -60,7 +60,7 @@ bpy.data.scenes["Scene"].render.alpha_mode = "TRANSPARENT"
 bpy.data.scenes["Scene"].render.alpha_mode = origAlphaMode
 
 
-bpy.data.scenes["Scene"].render.filepath = "C:/xampp/htdocs/brickspace/Codebase/cdn/img/avatar/e4da3b7fbbce2345d7772b0674a318d5.png"
+bpy.data.scenes["Scene"].render.filepath = "C:/xampp/htdocs/brickspace/Codebase/cdn/img/avatar/eccbc87e4b5ce2fe28308fd9f2a7baf3.png"
 bpy.ops.object.select_all(action="SELECT")
 bpy.ops.view3d.camera_to_view_selected()
 bpy.ops.render.render( write_still=True )

@@ -8,6 +8,12 @@ $navbar-height: 57.38px;
   float: right;
 }
 
+.text-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 ul {
   &.breadcrumbs {
     li {
@@ -47,6 +53,7 @@ ul {
 html,
 body {
   height: 100%;
+  min-height: 100%;
 }
 
 body {
@@ -202,7 +209,7 @@ screen and (min-width: 1024px) {
   top: 0;
   left: 0;
   bottom: 0;
-  background: var(--darkest);
+  background: var(--darker);
   width: 215px;
   z-index: 250;
   box-shadow: 1px 1px 5px var(--shadow);
@@ -300,7 +307,6 @@ screen and (min-width: 1024px) {
   width: 100%;
   background: var(--darker);
   padding: 25px 0;
-  bottom: 1;
   border-top: 1px solid var(--darkest);
 
   .footer-title {
@@ -425,6 +431,19 @@ span {
   }
 }
 
+// Dashboard
+
+.upper-label {
+  text-transform: uppercase;
+  color: #CACACA;
+  margin: 0;
+}
+
+.lower-label {
+  font-size: 125%;
+  font-weight: 600;
+}
+
 // Components
 
 .card {
@@ -434,6 +453,7 @@ span {
   border-color: var(--darkest);
   margin: 5px;
   border-radius: 5px;
+  box-shadow: 1px 1px 3px var(--shadow);
 
   &.no-padding {
     padding: 0px;
@@ -728,23 +748,15 @@ img {
   }
 }
 
-.card-img {
-  margin-top: 30px;
-  padding-top: 30px;
-  position: relative;
-  display: flex;
-  overflow: visible;
-}
 
 .card-image-top {
   border: 2px solid var(--darkest);
   background-color: var(--darker) !important;
-  position: absolute;
-  top: -30px;
-  left: 50%;
-  margin-left: -30px;
   width: 60px !important;
   height: 60px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 50px;
 }
 
 .full-width {
@@ -846,5 +858,37 @@ img {
   p,
   label {
     color: var(--text-2);
+  }
+}
+
+.users-label {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  margin: 0;
+  color: #CACACA;
+  font-size: small;
+}
+
+fieldset {
+  border: 2px solid #b5b5b5;
+  border-radius: 5px;
+
+  legend {
+    &::before {
+      content: " ";
+      padding: 1px;
+    }
+
+    &::after {
+      content: " ";
+      padding: 1px;
+    }
+
+    text-align: center;
+    font-weight: 600;
+    margin: 0;
   }
 }

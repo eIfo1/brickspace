@@ -16,10 +16,12 @@ $count = 1;
 
 
 <div class="grid-x grid-margin-x">
-  <div class="cell large-3 small-12">
-    <a href="/users/staff">
-      <button class="button">STAFF</button>
-    </a>
+  <div class="cell large-1 small-12">
+    <div class="card">
+      <a href="/users/staff">
+        <button class="button">STAFF</button>
+      </a>
+    </div>
   </div>
   <div class="cell auto">
     <div class="grid-x grid-margin-x">
@@ -31,5 +33,5 @@ $count = 1;
     echo Pagination::Handle($page, '/users/', $count, 8);
     ?>
   </div>
-  <div class="cell large-3 small-12"></div>
+  <div class="cell large-1 small-12"></div>
 </div>

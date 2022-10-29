@@ -3,5 +3,9 @@
     "psr-4": {
       "brickspace\\": "./app"
     }
+  },
+  "require": {
+    "ext-pdo": "*",
+    "ext-json": "*"
   }
 }

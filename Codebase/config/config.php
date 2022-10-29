@@ -14,7 +14,7 @@ try {
 
 
 // remove error if debug is false
-if ($DEBUG == true) {
+if ($DEBUG) {
   // show php errors
   ini_set('display_errors', 1);
   error_reporting(E_ALL);

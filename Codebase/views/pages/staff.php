@@ -19,22 +19,23 @@ if (!$result) {
   exit();
 }
 ?>
-
 <div class="grid-x grid-margin-x">
-  <div class="cell large-3 small-12">
-    <a href="/users">
-      <button class="button">USERS</button>
-    </a>
+  <div class="cell large-1 small-12">
+    <div class="card">
+      <a href="/users">
+        <button class="button">USERS</button>
+      </a>
+    </div>
   </div>
   <div class="cell auto">
     <div class="grid-x grid-margin-x">
       <?php
-      $count = UsersController::Display($result);
+      $count = UsersController::Display($result, true);
       ?>
     </div>
     <?php
-    echo Pagination::Handle($page, '/users/staff', $count, 8);
+    echo Pagination::Handle($page, '/users/', $count, 8);
     ?>
   </div>
-  <div class="cell large-3 small-12"></div>
+  <div class="cell large-1 small-12"></div>
 </div>

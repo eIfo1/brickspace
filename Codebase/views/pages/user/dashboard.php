@@ -34,19 +34,15 @@ $blog = BlogController::GetPosts($conn);
 
       //do your own request an handle the results
       $.ajax({
-        url: actionurl,
-        type: 'post',
-        dataType: 'application/json',
+        url: '/dashboard/wall',
+        type: 'POST',
+        dataType: 'JSON',
         data: $("#wall").serialize(),
-        error: function(xhr, status, error) {
-          var err = xhr.responseText;
-          console.log(err);
-          loadComments()
-        },
-        success: function() {
+        success: function(data) {
+          console.log(data);
           loadComments()
           console.log("Post!");
-        }
+        },
       });
     });
   });
@@ -66,17 +62,65 @@ $blog = BlogController::GetPosts($conn);
           <i class="fas fa-tachometer-alt"></i>
           Dashboard
         </h2>
-        <div class="card-container">
-          <div class="card card-img">
+        <div class="card-container hide-for-large">
+          <div class="card" style="background: linear-gradient(to bottom, var(--theme-color) 0%,var(--theme-color-secondary) 25.5% 25.5% ,var(--darker) 25.5%)">
             <img src="/cdn/img/avatar/thumbnail/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" class="card-image-top">
             <h4 class="text-center">
               <?php echo $result['user_name'] ?>
             </h4>
+            <div class="grid-x">
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">FORUM POSTS</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">FRIENDS</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">NET WORTH</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-container show-for-large">
+          <div class="card" style="background: linear-gradient(to bottom, var(--theme-color) 0%,var(--theme-color-secondary) 30% 38.5% ,var(--darker) 38.5%)">
+            <img src="/cdn/img/avatar/thumbnail/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" class="card-image-top">
+            <h4 class="text-center">
+              <?php echo $result['user_name'] ?>
+            </h4>
+            <div class="grid-x">
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">FORUM POSTS</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">FRIENDS</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+              <div class="cell auto text-center">
+                <label class="upper-label text-ellipsis">NET WORTH</label>
+                <label for="forum" class="lower-label">
+                  0
+                </label>
+              </div>
+            </div>
           </div>
         </div>
         <br>
         <h2>
-          <i class="fas fa-rss"></i>
+          <i class="fas fa-bullhorn"></i>
           Updates
         </h2>
         <div class="card no-padding">
@@ -99,8 +143,8 @@ $blog = BlogController::GetPosts($conn);
         <div class="card">
           <div id="comments"></div>
         </div>
-        <div class="card" id="wall">
-          <form action="/dashboard/wall/" method="POST" id="wall">
+        <div class="card">
+          <form action="/dashboard/wall" method="POST" id="wall">
             <?php
             set_csrf();
             ?>

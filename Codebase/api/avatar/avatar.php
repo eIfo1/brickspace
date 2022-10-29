@@ -12,4 +12,3 @@ include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
 $avatar = UsersController::GetByID($conn, $_SESSION['UserID'])['avatar_link'];
 echo json_encode(["status" => "ok", "avatar" => $avatar]);
 
-?>

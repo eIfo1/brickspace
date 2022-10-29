@@ -167,7 +167,7 @@ class BlogController
       <div class="grid-x">
         <div class="cell large-2 small-2">
           <div class="text-center-vh">
-            <i class="fa fa-rss-square" style="color: orange;"></i>
+            <i class="fa fa-square" style="color: orange;"></i>
           </div>
         </div>
         <div class="cell large-10 small-10">
@@ -202,7 +202,7 @@ class BlogController
         <div class="grid-x">
           <div class="cell large-2 small-2">
             <div class="text-center-vh">
-              <i class="fa fa-rss-square" style="color: orange;"></i>
+              <i class="fa fa-square" style="color: orange;"></i>
             </div>
           </div>
           <div class="cell large-10 small-10">

@@ -27,6 +27,12 @@ class MarketController {
     if (empty($item_name) || empty($item_description) || empty($item_type)) {
       $_SESSION['error'] = "One or more fields is empty!";
       header("Location: /shop/create/");
+      exit(); 
+    }
+
+    if($item_obj['size'] == 0 && $item_obj['error'] == 0 && $item_type != "faces") {
+      $_SESSION['error'] = "Item object file is empty!";
+      header("Location: /shop/create/");
       exit();
     }
 

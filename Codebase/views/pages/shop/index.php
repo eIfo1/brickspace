@@ -32,7 +32,7 @@ $name = "Shop";
           </a>
         <?php } ?>
         <div class="divider"></div>
-        <a href="/shop/create">
+        <a href="/shop/user/create">
           <button class="button full-width">
             <i class="fa fa-plus"></i>
             Create Item

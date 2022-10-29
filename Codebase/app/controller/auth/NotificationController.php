@@ -56,7 +56,6 @@ class NotificationController {
     Auth::Require();
 
     // TODO: make sure notification user is deleting actually belongs to the user
-    // TODO: if the notification is global then don't actually delete
 
     $notification = NotificationController::Get($conn, $_POST['id']);
 
