@@ -16,63 +16,78 @@ $name = "Shop";
 
 </div>
 
-<div class="card" id="shop">
+<div id="shop">
   <h4>Shop</h4>
   <div class="grid-x grid-margin-x">
     <div class="cell large-2 small-12">
-      <?php
-      if (Auth::Auth()) {
-        if (Auth::Admin()) {
-      ?>
-          <a href="/shop/create">
+      <div class="card">
+        <?php
+        if (Auth::Auth()) {
+          if (Auth::Admin()) {
+        ?>
+            <a href="/shop/create">
+              <button class="button full-width">
+                <i class="fa fa-plus"></i>
+                Create Item (ADMIN)
+              </button>
+            </a>
+          <?php } ?>
+          <div class="divider"></div>
+          <a href="/shop/user/create">
             <button class="button full-width">
               <i class="fa fa-plus"></i>
-              Create Item (ADMIN)
+              Create Item
             </button>
           </a>
-        <?php } ?>
-        <div class="divider"></div>
-        <a href="/shop/user/create">
-          <button class="button full-width">
-            <i class="fa fa-plus"></i>
-            Create Item
-          </button>
-        </a>
-      <?php
-      }
-      ?>
-      <ul class="vertical-menu">
-        <li class="shop-button" id="shop-container">
-          <button class="full-width active" id="hats">
-            <i class="fas fa-hard-hat"></i>Hats
-          </button>
-          <button class="full-width" id="faces">
-            <i class="fas fa-smile-wink"></i>Faces
-          </button>
-          <button class="full-width" id="tools">
-            <i class="fas fa-hammer"></i>Tools
-          </button>
-          <button class="full-width" id="shirts">
-            <i class="fas fa-tshirt"></i>Shirts
-          </button>
-          <button class="full-width" id="pants">
-            <i class="fas fa-columns"></i>Pants
-          </button>
-          <?php 
-          if(Auth::Admin()) {
-          ?>
-          <button class="full-width" id="hidden">
-            <i class="fas fa-times"></i>Hidden Items
-          </button>
-          <?php 
-          }
-          ?>
-        </li>
-      </ul>
+        <?php
+        }
+        ?>
+        <ul class="vertical-menu">
+          <li class="shop-button" id="shop-container">
+            <button class="full-width active" id="all">
+              <i class="fas fa-star"></i>All
+            </button>
+            <button class="full-width" id="hats">
+              <i class="fas fa-hard-hat"></i>Hats
+            </button>
+            <button class="full-width" id="faces">
+              <i class="fas fa-smile-wink"></i>Faces
+            </button>
+            <button class="full-width" id="tools">
+              <i class="fas fa-hammer"></i>Tools
+            </button>
+            <button class="full-width" id="shirts">
+              <i class="fas fa-tshirt"></i>Shirts
+            </button>
+            <button class="full-width" id="pants">
+              <i class="fas fa-columns"></i>Pants
+            </button>
+            <?php
+            if (Auth::Admin()) {
+            ?>
+              <button class="full-width" id="hidden">
+                <i class="fas fa-times"></i>Hidden Items
+              </button>
+            <?php
+            }
+            ?>
+          </li>
+        </ul>
+      </div>
     </div>
     <div class="cell large-10">
 
       <style>
+
+        .shop-card {
+          padding: 12px;
+          background: var(--darkest);
+          border-radius: 5px;
+        }
+
+        .is-collectible {
+          border: 2px solid yellow;
+        }
         .shop-card h4 a {
           color: #fff;
         }
@@ -93,7 +108,7 @@ $name = "Shop";
 
 </script>
 <script>
-  var selected = "hats";
+  var selected = "all";
   $(document).ready(function() {
     loadItems(selected);
     $("#shop-container > button").click(function() {

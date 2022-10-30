@@ -44,10 +44,13 @@ if (Auth::Auth()) {
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" href="/cdn/css/style.css">
   <!-- tooltipster -->
-  <link rel="stylesheet" href="/cdn/css/tooltipster.bundle.min.css">
+
+  <!-- jquery -->
+  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <!-- js -->
-  <script src="/cdn/js/tooltipster.bundle.min.js" defer></script>
-  <script src="/cdn/js/brickspace.js" defer></script>
+  <script src="/cdn/js/brickspace.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/4.2.6/js/tooltipster.bundle.min.js" integrity="sha512-PEUn5mbJpCcZSS0YrLLq2lq8Nttb8KySq23RPrM1MRHlyruogwnS6DbHMDxCHQqSjmgflaohwBmQHq/Vd5bK6w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tooltipster/4.2.6/css/tooltipster.bundle.min.css" integrity="sha512-RwhQzi0EhwZ9hHs18SqM7ICqW/MH/B17PouhdCuzaUQYEdx2S4WPgkhLeZPvGr2Kb1FIm4gaIbMJGwZtxDCLQA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     .top-bar input {
@@ -73,9 +76,14 @@ if (Auth::Auth()) {
   </style>
 
 
-  <!-- jquery -->
-  <script src="https://code.jquery.com/jquery-3.6.1.min.js"></script>
   <link rel="icon" href="/cdn/img/favicon.png" type="image/x-icon">
+  <script>
+    $(document).ready(function() {
+      $('.tip').tooltipster({
+        arrow: false
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -305,28 +313,28 @@ if (Auth::Auth()) {
             if (Auth::Auth()) {
             ?>
               <div class="info">
-                <a href="/account/currency">
+                <a href="/account/currency" class="tip" title="Cubes (<?php echo NumberFormatter::Format(UserController::Currency($conn)); ?>)">
                   <i class="fa fa-cubes"></i>
                   <?php echo NumberFormatter::Format(UserController::Currency($conn)); ?>
                 </a>
-                <a href="/account/friends/requests">
+                <a href="/account/friends/requests" class="tip" title="Friend Requests (0)">
                   <i class="fa fa-user-plus"></i>
                   0
                 </a>
-                <a href="/account/notifications">
+                <a href="/account/notifications" class="tip" title="Notifications (<?php echo NotificationController::Amount($conn); ?>)">
                   <i class="fa fa-bell"></i>
                   <?php echo NotificationController::Amount($conn); ?>
                 </a>
-                <a href="/account/inbox">
+                <a href="/account/inbox" class="tip" title="Messages (0)">
                   <i class="fa fa-envelope"></i>
                   0
                 </a>
               </div>
               <div class="info">
-                <a href="/account/settings">
+                <a href="/account/settings" class="tip" title="Account Settings">
                   <i class="fa fa-cog"></i>
                 </a>
-                <a href="/account/customize">
+                <a href="/account/customize" class="tip" title="Customize Avatar">
                   <i class="fa fa-user-edit"></i>
                 </a>
               </div>
@@ -589,3 +597,9 @@ if (Auth::Auth()) {
 </title>
 
 </html>
+<?php
+print str_pad('', 4096) . "\n";
+ob_flush();
+flush();
+set_time_limit(45);
+?>

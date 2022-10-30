@@ -462,6 +462,21 @@ span {
   font-weight: var(--font-weight-bold);
 }
 
+// Customize
+
+.color-card {
+  background: var(--dark);
+  padding: 5px;
+  display: inline-block;
+  width: 100%;
+
+  .color-holder {
+    padding: 2.5px 5px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
 // Components
 
 .card {
@@ -489,6 +504,7 @@ span {
   padding: 5px 12px;
   border-radius: 5px;
   margin: 5px;
+
   &.error {
     background: var(--red);
   }
@@ -503,6 +519,28 @@ span {
   font-weight: var(--font-weight-bold);
   line-height: 1.5;
   margin: 25px auto;
+}
+
+.tooltipster-base {
+  .tooltipster-box {
+    font-weight: var(--font-weight-bold);
+    border: none !important;
+
+
+    background: #424242;
+    color: #cacaca !important;
+  }
+
+  .tooltipster-content {
+    font-size: large !important;
+
+  }
+}
+
+.no-padding {
+  .tooltipster-content {
+    padding: 0!important;
+  }
 }
 
 .label {

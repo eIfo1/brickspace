@@ -23,6 +23,24 @@ hatSlot = hatMat.texture_slots.add()
 hatSlot.texture = hatTex
 hat.active_material = hatMat
 ';
+} elseif($i['type'] == "shirts") {
+  $item = '
+LeftArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/shirts/' . $i['id'] . '.png")
+LeftArmTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+LeftArmTex.image = LeftArmImg
+LeftArmslot = bpy.data.objects["LeftArm"].active_material.texture_slots.add()
+LeftArmslot.texture = LeftArmTex
+RightArmImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/shirts/' . $i['id'] . '.png")
+RightArmTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+RightArmTex.image = RightArmImg
+RightArmslot = bpy.data.objects["RightArm"].active_material.texture_slots.add()
+RightArmslot.texture = RightArmTex
+TorsoImg = bpy.data.images.load(filepath="' . $serverRoot . '/renderer/res/textures/shirts/' . $i['id'] . '.png")
+TorsoTex = bpy.data.textures.new("ColorTex", type = "IMAGE")
+TorsoTex.image = TorsoImg
+Torsolot = bpy.data.objects["Torso"].active_material.texture_slots.add()
+Torsolot.texture = TorsoTex
+';
 }
 
 

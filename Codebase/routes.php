@@ -76,7 +76,7 @@ post('/shop/create', function () {
 });
 page('/shop/user/create', 'views/pages/shop/create_user.php');
 post('/shop/user/create', function () {
-  MarketController::CreateItem();
+  MarketController::CreateItem_User();
 });
 
 get('/site/donate', 'views/pages/support.php');

@@ -14,6 +14,12 @@ if($type == "hidden") {
   $items = $conn->prepare($sql);
   $items->execute();
   $items = $items->fetchAll(PDO::FETCH_ASSOC);
+} elseif ($type == "all") {
+  $sql = "SELECT * FROM item WHERE public = 1 AND type = 'hats' OR type = 'tools' OR type = 'faces' OR collectible = 'yes' ORDER BY ID DESC";
+
+  $items = $conn->prepare($sql);
+  $items->execute();
+  $items = $items->fetchAll(PDO::FETCH_ASSOC);
 } else {
   $sql = "SELECT * FROM item WHERE type = :type AND public = 1 ORDER BY ID DESC";
 
@@ -61,7 +67,11 @@ if (!$items) {
     $u = UsersController::GetByID($conn, $item['creator']);
   ?>
     <div class="cell small-12 large-3">
-      <div class="shop-card">
+      <div class="shop-card <?php 
+        if($item['collectible'] == "yes") {
+          echo 'is-collectible';
+        }
+      ?>">
         <a href="/shop/item/<?php echo $item['id']; ?>">
           <img src="/cdn/img/shop/<?php echo md5($item['id']); ?>.png" alt="Item" style='border-radius: 5px 5px 0 0; padding: 12px;'>
           <div class="price">
@@ -89,7 +99,7 @@ if (!$items) {
           </a>
         </h4>
         <label for="creator">
-          by <a href="/user/profile/<?php echo $u['user_name']; ?>">
+          <a href="/user/profile/<?php echo $u['user_name']; ?>">
             <?php echo $u['user_name']; ?>
           </a>
         </label>

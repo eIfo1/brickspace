@@ -63,7 +63,7 @@ $blog = BlogController::GetPosts($conn);
           Dashboard
         </h2>
         <div class="card-container hide-for-large">
-          <div class="card" style="background: linear-gradient(to bottom, var(--theme-color) 0%,var(--theme-color-secondary) 25.5% 25.5% ,var(--darker) 25.5%)">
+          <div class="card" style="background: linear-gradient(to bottom, rgb(13, 72, 123) 0%, rgb(30, 98, 154) 25.5% 25.5% ,var(--darker) 25.5%)">
             <img src="/cdn/img/avatar/thumbnail/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" class="card-image-top">
             <h4 class="text-center">
               <?php echo $result['user_name'] ?>
@@ -91,7 +91,7 @@ $blog = BlogController::GetPosts($conn);
           </div>
         </div>
         <div class="card-container show-for-large">
-          <div class="card" style="background: linear-gradient(to bottom, var(--theme-color) 0%,var(--theme-color-secondary) 30% 38.5% ,var(--darker) 38.5%)">
+          <div class="card" style="background: linear-gradient(to bottom, rgb(13, 72, 123) 0%,rgb(30, 98, 154) 30% 38.5% ,var(--darker) 38.5%)">
             <img src="/cdn/img/avatar/thumbnail/<?php echo $result['avatar_link'] ?>.png" alt="Avatar" class="card-image-top">
             <h4 class="text-center">
               <?php echo $result['user_name'] ?>

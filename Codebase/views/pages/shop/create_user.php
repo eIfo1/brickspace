@@ -21,15 +21,8 @@ $name = "Create Item";
           Item Type
         </label>
         <select name="type" id="type">
-          <option value="hats" selected>Hat</option>
-          <option value="tools">Tool</option>
-        </select>
-        <label for="public">
-          Item Visibility
-        </label>
-        <select name="public" id="public">
-          <option value="1" selected>Public</option>
-          <option value="0">Hidden</option>
+          <option value="shirts" selected>Shirt</option>
+          <option value="pants">Pants</option>
         </select>
         <label for="onsale">
           Is Item Onsale

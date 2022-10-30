@@ -24,13 +24,19 @@ class MarketController {
     $onsale = $_POST['onsale'];
     $creator = $_SESSION['UserID'];
 
+    if($item_type == "faces") {
+      $no_obj = true;
+    } else {
+      $no_obj = false;
+    }
+
     if (empty($item_name) || empty($item_description) || empty($item_type)) {
       $_SESSION['error'] = "One or more fields is empty!";
       header("Location: /shop/create/");
       exit(); 
     }
 
-    if($item_obj['size'] == 0 && $item_obj['error'] == 0 && $item_type != "faces") {
+    if($item_obj['size'] == 0 && $item_obj['error'] == 0 && $no_obj == false) {
       $_SESSION['error'] = "Item object file is empty!";
       header("Location: /shop/create/");
       exit();
@@ -57,7 +63,7 @@ class MarketController {
     
     $obj = pathinfo($item_obj['name']);
     
-    if ($obj['extension'] != 'obj') {
+    if ($obj['extension'] != 'obj' && $no_obj = false) {
       $_SESSION['error'] = "Asset must be OBJ format!";
       header("Location: /shop/create/");
       exit();
@@ -81,16 +87,74 @@ class MarketController {
     $stmt = $conn->prepare($sql);
     $stmt->execute();
     $id = $stmt->fetch();
-
-    if (!move_uploaded_file($item_obj['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/renderer/res/models/' . $item_type . '/' . $id['id'] . '.obj')) {
-      $_SESSION['error'] = "Item was created but object could not be uploaded.";
-      header("Location: /shop/create/");
-      exit();
+    if($no_obj == false) {
+      if (!move_uploaded_file($item_obj['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/renderer/res/models/' . $item_type . '/' . $id['id'] . '.obj')) {
+        $_SESSION['error'] = "Item was created but object could not be uploaded.";
+        header("Location: /shop/create/");
+        exit();
+      }
     }
 
     if (!move_uploaded_file($item_texture['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/renderer/res/textures/' . $item_type . '/' . $id['id'] . '.png')) {
       $_SESSION['error'] = "Item was created but texture could not be uploaded.";
       header("Location: /shop/create/");
+      exit();
+    }
+  }
+
+  public static function CreateItem_User()
+  {
+    Auth::RequireAdmin();
+
+    $item_name = $_POST['name'];
+    $item_description = $_POST['description'];
+    $item_price = $_POST['price'];
+    $item_type = $_POST['type'];
+    $item_texture = $_FILES['texture'];
+    $onsale = $_POST['onsale'];
+    $creator = $_SESSION['UserID'];
+
+    if (empty($item_name) || empty($item_description) || empty($item_type)) {
+      $_SESSION['error'] = "One or more fields is empty!";
+      header("Location: /shop/create/");
+      exit();
+    }
+
+    // check if price is a number
+    if (!is_numeric($item_price)) {
+      $_SESSION['error'] = "Price must be a number!";
+      header("Location: /shop/create/");
+      exit();
+    }
+
+    if ($onsale != 0 && $onsale != 1) {
+      $_SESSION['error'] = "Invalid onsale value!";
+      header("Location: /shop/create/");
+      exit();
+    }
+
+    if ($item_texture['type'] != 'image/png') {
+      $_SESSION['error'] = "Asset's texture must be PNG format!";
+      header("Location: /shop/create/");
+      exit();
+    }
+
+    // create item
+
+    include($_SERVER['DOCUMENT_ROOT'] . "/config/config.php");
+
+    $sql = "INSERT INTO item (name, descr, price, type, creator, onsale, verified) VALUES (:item_name, :item_desc, :item_price, :item_type, :creator, :onsale,  0)";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute(array(':item_name' => $item_name, ':item_desc' => $item_description, ':item_price' => $item_price, ':item_type' => $item_type, ':creator' => $creator, ':onsale' => $onsale));
+
+    $sql = "SELECT id FROM item ORDER BY id DESC LIMIT 1";
+    $stmt = $conn->prepare($sql);
+    $stmt->execute();
+    $id = $stmt->fetch();
+
+    if (!move_uploaded_file($item_texture['tmp_name'], $_SERVER['DOCUMENT_ROOT'] . '/renderer/res/textures/' . $item_type . '/' . $id['id'] . '.png')) {
+      $_SESSION['error'] = "Item was created but texture could not be uploaded.";
+      header("Location: /shop/user/create/");
       exit();
     }
   }

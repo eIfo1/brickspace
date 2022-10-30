@@ -25,15 +25,15 @@ def hex_to_rgb(value):
 bpy.data.objects["Torso"].select = True
 bpy.data.objects["Torso"].active_material.diffuse_color = hex_to_rgb("000000")
 bpy.data.objects["Head"].select = True
-bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["Head"].active_material.diffuse_color = hex_to_rgb("FFC8B4")
 bpy.data.objects["LeftArm"].select = True
-bpy.data.objects["LeftArm"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["LeftArm"].active_material.diffuse_color = hex_to_rgb("FFC8B4")
 bpy.data.objects["RightArm"].select = True
-bpy.data.objects["RightArm"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["RightArm"].active_material.diffuse_color = hex_to_rgb("FFC8B4")
 bpy.data.objects["LeftLeg"].select = True
-bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["LeftLeg"].active_material.diffuse_color = hex_to_rgb("0014FF")
 bpy.data.objects["RightLeg"].select = True
-bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("ECC494")
+bpy.data.objects["RightLeg"].active_material.diffuse_color = hex_to_rgb("0014FF")
 
 
 
